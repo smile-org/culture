@@ -4,12 +4,14 @@
     src: url('../fonts/FZZXHJW.TTF')
     /*url('Sansation_Light.eot'); !* IE9+ *!*/
 }
+
 @font-face {
     /*方正正黑简体*/
     font-family: 'FZZHJW';
     src: url('../fonts/FZZHJW.TTF')
     /*url('Sansation_Light.eot'); !* IE9+ *!*/
 }
+
 @font-face {
     /*等线 正文*/
     font-family: 'DENG';
@@ -34,7 +36,6 @@
     src: url('../fonts/MinionPro-Regular.otf')
 }
 
-
 .width100 {
     width: 100%;
 }
@@ -48,20 +49,24 @@
     font-size: 18px;
     line-height: 38px;
 }
-.e_font{
+
+.e_font {
     font-size: 18px;
     line-height: 28px;
     font-family: 'Frutiger';
 }
-.e_font h5{
+
+.e_font h5 {
     font-size: 18px;
     color: #e51227;
     line-height: 28px;
 }
-.e_font p{
+
+.e_font p {
     margin-bottom: 35px;
 }
-.a_import{
+
+.a_import {
     color: #2b47c3;
 }
 
@@ -108,7 +113,8 @@
     background: #dcdcdc;
     display: block;
 }
-.close{
+
+.close {
     font-size: 28px;
     width: 30px;
     height: 30px;
@@ -123,11 +129,13 @@
     top: 25px;
     cursor: pointer;
 }
-.close:hover{
+
+.close:hover {
     color: #abaaaa;
     border: 1px solid #abaaaa;
 }
-.close:active{
+
+.close:active {
     color: #abaaaa;
     border: 1px solid #abaaaa;
 }
