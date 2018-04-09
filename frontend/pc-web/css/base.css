@@ -1,0 +1,141 @@
+@font-face {
+    /*方正正纤黑简体 标题*/
+    font-family: 'FZZXHJW';
+    src: url('../fonts/FZZXHJW.TTF')
+    /*url('Sansation_Light.eot'); !* IE9+ *!*/
+}
+
+@font-face {
+    /*方正正黑简体*/
+    font-family: 'FZZHJW';
+    src: url('../fonts/FZZHJW.TTF')
+    /*url('Sansation_Light.eot'); !* IE9+ *!*/
+}
+
+@font-face {
+    /*等线 正文*/
+    font-family: 'DENG';
+    src: url('../fonts/DENG.TTF')
+}
+
+@font-face {
+    /*等线light*/
+    font-family: 'DENGL';
+    src: url('../fonts/DENGL.TTF')
+}
+
+@font-face {
+    /*Frutiger 英文标题*/
+    font-family: 'Frutiger';
+    src: url('../fonts/Frutiger.TTF')
+}
+
+@font-face {
+    /*MinionPro-Regular  英文正文*/
+    font-family: 'MinionPro-Regular';
+    src: url('../fonts/MinionPro-Regular.otf')
+}
+
+.width100 {
+    width: 100%;
+}
+
+.p_font {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.p_font2 {
+    font-size: 18px;
+    line-height: 38px;
+}
+
+.e_font {
+    font-size: 18px;
+    line-height: 28px;
+    font-family: 'Frutiger';
+}
+
+.e_font h5 {
+    font-size: 18px;
+    color: #e51227;
+    line-height: 28px;
+}
+
+.e_font p {
+    margin-bottom: 35px;
+}
+
+.a_import {
+    color: #2b47c3;
+}
+
+.text_c {
+    text-align: center;
+}
+
+.classify_disc li {
+    list-style-type: disc;
+    margin-bottom: 50px;
+}
+
+.pre_icon {
+    box-sizing: border-box;
+    position: relative;
+    padding-left: 65px;
+    font-size: 22px;
+}
+
+.pre_icon::before {
+    content: '';
+    background: url(../img/icon1.png) no-repeat;
+    position: absolute;
+    top: -1px;
+    background-size: 100% 100%;
+    left: -16px;
+    width: 57px;
+    height: 28px;
+}
+
+.img_style li {
+    width: 33.33%;
+    padding: 15px;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    list-style-type: none;
+    margin: 30px auto 0;
+}
+
+.img_style li img {
+    width: 100%;
+    background: #dcdcdc;
+    display: block;
+}
+
+.close {
+    font-size: 28px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 6px;
+    color: #dcdcdc;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #abaaaa;
+    border: 1px solid #abaaaa;
+}
+
+.close:active {
+    color: #abaaaa;
+    border: 1px solid #abaaaa;
+}

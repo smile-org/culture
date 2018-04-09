@@ -1,0 +1,23 @@
+<header class="clear">
+    <div class="logo">
+        <img src="./img/logo.png" alt="logo">
+    </div>
+    <div class="sec_tab">
+        <ul class="tab_list clear">
+            <li class=""><a href="./../index.html" class="active">主页    </a></li>
+            <li><a href="./../inland.html">文化展览</a></li>
+            <li><a href=",/../travel.html">文化之旅</a></li>
+            <li><a href="./../memory.html">文化记忆</a></li>
+            <li><a href="./../education.html">文化教育</a></li>
+            <li><a href="./../map.html">非遗地图</a></li>
+            <li>
+                <a href="">
+                    <img src="./img/cart.png" alt="cart" class="vm mr10"><span class="vm">ESHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="slogan">
+        <img src="./img/slogan.png" alt="slogan">
+    </div>
+</header>

@@ -1,0 +1,21 @@
+<footer>
+    <div class="footer_about">
+        <a href="./../about.html" class="about">关于我们</a>
+        <a href="./../privacy.html" class="about">隐私说明</a>
+    </div>
+    <p>Office Phone Number:  (703) 429-4664, at  607 Herndon Pkwy #210, Herndon, VA 20170</p>
+    <div class="box_code " >
+        <img src="img/e-mail.png" alt="email" class="mr20 vm">
+        gazucena@newoasisedu.com
+        <span class="ml20 chat_h vm">
+            <img  src="./img/wecharted.png" alt="wechart" >
+        </span>
+        <div class="add_code">
+            <img src="./../img/QRcode.png" alt="">
+            <p>
+                关注非遗公众号，了解更多非遗项目动态
+            </p>
+        </div>
+    </div>
+    <p>Copyrights © ifeiyi 2018</p>
+</footer>
