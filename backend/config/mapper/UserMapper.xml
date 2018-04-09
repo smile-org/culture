@@ -10,5 +10,8 @@
     </resultMap>
 
 
+   <select id="getUser"    resultType="com.kst.entities.User">
+      select * from user where username =#{userName}  and password=#{password}
 
+   </select>
 </mapper>

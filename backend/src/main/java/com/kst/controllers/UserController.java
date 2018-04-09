@@ -20,8 +20,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Map login(@RequestBody Map body) {
+    @RequestMapping(value = "/Login", method = RequestMethod.POST)
+    public Map Login(@RequestBody Map body) {
         logger.debug("RequestBody: " + body);
         String userName = (String) body.get("userName");
         String password = (String) body.get("password");
