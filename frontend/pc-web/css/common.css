@@ -11,17 +11,21 @@ body, div, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, 
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
 }
-body{
+
+body {
     font-family: 'DENGL';
     min-width: 1209px;
 }
+
 ol, ul {
     margin-top: 0;
     margin-bottom: 0px;
 }
-.text_l{
+
+.text_l {
     text-align: left;
 }
+
 .fl {
     float: left;
 }
@@ -48,12 +52,23 @@ ol, ul {
     white-space: nowrap;
 }
 
+.line_ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
 .vm {
     vertical-align: middle;
 }
-.vb{
+
+.vb {
     vertical-align: bottom;
 }
+
 .clear::after {
     content: '';
     clear: both;
@@ -130,6 +145,7 @@ ol, ul {
 .mb40 {
     margin-bottom: 40px;
 }
+
 .mt5 {
     margin-top: 5px;
 }
@@ -262,6 +278,10 @@ ol, ul {
     font-size: 20px;
 }
 
+.font22 {
+    font-size: 22px;
+}
+
 .font24 {
     font-size: 24px;
 }
@@ -289,10 +309,12 @@ ol, ul {
 .cur {
     cursor: pointer;
 }
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
 }
+
 .col-sm-4 {
     width: 33.33333333%;
     float: left;

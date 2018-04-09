@@ -6,19 +6,23 @@
     <title>文化寻力</title>
     <link rel="stylesheet" href="">
     <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-          <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+    <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link href="./css/base.css" type="text/css" rel="stylesheet"/>
     <link href="./css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/swiper.min.css" type="text/css" rel="stylesheet"/>
     <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+
+
     <!-- 引入组件库 -->
     <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/swiper.min.js"></script>
 </head>
 <body>
 <!--#include file="./ins/header.shtml"-->
 <section>
     <div class="banner_box">
         <div class="carousel-content">
-            <ul class="carousel">
+            <ul class="carousel  aaa">
                 <li>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
@@ -39,24 +43,6 @@
             <div class="carousel-prev"><img src="./img/left1.png"></div>
             <div class="carousel-next"><img src="./img/right1.png"></div>
         </div>
-        <!--<div class="carousel">-->
-            <!--<div class="panels">-->
-                <!--<a href=""><img src="./img/banner.jpg"></a>-->
-                <!--<a href=""><img src="./img/banner.jpg"></a>-->
-                <!--<a href=""><img src="./img/banner.jpg"></a>-->
-                <!--<a href=""><img src="./img/banner.jpg"></a>-->
-                <!--<a href=""><img src="./img/banner.jpg"></a>-->
-            <!--</div>-->
-            <!--<a href=""><img src="./img/left1.png" alt=""></a>-->
-            <!--<a href=""><img src="./img/left2.png" alt=""></a>-->
-            <!--<ul class="bullets">-->
-                <!--<li class="active"></li>-->
-                <!--<li></li>-->
-                <!--<li></li>-->
-                <!--<li></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--<img src="./img/banner.jpg" alt="" style="width: 100%;">-->
         <div class="banner_text">
             <h5 class="font24">
                 民族血液里的中国红
@@ -146,20 +132,98 @@
         </div>
 
         <div class="index_part">
-            <h1 class="">热点聚焦</h1>
-            <ul class=" hot_topic">
-                <li class="">
-                    <img src="./img/photo_c1_1.jpg" alt="">
-                </li>
-                <li class=" topic_hot">
-                    <div>
-                        <p>中国（北京）国际服务贸易交易会</p>
-                        <p>中国非物质文化遗产专题展本月开展</p>
-                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
-                    </div>
+            <!--<h1 class="">热点聚焦</h1>-->
+            <!--<div class="carousel_news">-->
+            <!--<div class="part3_carousel" id="part3_carousel">-->
+            <!--<a href="" class=" hot_topic">-->
+            <!--<div class="topic_hot">-->
+            <!--<img src="./img/photo_c1_1.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class=" topic_hot">-->
+            <!--<div>-->
+            <!--<p>中国（北京）国际服务贸易交易会</p>-->
+            <!--<p>中国非物质文化遗产专题展本月开展</p>-->
+            <!--<p>北京 <span>2018/5/28 - 2018/6/1</span></p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</a>-->
+            <!--<a href="" class=" hot_topic">-->
+            <!--<div class="topic_hot">-->
+            <!--<img src="./img/photo_c1_1.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class=" topic_hot">-->
+            <!--<div>-->
+            <!--<p>中国（北京）国际服务贸易交易会</p>-->
+            <!--<p>中国非物质文化遗产专题展本月开展</p>-->
+            <!--<p>北京 <span>2018/5/28 - 2018/6/1</span></p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--<ul class="img-index"></ul>-->
+            <!--<div class="carousel-prev"><img src="./img/left1.png"></div>-->
+            <!--<div class="carousel-next"><img src="./img/right1.png"></div>-->
+            <!--</div>-->
 
-                </li>
-            </ul>
+            <div class="index_part">
+                <h1 class="">热点聚焦</h1>
+                <div class="swiper-container hot-swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="./news.html" class=" hot_topic">
+                                <div class="topic_hot">
+                                    <img src="./img/photo_c1_1.jpg" alt="">
+                                </div>
+                                <div class=" topic_hot">
+                                    <div>
+                                        <p>中国（北京）国际服务贸易交易会</p>
+                                        <p>中国非物质文化遗产专题展本月开展</p>
+                                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./news.html" class=" hot_topic">
+                                <div class="topic_hot">
+                                    <img src="./img/photo_c1_1.jpg" alt="">
+                                </div>
+                                <div class=" topic_hot">
+                                    <div>
+                                        <p>2中国（北京）国际服务贸易交易会</p>
+                                        <p>中国非物质文化遗产专题展本月开展</p>
+                                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./news.html" class=" hot_topic">
+                                <div class="topic_hot">
+                                    <img src="./img/photo_c1_1.jpg" alt="">
+                                </div>
+                                <div class=" topic_hot">
+                                    <div>
+                                        <p>3中国（北京）国际服务贸易交易会</p>
+                                        <p>中国非物质文化遗产专题展本月开展</p>
+                                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination hot-swiper-pagination"></div>
+
+                    <!-- 如果需要导航按钮 -->
+                    <!--<div class="swiper-button-prev hot-swiper-button-prev"></div>-->
+                    <!--<div class="swiper-button-next hot-swiper-button-next"></div>-->
+                </div>
+
+            </div>
+
+
         </div>
 
         <div class="index_part">
@@ -181,7 +245,7 @@
                         <a href="./news.html" class="part1_img">
                             <img src="./img/photo_d2_1.jpg" alt="" class="animation_scale">
                         </a>
-                        <a class="part3_font">
+                        <a href="./news.html" class="part3_font">
                             <h4 class="ellipsis">政协文艺界委员议中国文化走出去</h4>
                             <p class="ellipsis">刚刚结束的全国两会“部长通道”上，刚刚结束的全国两会“部长通道”上</p>
                         </a>
@@ -192,7 +256,7 @@
                         <a href="./news.html" class="part1_img">
                             <img src="./img/photo_d3_1.jpg" alt="" class="">
                         </a>
-                        <a class="part3_font">
+                        <a href="./news.html" class="part3_font">
                             <h4 class="ellipsis">政协文艺界委员议中国文化走出去</h4>
                             <p class="ellipsis">刚刚结束的全国两会“部长通道”上，刚刚结束的全国两会“部长通道”上</p>
                         </a>
@@ -238,35 +302,62 @@
 </section>
 <!--#include file="./ins/footer.shtml"-->
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $(".carousel-content").carousel({
-            carousel : ".carousel",//轮播图容器
-            indexContainer : ".img-index",//下标容器
-            prev : ".carousel-prev",//左按钮
-            next : ".carousel-next",//右按钮
-            timing : 3000,//自动播放间隔
-            animateTime : 700,//动画时间
-            autoPlay : true,//是否自动播放 true/false
-            direction : "left",//滚动方向 right/left
+            carousel: ".carousel",//轮播图容器
+            indexContainer: ".img-index",//下标容器
+            prev: ".carousel-prev",//左按钮
+            next: ".carousel-next",//右按钮
+            timing: 3000,//自动播放间隔
+            animateTime: 700,//动画时间
+            autoPlay: true,//是否自动播放 true/false
+            direction: "left",//滚动方向 right/left
         });
 
-        $(".carousel-content").hover(function(){
+        $(".carousel-content").hover(function () {
             $(".carousel-prev,.carousel-next").fadeIn(300);
-        },function(){
+        }, function () {
             $(".carousel-prev,.carousel-next").fadeOut(300);
         });
-
-        $(".carousel-prev").hover(function(){
-            $(this).find("img").attr("src","./img/left2.png");
-        },function(){
-            $(this).find("img").attr("src","./img/left1.png");
+        $(".carousel li").click(function () {
+            window.location.href = "./inland.html";
         });
-        $(".carousel-next").hover(function(){
-            $(this).find("img").attr("src","./img/right2.png");
-        },function(){
-            $(this).find("img").attr("src","./img/right1.png");
+        $(".carousel-prev").hover(function () {
+            $(this).find("img").attr("src", "./img/left2.png");
+        }, function () {
+            $(this).find("img").attr("src", "./img/left1.png");
+        });
+        $(".carousel-next").hover(function () {
+            $(this).find("img").attr("src", "./img/right2.png");
+        }, function () {
+            $(this).find("img").attr("src", "./img/right1.png");
         });
     });
+
+    var hotSwiper = new Swiper('.hot-swiper-container', {
+        speed: 1000,
+        autoplay: {
+            delay: 3000
+        },
+        loop: true,
+        // 如果需要分页器
+        pagination: {
+            el: '.hot-swiper-pagination',
+            clickable: true,
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.hot-swiper-button-next',
+            prevEl: '.hot-swiper-button-prev',
+        },
+    })
+    $(".hot-swiper-container").mouseenter(function () {//滑过悬停
+        hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
+    }).mouseleave(function () {//离开开启
+        hotSwiper.autoplay.start();
+    });
+
 </script>
 <script type="text/javascript" src="./js/carousel.js"></script>
 </body>

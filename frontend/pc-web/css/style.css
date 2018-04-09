@@ -161,8 +161,19 @@ section .content_box h4 {
     font-family: 'FZZXHJW';
 }
 
-.culture_box li a:hover {
-    text-decoration: none;
+/*.culture_box li a:hover {*/
+/*text-decoration: none;*/
+/*}*/
+
+.carousel_news {
+    position: relative;
+    overflow: hidden;
+    min-height: 374px;
+}
+
+.part3_carousel {
+    overflow: hidden;
+    position: absolute;
 }
 
 .hot_topic {
@@ -172,14 +183,16 @@ section .content_box h4 {
     justify-content: center;
     align-items: center;
     background: #f6f6f6;
+    float: left;
+    width: 100%;
 }
 
-.hot_topic li {
+.hot_topic .topic_hot {
     flex: 1;
     text-align: center;
 }
 
-.hot_topic li img {
+.hot_topic .topic_hot img {
     display: block;
     width: 100%;
 }
@@ -188,6 +201,7 @@ section .content_box h4 {
     font-size: 24px;
     margin-bottom: 20px;
     font-family: 'FZZXHJW';
+    color: #000;
 }
 
 .hot_topic p:last-child {
@@ -208,8 +222,13 @@ section .content_box h4 {
     border: 4px solid #e7e7e7;
 }
 
+.culture_box li:hover > .part1_img, .news_parts li:hover > .part1_img {
+    border: 4px solid #e7e7e7;
+}
+
 .part1_img img {
     width: 100%;
+    display: block;
     transition: .5s;
 }
 
@@ -277,12 +296,21 @@ section .content_box h4 {
 
 .part3_font h4 {
     font-size: 24px;
+    color: #000;
+}
+
+.part3_font h4:hover {
+    color: #e51227;
 }
 
 .part3_font p {
     font-size: 20px;
     color: #777;
     margin-top: 20px;
+}
+
+.part3_font p:hover {
+    color: #000;
 }
 
 .cooperation_partner .partner_first {
@@ -422,6 +450,11 @@ aside .aside_list .active {
     margin: -285px 0 0 -350px;
 }
 
+.submit_pop form {
+    margin-bottom: 20px;
+
+}
+
 .submit_pop h4 {
     font-size: 22px;
 }
@@ -429,6 +462,10 @@ aside .aside_list .active {
 .submit_pop .p_con {
     width: 86%;
     margin: 30px auto;
+}
+
+.submit_pop .p_con p {
+    margin-bottom: 20px;
 }
 
 .submit_pop .p_Travel {
@@ -448,6 +485,7 @@ aside .aside_list .active {
     color: #777777;
     padding-left: 15px;
     margin-top: 20px;
+    font-family: 'DENGL';
 }
 
 .submit_pop .p_con input {
@@ -597,6 +635,11 @@ aside .aside_list .active {
     display: block;
 }
 
+.travel_box .left_img img {
+    width: 100%;
+    height: 100%;
+}
+
 .travel_box .t_detail h4 {
     margin-bottom: 40px;
 }
@@ -716,7 +759,7 @@ footer .footer_about a:active {
     /*width: var(--mywidth);*/
     /*height: var(--myheight);*/
     width: 100%;
-    min-height: 505px;
+    min-height: 755px;
     position: relative;
     overflow: hidden;
 }
@@ -732,10 +775,19 @@ footer .footer_about a:active {
 
 .carousel li {
     float: left;
-    background: url(./../img/banner.jpg) no-repeat;
+    background: url(./../img/photo_a1.jpg) no-repeat;
     background-size: 100% 100%;
     width: 100%;
-    min-height: 570px;
+    min-height: 755px;
+    cursor: pointer;
+}
+
+.dddd {
+    float: left;
+    background: url(./../img/photo_a1.jpg) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    min-height: 755px;
 }
 
 .carousel li, .carousel li img {
@@ -747,7 +799,7 @@ footer .footer_about a:active {
 
 .img-index {
     position: absolute;
-    bottom: 8px;
+    bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -780,11 +832,11 @@ footer .footer_about a:active {
 }
 
 .carousel-prev {
-    left: 0;
+    left: 20px;
 }
 
 .carousel-next {
-    right: 0;
+    right: 20px;
 }
 
 .carousel .panels > a {
@@ -801,8 +853,16 @@ footer .footer_about a:active {
 
 /*媒体查询*/
 
-@media screen and (max-width: 1420px) {
-    .submit_pop, .banner_text {
+@media screen and (max-width: 1696px) {
+    .submit_pop {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        margin: -302px 0 0 -350px;
+    }
+
+    .banner_text {
         transform: scale(0.9);
         -webkit-transform: scale(0.9);
         -o-transform: scale(0.9);
@@ -812,4 +872,24 @@ footer .footer_about a:active {
     section {
         background: none;
     }
+
+    .carousel-content {
+        min-height: 575px;
+    }
+
+    .carousel li {
+        min-height: 755px;
+    }
+
+    .dddd {
+        min-height: 755px;
+    }
+}
+.swiper-pagination-bullet {
+    width: 14px;
+    height: 14px;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #e51227;
 }
