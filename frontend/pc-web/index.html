@@ -174,12 +174,13 @@
                                 <div class="topic_hot">
                                     <img src="./img/photo_c1_1.jpg" alt="">
                                 </div>
-                                <div class=" topic_hot">
+                                <div class="topic_hot">
                                     <div>
                                         <p>中国（北京）国际服务贸易交易会</p>
                                         <p>中国非物质文化遗产专题展本月开展</p>
                                         <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
                                     </div>
+                                    <!--<div class="swiper-pagination hot-swiper-pagination"></div>-->
                                 </div>
                             </a>
                         </div>
@@ -194,6 +195,7 @@
                                         <p>中国非物质文化遗产专题展本月开展</p>
                                         <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
                                     </div>
+                                    <!--<div class="swiper-pagination hot-swiper-pagination"></div>-->
                                 </div>
                             </a>
                         </div>
@@ -208,13 +210,14 @@
                                         <p>中国非物质文化遗产专题展本月开展</p>
                                         <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
                                     </div>
+
                                 </div>
                             </a>
                         </div>
 
                     </div>
                     <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination hot-swiper-pagination"></div>
+                    <div class="swiper-pagination hot-swiper-pagination hot-swiper-position"></div>
 
                     <!-- 如果需要导航按钮 -->
                     <!--<div class="swiper-button-prev hot-swiper-button-prev"></div>-->
@@ -336,10 +339,10 @@
 
     var hotSwiper = new Swiper('.hot-swiper-container', {
         speed: 1000,
-        autoplay: {
-            delay: 3000
-        },
-        loop: true,
+//        autoplay: {
+//            delay: 3000
+//        },
+//        loop: true,
         // 如果需要分页器
         pagination: {
             el: '.hot-swiper-pagination',

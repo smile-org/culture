@@ -885,10 +885,19 @@ footer .footer_about a:active {
         min-height: 755px;
     }
 }
-.swiper-pagination-bullet {
+
+.hot-swiper-position {
+    bottom: 14px;
+    width: 50% !important;
+    left: 50% !important;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
     width: 14px;
     height: 14px;
+    margin: 0 10px 10px;
 }
+
 .swiper-pagination-bullet-active {
     opacity: 1;
     background: #e51227;
