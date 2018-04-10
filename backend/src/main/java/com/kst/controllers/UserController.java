@@ -23,7 +23,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map login(@RequestBody Map body) {
         logger.debug("RequestBody: " + body);
-        String userName = (String) body.get("userName");
+        String userName = (String) body.get("username");
         String password = (String) body.get("password");
         Map result = userService.login(userName, password);
         logger.debug("Response: " + result);

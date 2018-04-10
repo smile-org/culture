@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kst.repositories.NewsRepo">
+    <resultMap type="com.kst.entities.NavNode" id="navMap">
+        <id column="news_id" property="id"/>
+        <result column="title_cn" property="title"/>
+
+
+    </resultMap>
+
+    <insert id="addNews"   parameterType= "com.kst.entities.News" >
+        insert news values(0, #{image},#{title_cn},#{title_en},#{link},#{desc_cn},#{desc_en},#{content_cn},#{content_en}, now(), now())
+    </insert>
+
+    <select id="getNewsNavList"  resultMap="navMap">
+        select news_id,   title_cn from news
+    </select>
+
+
+    <update id="updateNewsByID"    parameterType="com.kst.entities.News">
+        update news set image=#{image},   title_cn=#{title_cn}, title_en=#{title_en} ,
+         link=#{link},desc_cn=#{desc_cn} , desc_en=#{desc_en},  content_cn=#{content_cn}, content_en= #{content_en} ,update_at= now()
+        where news_id=#{news_id}
+    </update>
+
+    <select id="getNewsList"  resultType="com.kst.entities.News">
+      select  news_id,   image,  title_cn,  title_en , link  from news
+    </select>
+
+
+     <select id="getNewsByID"       resultType="com.kst.entities.News" >
+         select * from news where news_id =#{news_id}
+     </select>
+
+</mapper>

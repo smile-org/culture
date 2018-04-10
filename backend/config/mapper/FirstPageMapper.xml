@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kst.repositories.FirstPageRepo">
+    <resultMap type="com.kst.entities.NavNode" id="bannerNavMap">
+        <id column="banner_id" property="id"/>
+        <result column="status" property="status"/>
+
+
+    </resultMap>
+
+    <select id="getBannerIDList"  resultMap="bannerNavMap">
+        select  banner_id ,status from banner
+    </select>
+
+
+    <select id="getBannerByID"  resultType="com.kst.entities.Banner">
+        select * from  banner  where banner_id =#{banner_id}
+    </select>
+
+    <update id="updateBannerByID"    parameterType="com.kst.entities.Banner">
+        update banner set image=#{image},  link=#{link}, title_cn=#{title_cn}, title_en=#{title_en} , desc_cn=#{desc_cn} , desc_en=#{desc_en},  `status`=#{status}, `order`= #{order} ,update_at= now()
+        where banner_id=#{banner_id}
+    </update>
+
+
+     <select id="getBannerList" resultType="com.kst.entities.Banner">
+            select * from banner where status=1 order by   'order'
+     </select>
+
+
+    <resultMap type="com.kst.entities.NavNode" id="moduleNavMap">
+        <id column="module_id" property="id"/>
+        <result column="title_cn" property="title"/>
+
+
+    </resultMap>
+
+    <select id="getModuleIDList"    resultMap="moduleNavMap">
+        select   module_id ,title_cn from module
+    </select>
+
+
+    <select id="getModuleByID"  resultType="com.kst.entities.Module">
+        select * from  module  where module_id =#{module_id}
+    </select>
+
+    <update id="updateModuleByID"    parameterType="com.kst.entities.Module">
+        update module
+set image= #{image}, link=#{link} , title_cn=#{title_cn}, title_en=#{title_en} ,     desc_cn=#{desc_cn}, desc_en= #{desc_en},  update_at=now()
+ where module_id=#{module_id}
+    </update>
+
+    <select id="getModuleList" resultType="com.kst.entities.Module">
+        select * from module  order by   module_id
+    </select>
+
+
+    <resultMap type="com.kst.entities.NavNode" id="focusNavMap">
+        <id column="focus_id" property="id"/>
+        <result column="title_cn" property="title"/>
+        <result column="status" property="status"/>
+
+    </resultMap>
+    <select id="getFocusIDList"    resultMap="focusNavMap">
+          select focus_id  ,title_cn   ,`status` from  focus
+    </select>
+
+
+    <select id="getFocusByID"  resultType="com.kst.entities.Focus">
+        select * from  focus  where focus_id =#{focus_id}
+    </select>
+
+    <update id="updateFocusByID"    parameterType="com.kst.entities.Focus">
+         update focus set image=#{image},  link=#{link}, title_cn=#{title_cn}, title_en=#{title_en} , desc_cn=#{desc_cn} , desc_en=#{desc_en},  `status`=#{status}, `order`= #{order} ,update_at= now()
+
+         where  focus_id =#{focus_id}
+    </update>
+
+    <select id="getFocusList" resultType="com.kst.entities.Focus">
+        select * from focus where `status`=1  order by  `order`
+    </select>
+
+
+</mapper>
