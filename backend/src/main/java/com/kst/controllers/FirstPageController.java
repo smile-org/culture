@@ -114,6 +114,41 @@ public class FirstPageController {
     }
 
 
+
+
+
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public Map uploadFile(  @RequestParam(value = "file", required = true) MultipartFile file) {
+        logger.debug("RequestBody: " +  "null");
+        Map result;
+
+        try {
+
+
+
+            String guid = UUID.randomUUID().toString();
+            String fileName =guid +"-"+ file.getOriginalFilename();
+        FileUtil.uploadFile(file.getBytes(), fileroot ,  fileName);
+         String url =  "/" + fileName;
+
+            result=  MapUtil.generateSuccessRes(url);
+
+
+        }
+        catch (Exception ex)
+        {
+            logger.error(ex.getMessage());
+            result = MapUtil.generateFailureRes(ex.getMessage());
+        }
+        logger.debug("Response: " + result);
+        return result;
+    }
+
+
+
+
+
     @Value("${fileroot}")
     private String fileroot;
     // banner, module, focus, news
@@ -130,21 +165,21 @@ public class FirstPageController {
         try {
 
             String folder =null ;
-           switch (type)
-           {
-               case "banner" :folder =Constants.bannerFolder;break;
-               case "module" :folder =Constants.moduleFolder;break;
-               case "focus" :folder =Constants.focusFolder;break;
-               case "news" :folder =Constants.newsFolder;break;
+            switch (type)
+            {
+                case "banner" :folder =Constants.bannerFolder;break;
+                case "module" :folder =Constants.moduleFolder;break;
+                case "focus" :folder =Constants.focusFolder;break;
+                case "news" :folder =Constants.newsFolder;break;
 
-               default:break;
-           }
+                default:break;
+            }
 
 
             String guid = UUID.randomUUID().toString();
             String fileName =guid +"-"+ file.getOriginalFilename();
-        FileUtil.uploadFile(file.getBytes(), fileroot + folder +"/",  fileName);
-         String url =  "/"+ folder +"/" + fileName;
+            FileUtil.uploadFile(file.getBytes(), fileroot + folder +"/",  fileName);
+            String url =  "/"+ folder +"/" + fileName;
 
             result=  MapUtil.generateSuccessRes(url);
 
@@ -158,6 +193,7 @@ public class FirstPageController {
         logger.debug("Response: " + result);
         return result;
     }
+
 
 
 
