@@ -7,4 +7,6 @@ import java.util.Map;
 public interface UserService {
 
     Map login(String userName,String password);
+
+    User  getUserByToken( String token);
 }

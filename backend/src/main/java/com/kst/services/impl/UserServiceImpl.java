@@ -24,11 +24,33 @@ public class UserServiceImpl implements UserService {
         Map result;
         try {
             User user = userRepo.getUser(userName, password);
-            result = MapUtil.generateSuccessRes(user);
+
+            if(user != null ) {
+                result = MapUtil.generateSuccessRes(user);
+            }  else {
+                result = MapUtil.generateFailureRes("用户名或密码错误");
+            }
+
         } catch (Exception e) {
             logger.error(e.getMessage());
             result = MapUtil.generateFailureRes(e.getMessage());
         }
         return result;
+    }
+
+    @Override
+    public User getUserByToken(String token) {
+
+        try {
+            User user = userRepo.getUserByToken(token);
+
+          return  user;
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return  null;
+
+        }
+
     }
 }

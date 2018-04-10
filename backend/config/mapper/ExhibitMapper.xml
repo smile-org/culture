@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kst.repositories.ExhibitRepo">
+    <resultMap type="com.kst.entities.User" id="UserMap">
+        <id column="user_id" property="user_id"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="token" property="token"/>
+        <result column="nickname" property="nickName"/>
+    </resultMap>
+
+
+    <insert id="addExhibit"  parameterType="com.kst.entities.Exhibit">
+          insert     exhibit  VALUES (0, #{title_cn},#{title_en},#{content_cn},#{content_en},#{category},#{form_id},#{status}, now(),  now() )
+    </insert>
+
+    <resultMap type="com.kst.entities.NavNode" id="exhibitNavMap">
+        <id column="exhibit_id" property="id"/>
+        <result column="title_cn" property="title"/>
+        <result column="status" property="status"/>
+
+    </resultMap>
+
+    <select id="getExhibitNavList"   resultMap="exhibitNavMap">
+        select  exhibit_id,    title_cn,   `status` from   exhibit
+    </select>
+
+    <select id="getFormList"    resultType="com.kst.entities.Form">
+         select  * from form order by form_id
+    </select>
+
+    <select id="getFormByID"    resultType="com.kst.entities.Form">
+        select  * from form    where   form_id = #{form_id}
+    </select>
+
+    <select id="getFormByTableName"    resultType="com.kst.entities.Form">
+        select  * from form    where   form_table = #{form_table}
+    </select>
+
+    <select id="getExhibitByID"    resultType="com.kst.entities.Exhibit">
+        select * from  exhibit where exhibit_id=#{exhibit_id}
+    </select>
+
+    <update id="updateExhibitByID"   parameterType="com.kst.entities.Exhibit">
+update   exhibit set
+        title_cn=  #{title_cn}, title_en= #{title_en}, content_cn =#{content_cn}, content_en=#{content_en}, category=#{category}, form_id=#{form_id}, status=#{status},   update_at= now()
+
+        where exhibit_id = #{exhibit_id}
+    </update>
+
+    <insert id="addJJH"    parameterType="com.kst.entities.JJH" >
+        insert jjh values( 0,  #{name} ,#{phone} ,#{email}, #{desc}  ,  now() );
+    </insert>
+
+
+    <insert id="addCCR"    parameterType="com.kst.entities.CCR" >
+        insert ccr values( 0,  #{name} ,#{phone} , #{desc}  ,  now() );
+    </insert>
+
+
+
+    <insert id="addEmail"    parameterType="com.kst.entities.Email" >
+        insert email values( 0,  #{from} ,#{to} , #{message}  , null,  null,   now()  ,now() );
+    </insert>
+
+
+
+</mapper>
