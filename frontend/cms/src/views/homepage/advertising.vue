@@ -70,6 +70,12 @@
                 <input class="import_input" type="text" placeholder="请在此输入标题">
               </div>
             </li>
+            <li class="list_state">
+              <h4>展示位置 :</h4>
+              <div class="right_input">
+                <input class="import_input" type="text" placeholder="请在此输入展示顺序">
+              </div>
+            </li>
           </ul>
           <P class="input_warn">
             请上传图片

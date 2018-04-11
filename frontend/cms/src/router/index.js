@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 import login from '@/views/login'
 // 首页
 import advertising from '@/views/homepage/advertising'
@@ -58,6 +58,5 @@ export default new Router({
       component: newsDetail,
       meta: {requiresAuth: false}
     }
-
   ]
 })
