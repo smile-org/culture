@@ -145,28 +145,28 @@ public class NewsController {
 
     //-----------------------------------------前台方法---------------------------------------------
     @RequestMapping(value = "/getNewsList", method = RequestMethod.GET)
-    public Map getNewsList(@RequestHeader Map header ) {
+    public Map getNewsList( String lan, @RequestHeader Map header ) {
         logger.debug("RequestBody: " +  "null");
         Map result;
 
-        result =  newsService.getNewsList();
-        logger.debug("Response: " + result);
-        return result;
-    }
-
-/*
-    //此方法 后台加载 也用
-    @RequestMapping(value = "/getNewsByID", method = RequestMethod.GET)
-    public Map getNewsByID( int  news_id,  @RequestHeader Map header ) {
-        logger.debug("RequestBody: " +  "null");
-        Map result;
-
-        result =  newsService.getNewsByID(news_id);
+        result =  newsService.getNewsList(lan);
         logger.debug("Response: " + result);
         return result;
     }
 
 
-    */
+
+    @RequestMapping(value = "/getNewsInformationByID", method = RequestMethod.GET)
+    public Map getNewsInformationByID( String lan, int  news_id,  @RequestHeader Map header ) {
+        logger.debug("RequestBody: " +  "null");
+        Map result;
+
+        result =  newsService.getNewsInformationByID( lan, news_id);
+        logger.debug("Response: " + result);
+        return result;
+    }
+
+
+
 
 }

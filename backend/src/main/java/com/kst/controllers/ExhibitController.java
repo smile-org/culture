@@ -153,14 +153,26 @@ public class ExhibitController {
 
 
     @RequestMapping(value = "/getExhibitByID", method = RequestMethod.GET)
-    public Map getExhibitByID(   int exhibit_id, @RequestHeader Map header ) {
+    public Map getExhibitByID( String lan,  int exhibit_id, @RequestHeader Map header ) {
         logger.debug("RequestBody: " +  "null");
         Map result;
 
-        result = exhibitService.getExhibitByID(exhibit_id);
+        result = exhibitService.getExhibitByID(  lan,exhibit_id);
         logger.debug("Response: " + result);
         return result;
     }
+
+
+    @RequestMapping(value = "/getExhibitFrontNavList", method = RequestMethod.GET)
+    public Map getExhibitFrontNavList( String  lan,  @RequestHeader Map header ) {
+        logger.debug("RequestBody: " +  "null");
+        Map result;
+
+        result = exhibitService.getExhibitFrontNavList(lan);
+        logger.debug("Response: " + result);
+        return result;
+    }
+
 
 
     //------  前台表单提交-------------

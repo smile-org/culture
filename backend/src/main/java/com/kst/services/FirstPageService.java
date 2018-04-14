@@ -18,7 +18,7 @@ public interface FirstPageService {
 
     Map updateBannerByID(Banner banner);
 
-    Map  getBannerList();
+    Map  getBannerList(String lan);
 
     Map      getModuleIDList();
 
@@ -26,13 +26,13 @@ public interface FirstPageService {
 
     Map       updateModuleByID(Module module);
 
-    Map getModuleList();
+    Map getModuleList( String lan);
 
     Map getFocusIDList();
 
     Map updateFocusByID(Focus focus);
 
-    Map  getFocusList();
+    Map  getFocusList(String lan);
 
     Map    getFocusByID(int  focus_id);
 }

@@ -107,7 +107,7 @@ public class ExhibitServiceImpl implements ExhibitService {
     }
 
     @Override
-    public Map getExhibitByID(int exhibit_id) {
+    public Map getExhibitByID(  String lan, int exhibit_id) {
         Map result;
         try {
             Exhibit exhibit = exhibitRepo.getExhibitByID(exhibit_id);
@@ -120,6 +120,19 @@ public class ExhibitServiceImpl implements ExhibitService {
                 exhibit.setForm_en_name(f.getForm_en_name());
 
             }
+
+            if(lan.equals("cn"))
+            {
+                exhibit.setTitle_en(null);
+                exhibit.setContent_en(null);
+            }
+            else
+            {
+                exhibit.setTitle_cn(null);
+                exhibit.setContent_cn(null);
+            }
+
+
             result = MapUtil.generateSuccessRes(exhibit);
 
         } catch (Exception e) {
@@ -190,6 +203,51 @@ public class ExhibitServiceImpl implements ExhibitService {
             exhibitRepo.addEmail(email);
 
             result = MapUtil.generateSuccessRes("添加成功");
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = MapUtil.generateFailureRes(e.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public Map getExhibitFrontNavList(String  lan) {
+
+        Map result;
+        try {
+
+            ExhibitFrontNav   nav =new  ExhibitFrontNav();
+            nav.internalList=   exhibitRepo.getExhibitFrontNavList(1);
+
+            for( Exhibit  e :    nav.internalList)
+            {
+                if(lan.equals("cn"))
+                {
+                     e.setTitle_en(null);
+                }
+                else
+                {
+                    e.setTitle_cn(null);
+                }
+            }
+
+            nav.internationalList=   exhibitRepo.getExhibitFrontNavList(2);
+            for( Exhibit  e :    nav.internationalList)
+            {
+                if(lan.equals("cn"))
+                {
+                    e.setTitle_en(null);
+                }
+                else
+                {
+                    e.setTitle_cn(null);
+                }
+            }
+
+
+
+            result = MapUtil.generateSuccessRes(nav);
 
         } catch (Exception e) {
             logger.error(e.getMessage());

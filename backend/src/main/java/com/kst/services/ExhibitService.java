@@ -22,10 +22,13 @@ public interface ExhibitService {
     Map      updateExhibitByID( Exhibit   exhibit);
 
 
-    Map    getExhibitByID(int  exhibit_id);
+    Map    getExhibitByID( String lan, int  exhibit_id);
 
 
     Map   addJJH( JJH jjh);
 
     Map  addCCR(  CCR ccr);
+
+
+    Map    getExhibitFrontNavList(String lan);
 }

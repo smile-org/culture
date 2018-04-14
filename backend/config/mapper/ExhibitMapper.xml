@@ -64,5 +64,11 @@ update   exhibit set
     </insert>
 
 
+    <select id="getExhibitFrontNavList"  resultType="com.kst.entities.Exhibit">
+        select  exhibit_id,  title_cn,  title_en,  category from  exhibit where `status`=1 and  category=#{category} order by   create_at   desc
+    </select>
+
+
+
 
 </mapper>

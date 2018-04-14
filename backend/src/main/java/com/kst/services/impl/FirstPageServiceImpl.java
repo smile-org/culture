@@ -28,6 +28,35 @@ public class FirstPageServiceImpl implements FirstPageService {
         Map result;
         try {
             List<NavNode> idList = firstPageRepo.getBannerIDList();
+
+            for (int i = 0; i < idList.size(); i++) {
+                NavNode node = idList.get(i);
+                String title = "";
+
+                switch (i) {
+                    case 0:
+                        title = "第一页热图";
+                        break;
+                    case 1:
+                        title = "第二页热图";
+                        break;
+                    case 2:
+                        title = "第三页热图";
+                        break;
+                    case 3:
+                        title = "第四页热图";
+                        break;
+                    case 4:
+                        title = "第五页热图";
+                        break;
+                    default:
+                        break;
+
+                }
+
+                node.setTitle(title);
+            }
+
             result = MapUtil.generateSuccessRes(idList);
 
         } catch (Exception e) {
@@ -41,7 +70,7 @@ public class FirstPageServiceImpl implements FirstPageService {
     public Map getBannerByID(int banner_id) {
         Map result;
         try {
-             Banner banner  =  firstPageRepo.getBannerByID(banner_id);
+            Banner banner = firstPageRepo.getBannerByID(banner_id);
             result = MapUtil.generateSuccessRes(banner);
 
         } catch (Exception e) {
@@ -66,10 +95,28 @@ public class FirstPageServiceImpl implements FirstPageService {
     }
 
     @Override
-    public Map getBannerList() {
+    public Map getBannerList(String lan) {
         Map result;
         try {
             List<Banner> banners = firstPageRepo.getBannerList();
+
+
+            for (Banner b : banners) {
+                if (lan.equals("cn"))
+                {
+                    b.setTitle_en(null);
+                    b.setDesc_en(null);
+                } else
+                {
+                    b.setTitle_cn(null);
+                    b.setDesc_cn(null);
+
+                }
+
+
+            }
+
+
             result = MapUtil.generateSuccessRes(banners);
 
         } catch (Exception e) {
@@ -98,7 +145,7 @@ public class FirstPageServiceImpl implements FirstPageService {
     public Map getModuleByID(int module_id) {
         Map result;
         try {
-             Module  module = firstPageRepo.getModuleByID(module_id);
+            Module module = firstPageRepo.getModuleByID(module_id);
             result = MapUtil.generateSuccessRes(module);
 
 
@@ -125,11 +172,23 @@ public class FirstPageServiceImpl implements FirstPageService {
     }
 
     @Override
-    public Map getModuleList() {
+    public Map getModuleList(String lan) {
         Map result;
         try {
             List<Module> moduleList = firstPageRepo.getModuleList();
 
+            for(Module   m : moduleList ){
+                if(lan.equals("cn"))
+                {
+                    m.setTitle_en(null);
+                    m.setDesc_en(null);
+                }
+                else
+                {
+                    m.setTitle_cn(null);
+                    m.setDesc_cn(null);
+                }
+            }
 
             result = MapUtil.generateSuccessRes(moduleList);
 
@@ -175,11 +234,25 @@ public class FirstPageServiceImpl implements FirstPageService {
     }
 
     @Override
-    public Map getFocusList() {
+    public Map getFocusList(String lan) {
         Map result;
         try {
             List<Focus> focusList = firstPageRepo.getFocusList();
 
+            for( Focus  f : focusList)
+            {
+                if(lan.equals("cn"))
+                {
+                    f.setTitle_en(null);
+                    f.setDesc_en(null);
+                }
+                else
+                {
+                    f.setTitle_cn(null);
+                    f.setDesc_cn(null);
+
+                }
+            }
 
             result = MapUtil.generateSuccessRes(focusList);
 
@@ -195,7 +268,7 @@ public class FirstPageServiceImpl implements FirstPageService {
     public Map getFocusByID(int focus_id) {
         Map result;
         try {
-            Focus   focus = firstPageRepo.getFocusByID(focus_id);
+            Focus focus = firstPageRepo.getFocusByID(focus_id);
 
 
             result = MapUtil.generateSuccessRes(focus);

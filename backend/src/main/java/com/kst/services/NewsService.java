@@ -16,7 +16,8 @@ public interface NewsService {
 
     Map   updateNewsByID( News  news );
 
-    Map  getNewsList();
+    Map  getNewsList(String lan);
 
-    Map    getNewsByID(int  news_id);
+    Map    getNewsByID(  int  news_id);
+    Map    getNewsInformationByID(  String lan,int  news_id);
 }

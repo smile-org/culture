@@ -114,41 +114,6 @@ public class FirstPageController {
     }
 
 
-
-
-
-
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public Map uploadFile(  @RequestParam(value = "file", required = true) MultipartFile file) {
-        logger.debug("RequestBody: " +  "null");
-        Map result;
-
-        try {
-
-
-
-            String guid = UUID.randomUUID().toString();
-            String fileName =guid +"-"+ file.getOriginalFilename();
-        FileUtil.uploadFile(file.getBytes(), fileroot ,  fileName);
-         String url =  "/" + fileName;
-
-            result=  MapUtil.generateSuccessRes(url);
-
-
-        }
-        catch (Exception ex)
-        {
-            logger.error(ex.getMessage());
-            result = MapUtil.generateFailureRes(ex.getMessage());
-        }
-        logger.debug("Response: " + result);
-        return result;
-    }
-
-
-
-
-
     @Value("${fileroot}")
     private String fileroot;
     // banner, module, focus, news
@@ -349,32 +314,32 @@ public class FirstPageController {
 
 
     @RequestMapping(value = "/getBannerList", method = RequestMethod.GET)
-    public Map getBannerList(@RequestHeader Map header ) {
+    public Map getBannerList( String lan,   @RequestHeader Map header ) {
         logger.debug("RequestBody: " +  "null");
         Map result;
 
-        result = firstPageService.getBannerList();
+        result = firstPageService.getBannerList(lan);
         logger.debug("Response: " + result);
         return result;
     }
 
     @RequestMapping(value = "/getModuleList", method = RequestMethod.GET)
-    public Map getModuleList(@RequestHeader Map header ) {
+    public Map getModuleList(String lan,  @RequestHeader Map header ) {
         logger.debug("RequestBody: " +  "null");
         Map result;
 
-        result = firstPageService.getModuleList();
+        result = firstPageService.getModuleList(lan);
         logger.debug("Response: " + result);
         return result;
     }
 
 
     @RequestMapping(value = "/getFocusList", method = RequestMethod.GET)
-    public Map getFocusList(@RequestHeader Map header ) {
+    public Map getFocusList(  String lan,  @RequestHeader Map header ) {
         logger.debug("RequestBody: " +  "null");
         Map result;
 
-        result = firstPageService.getFocusList();
+        result = firstPageService.getFocusList(lan);
         logger.debug("Response: " + result);
         return result;
     }

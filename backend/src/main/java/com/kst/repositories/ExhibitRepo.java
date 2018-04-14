@@ -31,4 +31,6 @@ public interface ExhibitRepo {
     void  addEmail(  Email  email);
 
     Form  getFormByTableName(String  form_table);
+
+    List<Exhibit>   getExhibitFrontNavList(  int  category);
 }
