@@ -14,6 +14,7 @@ import newsDetail from '@/views/news/detail'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     // 登录
     {
@@ -22,13 +23,6 @@ export default new Router({
       component: login,
       meta: {requiresAuth: false}
     },
-    // 首页
-    // {
-    //   path: '/',
-    //   name: 'advertising',
-    //   component: advertising,
-    //   meta: {requiresAuth: true}
-    // },
     {
       path: '/homepage/advertising',
       name: 'advertising',

@@ -5,10 +5,8 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon05"></span>新闻列表</h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="" :key="item.id">
+            <li v-for="item in items" :id="item.id" @click="getNewsByClicked" :key="item.id">
               {{item.title}}
-              <!--<span class="blockUp">停用</span>-->
-              <span class="blockUp" v-if="!item.status">停用</span>
             </li>
           </ul>
         </aside>
@@ -28,7 +26,7 @@
               <li class="list_state">
               <h4>标题图片 :</h4>
               <div class="right_input">
-                <img src="./../../assets/img/style_banner.jpg" alt="" class="style_banner fl">
+                <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
                 <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -52,14 +50,11 @@
               <li class="list_state">
                 <h4>新闻内容 :</h4>
                 <div class="right_input">
-                  nbvnbvnvnnnnc
-              </div>
+                  <VueUEditor @ready="editorReady"></VueUEditor>
+                </div>
             </li>
           </ul>
           </el-form>
-          <!--<P class="input_warn">-->
-            <!--请填写详细介绍-->
-          <!--</P>-->
           <div class="tc">
             <button class="save_btn mt20 mb30" @click="submitForm('ruleForm')">保  存</button>
           </div>
@@ -72,7 +67,14 @@
 
 <script>
 import api from '../../service/api'
+import VueUEditor from 'vue-ueditor'
+import axios from 'axios'
+import router from '../../router'
+
 export default {
+  components: {
+    VueUEditor
+  },
   data:function () {
     return {
       // 上传参数
@@ -80,10 +82,8 @@ export default {
       headers: {},
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
-      uploadData:{
-        type:'banner'
-      },
       // end
+      newsContent: '',
       imgUrl:'',
       uploadData:{
         type:'news'
@@ -109,22 +109,20 @@ export default {
           { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
         ]
       },
-      options: [{
-        value: '选项1',
-        label: '国内'
-      }, {
-        value: '选项2',
-        label: '国际'
-      }],
       value: '',
-      items: []
+      items: [],
+      currentUEditor: {}
+    }
+  },
+  filters: {
+    formatImg (img) {
+      return axios.defaults.imageURL + img
     }
   },
   created () {
     this.headers = api.getUploadHeaders();
     //获取左侧nav
     api.fetch(api.uri.getNewsNavList).then(data => {
-      console.log(data.data.result)
       if (data.data.status === 1) {
         this.items = data.data.result
       } else {
@@ -133,48 +131,43 @@ export default {
     }).catch((err) => {
       console.error(err.message)
     })
-    //根据id获取热图信息
-//    api.fetch(api.uri.getBannerByID, {banner_id: 1}).then(data => {
-//      console.log(data)
-//      if (data.data.status === 1) {
-//        this.ruleForm = data.data.result
-//        if(this.ruleForm.status == 1){
-//          this.ruleForm.status = '1'
-//        }else if(this.ruleForm.status = 0){
-//          this.ruleForm.status = '0'
-//        }
-//      } else {
-//        this.msg = '返回错误'
-//      }
-//    }).catch((err) => {
-//      console.error(err.message)
-//    })
   },
   methods: {
-    changeSite:function(){
-      console.log()
-    },
-    //根据id获取热图信息
-    getBannerByID:function(){
-      api.fetch(api.uri.getNewsByID, {banner_id: event.currentTarget.id}).then(data => {
-        console.log(data)
-        if (data.data.status === 1) {
-          this.ruleForm = data.data.result
-          if(this.ruleForm.status == 1){
-            this.ruleForm.status = '1'
-          }else if(this.ruleForm.status = 0){
-            this.ruleForm.status = '0'
-          }
-        } else {
-          this.msg = '返回错误'
-        }
-      }).catch((err) => {
-        console.error(err.message)
+    editorReady (editorInstance) {
+      this.getNews(editorInstance, this.items[0].id)
+      this.currentUEditor = editorInstance
+      editorInstance.addListener('contentChange', () => {
+        this.newsContent = editorInstance.getContent()
       })
     },
-    //更新banner
+
+    getNews: function (editorInstance, newsId) {
+      api.fetch(api.uri.getNewsByID, {news_id: newsId}).then(data => {
+          if (data.data.status === 1) {
+            this.ruleForm = data.data.result
+            if(this.ruleForm.status == 1){
+              this.ruleForm.status = '1'
+            }else if(this.ruleForm.status = 0){
+              this.ruleForm.status = '0'
+            }
+            this.imgUrl = this.ruleForm.image
+            this.newsContent = this.ruleForm.content_cn
+            editorInstance.setContent(this.newsContent)
+          } else {
+            this.msg = '返回错误'
+          }
+        }).catch((err) => {
+          console.error(err.message)
+        })
+    },
+
+    getNewsByClicked: function () {
+      this.getNews(this.currentUEditor, event.currentTarget.id)
+    },
+
+    //更新新闻
     update:function(){
-      api.fetch(
+      api.post(
         api.uri.updateNewsByID,
         {
           image:this.imgUrl,
@@ -183,13 +176,13 @@ export default {
           title_en:"",
           desc_cn:this.ruleForm.desc_cn,
           desc_en:"",
-          content:this.ruleForm.content,
+          content_cn: this.newsContent,
           news_id:this.ruleForm.news_id
         }
       ).then(data => {
         console.log(data)
         if (data.data.status === 1) {
-          this.ruleForm = data.data.result
+          location.reload()
         } else {
           this.msg = '返回错误'
         }
@@ -207,6 +200,7 @@ export default {
         }
       });
     },
+
     // 上传文件
     onContentSuccess (response, file, fileList) {
       console.log(response)

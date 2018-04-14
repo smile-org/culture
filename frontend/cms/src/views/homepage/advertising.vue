@@ -198,7 +198,6 @@ export default {
         console.log(data)
         this.initNav()
         if (data.data.status === 1) {
-
           this.$message({
             type: 'info',
             message: '保存成功'

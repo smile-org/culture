@@ -5,7 +5,7 @@
         <div class="login_con">
           <h3>文化寻力</h3>
           <hr noshade="noshade">
-          <form>
+          <!-- <form> -->
             <div class="form_list">
               <span class="img_person"></span>
               <input type="text" id="UserName" placeholder="请输入用户名" required autocomplete="off" v-model="username">
@@ -27,14 +27,14 @@
             <div>
               <button @click="login()">登  录</button>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </section>
   </div>
 </template>
 <script>
-import api from '../service/api'
+import api from '../service/api.js'
 import router from '../router'
 import md5 from 'js-md5'
 export default {
@@ -48,11 +48,13 @@ export default {
     }
   },
   created () {
-    var storage = window.sessionStorage
-    var token = storage['token']
-    this.username = storage['username']
-    this.password = storage['password']
-    console.log(token)
+    // // var storage = window.sessionStorage
+    // // var token = storage['token']
+    // // this.username = storage['username']
+    // // this.password = storage['password']
+    // // console.log(token)
+    // this.username = 'admin'
+    // this.password = '123123'
   },
   methods: {
     login () {
@@ -63,6 +65,7 @@ export default {
         return
       }
       api.post(api.uri.login, {username: this.username, password: md5Password}).then(data => {
+        console.log(data)
         if (data.data.status === 1) {
           this.token = data.data.result.token
           var storage = sessionStorage
@@ -74,22 +77,10 @@ export default {
         } else {
           this.msg = '用户名或密码错误'
         }
-      }).catch((err) => {
-        console.error(err.message)
       })
     }
   }
 }
 </script>
 <style>
-  /*.rember_pws {*/
-  /*height: 40px;*/
-  /*}*/
-
-  /*.rember_pws input {*/
-  /*border: 1px solid #dcdcdc;*/
-  /*background: #fff;*/
-  /*width: 16px;*/
-  /*height: 16px;*/
-  /*}*/
 </style>
