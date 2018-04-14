@@ -15,11 +15,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'advertising',
-      component: advertising
-    },
     // 登录
     {
       path: '/login',
@@ -29,34 +24,40 @@ export default new Router({
     },
     // 首页
     {
+      path: '/',
+      name: 'advertising',
+      component: advertising,
+      meta: {requiresAuth: true}
+    },
+    {
       path: '/homepage/advertising',
       name: 'advertising',
       component: advertising,
-      meta: {requiresAuth: false}
+      meta: {requiresAuth: true}
     },
     {
       path: '/homepage/kernel',
       name: 'kernel',
       component: kernel,
-      meta: {requiresAuth: false}
+      meta: {requiresAuth: true}
     },
     {
       path: '/homepage/hotTopic',
       name: 'hotTopic',
       component: hotTopic,
-      meta: {requiresAuth: false}
+      meta: {requiresAuth: true}
     },
     {
       path: '/exhibition/detail',
       name: 'exhibitionDetail',
       component: exhibitionDetail,
-      meta: {requiresAuth: false}
+      meta: {requiresAuth: true}
     },
     {
       path: '/news/detail',
       name: 'newsDetail',
       component: newsDetail,
-      meta: {requiresAuth: false}
+      meta: {requiresAuth: true}
     }
   ]
 })

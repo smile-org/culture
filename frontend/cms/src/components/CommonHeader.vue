@@ -14,10 +14,10 @@
               <span class="h_icon h_icon04"></span>
               <p>首页</p>
               <ul class="extra_box">
-                <li v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}"><a href="">广告热图</a>
+                <li v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">广告热图
                 </li>
-                <li v-on:click="routeByName('kernel')" v-bind:class="{active: type==='kernel'}"><a href="">核心模块</a></li>
-                <li v-on:click="routeByName('hotTopic')" v-bind:class="{active: type==='hotTopic'}"><a href="">热点聚焦</a>
+                <li v-on:click="routeByName('kernel')" v-bind:class="{active: type==='kernel'}">核心模块</li>
+                <li v-on:click="routeByName('hotTopic')" v-bind:class="{active: type==='hotTopic'}">热点聚焦
                 </li>
               </ul>
             </li>

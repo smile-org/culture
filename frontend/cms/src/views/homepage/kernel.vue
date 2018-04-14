@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="kernel">
     <!--<header>-->
       <!--<el-row class="header_tab">-->
         <!--<el-col :span="6">-->
@@ -43,58 +43,54 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon02"></span>核心模块</h4>
           <ul class="aside_ad_list">
-            <li>
-              文化展览
-            </li>
-            <li>
-              文化之旅
-            </li>
-            <li>
-              文化记忆
-            </li>
-            <li>
-              文化教育
-            </li>
-            <li>
-              非遗地图
-            </li>
-            <li>
-              服务升级
+            <li v-for="item in items" :id="item.id" @click="getModuleByID" :key="item.id">
+              {{item.title}}
             </li>
           </ul>
         </aside>
 
         <div class="con_right">
-          <ul class="con_ul">
-            <li class="list_state">
-              <h4>模块名称 :</h4>
-              <div class="right_input">
-                <input class="import_input" type="text" placeholder="请在此输入模块名称">
-              </div>
-            </li>
-            <li class="list_state">
-              <h4>模块简述 :</h4>
-              <div class="right_input">
-                <input class="import_input" type="text" placeholder="请在此输入模块简述">
-              </div>
-            </li>
-            <li class="list_state">
-              <h4>宣传图片 :</h4>
-              <div class="right_input">
-                <img src="./../../assets/img/style_banner.jpg" alt="" class="style_banner">
-                <a href="#" class="choose_file">选择文件</a>
-              </div>
-            </li>
-            <li class="list_state">
-              <h4>跳转链接 :</h4>
-              <div class="right_input">
-                <input class="import_input" type="text" placeholder="请输入跳转链接">
-              </div>
-            </li>
-          </ul>
-          <P class="input_warn">
-            请输入模块名称
-          </P>
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <ul class="con_ul">
+              <li class="list_state">
+                <el-form-item label="模块名称" prop="title_cn">
+                  <el-input v-model="ruleForm.title_cn" placeholder="请在此输入名称"></el-input>
+                </el-form-item>
+              </li>
+              <li class="list_state">
+                <el-form-item label="模块简述" prop="desc_cn">
+                  <el-input v-model="ruleForm.desc_cn" placeholder="请在此输入描述"></el-input>
+                </el-form-item>
+              </li>
+              <li class="list_state">
+                <h4>宣传图片 :</h4>
+                <div class="right_input">
+                  <img src="./../../assets/img/style_banner.jpg" alt="" class="style_banner fl">
+                  <el-upload
+                    class="upload-demo fl upAd"
+                    :action="uploadAPI"
+                    :data="uploadData"
+                    :headers="headers"
+                    :on-success="onContentSuccess"
+                    :before-upload="beforeContentUpload"
+                    :auto-upload="true"
+                    :on-change="changeContentUpload"
+                    :file-list="fileList"
+
+                    >
+                    <el-button size="small" type="primary">点击上传</el-button>
+                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                  </el-upload>
+                  <!--<a href="#" class="choose_file">选择文件</a>-->
+                </div>
+              </li>
+              <li class="list_state">
+                <el-form-item label="跳转链接" prop="link">
+                  <el-input v-model="ruleForm.link" placeholder="请在此输入链接"></el-input>
+                </el-form-item>
+              </li>
+            </ul>
+          </el-form>
           <!--<P class="input_warn">-->
           <!--请输入模块简述-->
           <!--</P>-->
@@ -105,7 +101,7 @@
           <!--请输入跳转链接-->
           <!--</P>-->
           <div class="tc">
-            <button class="save_btn mt20 mb30">保  存</button>
+            <button class="save_btn mt20 mb30" @click="submitForm('ruleForm')">保  存</button>
           </div>
         </div>
       </div>
@@ -115,16 +111,178 @@
 </template>
 
 <script>
+import api from '../../service/api'
 export default {
-  data () {
+  data:function () {
     return {
+      // 上传参数
+      uploadAPI: api.uploadAPI,
+      headers: {},
+      // 里面只有一个附件， 第二个会替换第一个
+      fileList: [],
+      uploadData:{
+        type:'banner'
+      },
+      // end
+      imgUrl:'',
+      uploadData:{
+        type:'module'
+      },
+      ruleForm: {
+        title_cn: '',
+        desc_cn: '',
+        link: ''
+      },
+      rules: {
+        title_cn: [
+          { required: true, message: '请在此输入标题', trigger: 'blur' },
+        ],
+        desc_cn: [
+          { required: true, message: '请在此输入描述', trigger: 'blur' }
+        ],
+        link: [
+          { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
+        ]
+      },
       value1: true,
-      value2: true
+      value2: true,
+      items: []
+    }
+  },
+  created () {
+    this.headers = api.getUploadHeaders();
+    //获取左侧nav
+    api.fetch(api.uri.getModuleNavList).then(data => {
+      console.log(data.data.result)
+      if (data.data.status === 1) {
+        this.items = data.data.result
+        if (this.items.length > 0) {
+          //根据id获取热图信息
+          api.fetch(api.uri.getModuleByID, {module_id: this.items[0].id}).then(data => {
+            console.log(data)
+            if (data.data.status === 1) {
+              this.ruleForm = data.data.result
+            } else {
+              this.msg = data.data.result
+            }
+          }).catch((err) => {
+            console.error(err.message)
+          })
+        }
+
+      } else {
+        this.msg = '返回错误'
+      }
+    }).catch((err) => {
+      console.error(err.message)
+    })
+  },
+  methods: {
+    //根据id信息
+    getModuleByID:function(){
+      api.fetch(api.uri.getModuleByID, {banner_id: event.currentTarget.id}).then(data => {
+        console.log(data)
+        if (data.data.status === 1) {
+          this.ruleForm = data.data.result
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
+    //更新banner
+    update:function(){
+      api.post(
+        api.uri.updateModuleByID,
+        {
+          image:this.imgUrl,
+          link:this.ruleForm.link,
+          title_cn:this.ruleForm.title_cn,
+          title_en:"",
+          desc_cn:this.ruleForm.desc_cn,
+          desc_en:"",
+          module_id:this.ruleForm.module_id
+        }
+      ).then(data => {
+        console.log(data)
+        if (data.data.status === 1) {
+          this.ruleForm = data.data.result
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.update()
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+
+    // 上传文件
+    onContentSuccess (response, file, fileList) {
+      console.log(response)
+      this.imgUrl = response.result
+    },
+
+    changeContentUpload (file, fileList) {
+      // 保证页面显示一个附件
+      if (fileList.length > 0) {
+        this.fileList = [file]
+      }
+    },
+
+    beforeContentUpload (file) {
+      if (file.name.indexOf('.') !== -1) {
+        var arrLen = file.name.split('.').length - 1
+        var extension = file.name.split('.')[arrLen].toUpperCase()
+        var targetExtensionArray = api.extension
+        if (targetExtensionArray.indexOf(extension) === -1) {
+          this.$message({
+            type: 'info',
+            message: '不支持的上传文件格式'
+          })
+          this.fileList = []
+          return false
+        }
+      } else {
+        this.$message({
+          type: 'info',
+          message: '不支持的上传文件格式'
+        })
+        this.fileList = []
+        return false
+      }
+
+      if (file.size > api.maxFileSizeBit) {
+        this.$message({
+          type: 'info',
+          message: '附件不能大于' + api.maxFileSize
+        })
+        this.fileList = []
+        return false
+      }
     }
   }
 }
 </script>
 <style>
+  .kernel .upAd{
+    margin: 40px 0 0 40px;
+  }
+  .kernel .el-form-item{
+    width: 100%;
+  }
+  .kernel .el-form-item{
+    margin: 22px 0;
+  }
   .el-switch__label * {
     font-size: 16px;
     margin-right: 10px;
