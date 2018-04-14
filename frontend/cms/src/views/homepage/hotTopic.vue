@@ -38,7 +38,7 @@
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img alt="" class="style_banner fl" :src="ruleForm.image | formatImg">
+                  <img alt="" class="style_banner fl" :src="imgUrl | formatImg">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -82,9 +82,6 @@ export default {
       headers: {},
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
-      uploadData:{
-        type:'banner'
-      },
       // end
       imgUrl:'',
       uploadData: {
@@ -95,6 +92,7 @@ export default {
         order: '',
         desc_cn: '',
         link: '',
+        image:'',
         status: false
       },
       rules: {
@@ -111,49 +109,57 @@ export default {
           {required: true, message: '请在此输入跳转链接', trigger: 'blur'}
         ]
       },
-      value1: false,
-      value2: true,
       items: []
+    }
+  },
+  filters: {
+    formatImg (img) {
+      return axios.defaults.imageURL + img
     }
   },
   created () {
     this.headers = api.getUploadHeaders();
     //获取左侧nav
-    api.fetch(api.uri.getFocusNavList).then(data => {
-      console.log(data.data.result)
-      if (data.data.status === 1) {
-        this.items = data.data.result
-        if (this.items.length > 0) {
-          //根据id获取热图信息
-          api.fetch(api.uri.getFocusByID, {focus_id: this.items[0].id}).then(data => {
-            console.log(data)
-            if (data.data.status === 1) {
-              this.ruleForm = data.data.result
-              if(this.ruleForm.status == 1){
-                this.ruleForm.status = '1'
-              }else if(this.ruleForm.status = 0){
-                this.ruleForm.status = '0'
-              }
-            } else {
-              this.msg = data.data.result
-            }
-          }).catch((err) => {
-            console.error(err.message)
-          })
-        }
-      } else {
-        this.msg = '返回错误'
-      }
-    }).catch((err) => {
-      console.error(err.message)
-    })
+    this.initNav()
   },
   filters: {
     formatImg (img) {
-      return axios.defaults.baseURL + img
+      return axios.defaults.imageURL + img
     }
   },
   methods: {
+    //init
+    initNav:function(){
+      api.fetch(api.uri.getFocusNavList).then(data => {
+        console.log(data.data.result)
+        if (data.data.status === 1) {
+          this.items = data.data.result
+          if (this.items.length > 0) {
+            //根据id获取热图信息
+            api.fetch(api.uri.getFocusByID, {focus_id: this.items[0].id}).then(data => {
+              console.log(data)
+              if (data.data.status === 1) {
+                this.ruleForm = data.data.result
+                if(this.ruleForm.status == 1){
+                  this.ruleForm.status = '1'
+                }else if(this.ruleForm.status = 0){
+                  this.ruleForm.status = '0'
+                }
+                this.imgUrl = this.ruleForm.image
+              } else {
+                this.msg = data.data.result
+              }
+            }).catch((err) => {
+              console.error(err.message)
+            })
+          }
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
     //根据id获取信息
     getFocusByID:function(){
       api.fetch(api.uri.getFocusByID, {focus_id: event.currentTarget.id}).then(data => {
@@ -165,6 +171,7 @@ export default {
           }else if(this.ruleForm.status = 0){
             this.ruleForm.status = '0'
           }
+          this.imgUrl = this.ruleForm.image
         } else {
           this.msg = '返回错误'
         }
@@ -191,6 +198,7 @@ export default {
         console.log(data)
         if (data.data.status === 1) {
           this.ruleForm = data.data.result
+          this.initNav()
         } else {
           this.msg = '返回错误'
         }
