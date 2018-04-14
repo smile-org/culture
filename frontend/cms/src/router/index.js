@@ -23,12 +23,12 @@ export default new Router({
       meta: {requiresAuth: false}
     },
     // 首页
-    {
-      path: '/',
-      name: 'advertising',
-      component: advertising,
-      meta: {requiresAuth: true}
-    },
+    // {
+    //   path: '/',
+    //   name: 'advertising',
+    //   component: advertising,
+    //   meta: {requiresAuth: true}
+    // },
     {
       path: '/homepage/advertising',
       name: 'advertising',

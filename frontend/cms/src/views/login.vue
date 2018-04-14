@@ -44,7 +44,7 @@ export default {
       password: '',
       token: '',
       msg: '',
-      keepAlive
+      keepAlive: false
     }
   },
   created () {
@@ -58,19 +58,19 @@ export default {
     login () {
       this.msg = ''
       var md5Password = md5(this.password)
-      console.log(this.username, md5Password)
       if (!this.username || !this.password) {
         this.msg = '请输入用户名和密码'
         return
       }
       api.post(api.uri.login, {username: this.username, password: md5Password}).then(data => {
-        console.log(data)
         if (data.data.status === 1) {
-          console.log("success!")
           this.token = data.data.result.token
-          var storage = window.sessionStorage
+          var storage = sessionStorage
           storage['token'] = this.token
-          router.push({name: '/'})
+          if (this.keepAlive === true) {
+            localStorage['token'] = this.token
+          }
+          router.push({name: 'advertising'})
         } else {
           this.msg = '用户名或密码错误'
         }

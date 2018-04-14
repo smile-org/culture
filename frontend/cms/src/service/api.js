@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'http://39.107.152.177:8000/'
  * 作用： 可以为每个请求加上额外参数
  */
 axios.interceptors.request.use(config => {
-  var token = window.sessionStorage.getItem('token')
+  var token = sessionStorage.getItem('token')
   if (token) {
     // token放到header中
     config.headers.common.token = token
@@ -75,9 +75,9 @@ export default {
   maxFileSize: '50kb',
   extension: ['JPG', 'PNG'],
   getUploadHeaders: function () {
-    // var token = window.localStorage.getItem('token')
+    var token = sessionStorage.getItem('token')
     return {
-      token: '4297f44b13955235245b2497399d7a93'
+      token: token
     }
   }
 }

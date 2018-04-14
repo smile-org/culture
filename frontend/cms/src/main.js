@@ -12,7 +12,11 @@ Vue.use(ElementUI)
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     var token = sessionStorage.getItem('token')
+    if (!token) {
+      token = localStorage.getItem('token')
+    }
     if (token) {
+      sessionStorage.setItem('token', token)
       next()
     } else {
       next({
