@@ -6,7 +6,7 @@
           <h4 class="ad_tit"><span class="img_icon01"></span>广告热图</h4>
           <ul class="aside_ad_list">
             <li v-for="item in items" :id="item.id" @click="getBannerByID" :key="item.id">
-              {{item.title}}返回为null
+              {{item.title}}
               <!--<span class="blockUp">停用</span>-->
               <span class="blockUp" v-if="!item.status">停用</span>
             </li>
@@ -28,7 +28,7 @@
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img :src="ruleForm.image | formatImg" alt="" class="style_banner fl">
+                  <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -97,7 +97,8 @@ export default {
         order: '',
         desc_cn: '',
         link: '',
-        status: false
+        status: false,
+        image:''
       },
       rules: {
         title_cn: [
@@ -118,42 +119,47 @@ export default {
   },
   filters: {
     formatImg (img) {
-      return axios.defaults.baseURL + img
+      return axios.defaults.imageURL + img
     }
   },
   created () {
     this.headers = api.getUploadHeaders();
     //获取左侧nav
-    api.fetch(api.uri.getBannerNavList).then(data => {
-    console.log(data.data.result)
-      if (data.data.status === 1) {
-        this.items = data.data.result
-        if (this.items.length > 0) {
-          //根据id获取信息
-          api.fetch(api.uri.getBannerByID, {banner_id: this.items[0].id}).then(data => {
-            console.log(data)
-            if (data.data.status === 1) {
-              this.ruleForm = data.data.result
-              if(this.ruleForm.status == 1){
-                this.ruleForm.status = '1'
-              }else if(this.ruleForm.status = 0){
-                this.ruleForm.status = '0'
-              }
-            } else {
-              this.msg = data.data.result
-            }
-          }).catch((err) => {
-            console.error(err.message)
-          })
-        }
-      } else {
-        this.msg = '返回错误'
-      }
-    }).catch((err) => {
-      console.error(err.message)
-    })
+    this.initNav()
   },
   methods: {
+    //初始化信息
+    initNav:function(){
+      api.fetch(api.uri.getBannerNavList).then(data => {
+        console.log(data.data.result)
+        if (data.data.status === 1) {
+          this.items = data.data.result
+          if (this.items.length > 0) {
+            //根据id获取信息
+            api.fetch(api.uri.getBannerByID, {banner_id: this.items[0].id}).then(data => {
+              console.log(data)
+              if (data.data.status === 1) {
+                this.ruleForm = data.data.result
+                if(this.ruleForm.status == 1){
+                  this.ruleForm.status = '1'
+                }else if(this.ruleForm.status = 0){
+                  this.ruleForm.status = '0'
+                }
+                this.imgUrl = this.ruleForm.image
+              } else {
+                this.msg = data.data.result
+              }
+            }).catch((err) => {
+              console.error(err.message)
+            })
+          }
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
     //根据id获取热图信息
     getBannerByID:function(){
       api.fetch(api.uri.getBannerByID, {banner_id: event.currentTarget.id}).then(data => {
@@ -165,6 +171,7 @@ export default {
           }else if(this.ruleForm.status = 0){
             this.ruleForm.status = '0'
           }
+          this.imgUrl = this.ruleForm.image
         } else {
           this.msg = '返回错误'
         }
@@ -184,12 +191,14 @@ export default {
           desc_cn:this.ruleForm.desc_cn,
           desc_en:"",
           status:parseInt(this.ruleForm.status),
-          order:this.ruleForm.order,
+          order:parseInt(this.ruleForm.order),
           banner_id:this.ruleForm.banner_id
         }
       ).then(data => {
         console.log(data)
+        this.initNav()
         if (data.data.status === 1) {
+
           this.$message({
             type: 'info',
             message: '保存成功'

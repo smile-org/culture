@@ -1,6 +1,7 @@
 import axios from '../../node_modules/axios'
 //  生产地址
 axios.defaults.baseURL = 'http://39.107.152.177:8000/'
+axios.defaults.imageURL = 'http://39.107.152.177:8004'
 /**
  * 拦截器， 对所有的请求。
  * 作用： 可以为每个请求加上额外参数
