@@ -65,7 +65,7 @@
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img src="./../../assets/img/style_banner.jpg" alt="" class="style_banner fl">
+                  <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -91,15 +91,6 @@
               </li>
             </ul>
           </el-form>
-          <!--<P class="input_warn">-->
-          <!--请输入模块简述-->
-          <!--</P>-->
-          <!--<P class="input_warn">-->
-          <!--请上传图片-->
-          <!--</P>-->
-          <!--<P class="input_warn">-->
-          <!--请输入跳转链接-->
-          <!--</P>-->
           <div class="tc">
             <button class="save_btn mt20 mb30" @click="submitForm('ruleForm')">保  存</button>
           </div>
@@ -112,6 +103,7 @@
 
 <script>
 import api from '../../service/api'
+import axios from 'axios'
 export default {
   data:function () {
     return {
@@ -120,10 +112,6 @@ export default {
       headers: {},
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
-      uploadData:{
-        type:'banner'
-      },
-      // end
       imgUrl:'',
       uploadData:{
         type:'module'
@@ -144,46 +132,55 @@ export default {
           { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
         ]
       },
-      value1: true,
-      value2: true,
       items: []
+    }
+  },
+  filters: {
+    formatImg (img) {
+      return axios.defaults.imageURL + img
     }
   },
   created () {
     this.headers = api.getUploadHeaders();
     //获取左侧nav
-    api.fetch(api.uri.getModuleNavList).then(data => {
-      console.log(data.data.result)
-      if (data.data.status === 1) {
-        this.items = data.data.result
-        if (this.items.length > 0) {
-          //根据id获取热图信息
-          api.fetch(api.uri.getModuleByID, {module_id: this.items[0].id}).then(data => {
-            console.log(data)
-            if (data.data.status === 1) {
-              this.ruleForm = data.data.result
-            } else {
-              this.msg = data.data.result
-            }
-          }).catch((err) => {
-            console.error(err.message)
-          })
-        }
-
-      } else {
-        this.msg = '返回错误'
-      }
-    }).catch((err) => {
-      console.error(err.message)
-    })
+    this.initNav()
   },
   methods: {
+    // init
+    initNav:function(){
+      api.fetch(api.uri.getModuleNavList).then(data => {
+        console.log(data.data.result)
+        if (data.data.status === 1) {
+          this.items = data.data.result
+          if (this.items.length > 0) {
+            //根据id获取热图信息
+            api.fetch(api.uri.getModuleByID, {module_id: this.items[0].id}).then(data => {
+              console.log(data)
+              if (data.data.status === 1) {
+                this.ruleForm = data.data.result
+                this.imgUrl = data.data.result.image
+              } else {
+                this.msg = data.data.result
+              }
+            }).catch((err) => {
+              console.error(err.message)
+            })
+          }
+
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
     //根据id信息
     getModuleByID:function(){
-      api.fetch(api.uri.getModuleByID, {banner_id: event.currentTarget.id}).then(data => {
+      api.fetch(api.uri.getModuleByID, {module_id: event.currentTarget.id}).then(data => {
         console.log(data)
         if (data.data.status === 1) {
           this.ruleForm = data.data.result
+          this.imgUrl = this.ruleForm.image
         } else {
           this.msg = '返回错误'
         }
@@ -208,6 +205,7 @@ export default {
         console.log(data)
         if (data.data.status === 1) {
           this.ruleForm = data.data.result
+          this.initNav()
         } else {
           this.msg = '返回错误'
         }
