@@ -93,6 +93,23 @@ public class NewsController {
         return result;
     }
 
+    @RequestMapping(value = "/getNewsByID", method = RequestMethod.GET)
+    public Map getNewsByID( int  news_id,  @RequestHeader Map header ) {
+        logger.debug("RequestBody: " +  "null");
+        Map result;
+        String token = header.get("token").toString();
+        User user = userService.getUserByToken(token);
+        if (user == null) {
+            result=  MapUtil.generateFailureRes("无效的登录用户");
+            return result;
+        }
+
+
+        result =  newsService.getNewsByID(news_id);
+        logger.debug("Response: " + result);
+        return result;
+    }
+
 
 
     @RequestMapping(value = "/updateNewsByID", method = RequestMethod.POST)
@@ -137,7 +154,7 @@ public class NewsController {
         return result;
     }
 
-
+/*
     //此方法 后台加载 也用
     @RequestMapping(value = "/getNewsByID", method = RequestMethod.GET)
     public Map getNewsByID( int  news_id,  @RequestHeader Map header ) {
@@ -148,5 +165,8 @@ public class NewsController {
         logger.debug("Response: " + result);
         return result;
     }
+
+
+    */
 
 }
