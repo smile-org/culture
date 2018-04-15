@@ -10,30 +10,34 @@
         </el-col>
         <el-col :span="12">
           <ul class="nav_bar clear">
-            <li class="nav_bar_li">
+            <li class="nav_bar_li"  @click="routeByName('advertising')" :class="{active: type==='advertising'}">
               <span class="h_icon h_icon04"></span>
               <p>首页</p>
               <ul class="extra_box">
-                <li v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">广告热图
+                <li @click="routeByName('advertising')" :class="{active: type==='advertising'}">广告热图
                 </li>
-                <li v-on:click="routeByName('kernel')" v-bind:class="{active: type==='kernel'}">核心模块</li>
-                <li v-on:click="routeByName('hotTopic')" v-bind:class="{active: type==='hotTopic'}">热点聚焦
+                <li @click="routeByName('kernel')" :class="{active: type==='kernel'}">核心模块</li>
+                <li @click="routeByName('hotTopic')" :class="{active: type==='hotTopic'}">热点聚焦
                 </li>
+                <!--<li v-for="(item,index) in listArr" @click="routeByName(item.params,index)"-->
+                    <!--:class=" index == currentIndex ? 'active' : ''"> {{item.name}}-->
+                <!--</li>-->
+
               </ul>
             </li>
-            <li class="nav_bar_li" v-on:click="routeByName('newsDetail')" v-bind:class="{active: type==='newsDetail'}">
+            <li class="nav_bar_li" @click="routeByName('newsDetail')" :class="{active: type==='newsDetail'}">
               <span class="h_icon h_icon03"></span>
               <p>新闻</p>
             </li>
-            <li class="nav_bar_li" v-on:click="routeByName('exhibitionDetail')"
-                v-bind:class="{active: type==='exhibitionDetail'}">
+            <li class="nav_bar_li" @click="routeByName('exhibitionDetail')"
+                :class="{active: type==='exhibitionDetail'}">
               <span class="h_icon h_icon01"></span>
               <p>文化展览</p>
             </li>
             <!--<li class="nav_bar_li" v-on:click="routeByName('advertising')"-->
-                <!--v-bind:class="{active: type==='advertising'}">-->
-              <!--<span class="h_icon h_icon02"></span>-->
-              <!--<p>文化旅游</p>-->
+            <!--v-bind:class="{active: type==='advertising'}">-->
+            <!--<span class="h_icon h_icon02"></span>-->
+            <!--<p>文化旅游</p>-->
             <!--</li>-->
           </ul>
         </el-col>
@@ -52,26 +56,48 @@
 </template>
 
 <script>
-import router from '../router'
-export default {
-  data: function () {
-    return {}
-  },
-  props: ['type'],
-  methods: {
-    routeByName: function (name) {
-      router.push({name: name})
-    },
-    exit: function () {
-      var storage = window.localStorage
-      storage.removeItem('token')
-      storage.removeItem('username')
-      storage.removeItem('password')
-      this.routeByName('login')
-    }
-  },
+  import router from '../router'
 
-}
+  export default {
+    data: function () {
+      return {
+//        listArr: [
+//          {
+//            name: '广告热图',
+//            params: 'advertising'
+//          },
+//          {
+//            name: '核心模块',
+//            params: 'kernel'
+//          },
+//          {
+//            name: '热点聚焦',
+//            params: 'hotTopic'
+//          }
+//        ],
+//        currentIndex: 0
+      }
+    },
+    mounted(){
+      console.log(this.listArr)
+    },
+    props: ['type'],
+    methods: {
+      routeByName: function (name, index) {
+        router.push({name: name})
+        this.currentIndex = index
+        console.log(this.currentIndex,index)
+      },
+      exit: function () {
+        var storage = window.localStorage
+        storage.removeItem('token')
+        storage.removeItem('username')
+        storage.removeItem('password')
+        this.routeByName('login')
+      }
+    },
+
+  }
 </script>
 
 <style scoped>
