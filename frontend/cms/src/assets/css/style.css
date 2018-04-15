@@ -341,6 +341,9 @@ section {
   overflow: hidden;
   /*display: flex;*/
 }
+.aside_ad_list .active{
+  background: #eee;
+}
 
 .aside_ad_list li span {
 
