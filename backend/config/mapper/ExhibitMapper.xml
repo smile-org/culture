@@ -60,7 +60,7 @@ update   exhibit set
 
 
     <insert id="addEmail"    parameterType="com.kst.entities.Email" >
-        insert email values( 0,  #{from} ,#{to} , #{message}  , null,  null,   now()  ,now() );
+        insert email values( 0,  #{from} ,#{to} , #{title}, #{message}  , 0,  0,   now()  ,now() );
     </insert>
 
 
@@ -68,6 +68,14 @@ update   exhibit set
         select  exhibit_id,  title_cn,  title_en,  category from  exhibit where `status`=1 and  category=#{category} order by   create_at   desc
     </select>
 
+    <select id="getEmailList"  resultType="com.kst.entities.Email">
+        select * from  email  where `status` =0    and  retry_count &lt; 3
+    </select>
+
+
+    <update id="updateEmail"  parameterType="com.kst.entities.Email">
+        update   email  set `status` =#{status}  , retry_count =  #{retry_count},  update_at =now()  where email_id= #{email_id}
+    </update>
 
 
 

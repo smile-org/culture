@@ -1,8 +1,8 @@
 package com.kst.entities;
 
 public class SelectOptionItem {
-    public   String value;
-    public  String text;
+    private   String value;
+    private  String text;
 
     public String getValue() {
         return value;

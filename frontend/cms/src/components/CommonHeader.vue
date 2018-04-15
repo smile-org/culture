@@ -30,16 +30,21 @@
               <span class="h_icon h_icon01"></span>
               <p>文化展览</p>
             </li>
-            <li class="nav_bar_li" v-on:click="routeByName('advertising')"
-                v-bind:class="{active: type==='advertising'}">
-              <span class="h_icon h_icon02"></span>
-              <p>文化旅游</p>
-            </li>
+            <!--<li class="nav_bar_li" v-on:click="routeByName('advertising')"-->
+                <!--v-bind:class="{active: type==='advertising'}">-->
+              <!--<span class="h_icon h_icon02"></span>-->
+              <!--<p>文化旅游</p>-->
+            <!--</li>-->
           </ul>
         </el-col>
         <el-col :span="6" class="admin_num">
-          <!--<i class="iconfont icon-tubiaozhizuomoban"></i>-->
-          <span>管理员</span>
+          <i class="iconfont icon-tubiaozhizuomoban"></i>
+          <div class="admin_tab fr active">管理员
+            <div class="extra_quit">
+              <p v-on:click="exit()">退出
+              </p>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </header>
@@ -56,8 +61,16 @@ export default {
   methods: {
     routeByName: function (name) {
       router.push({name: name})
+    },
+    exit: function () {
+      var storage = window.localStorage
+      storage.removeItem('token')
+      storage.removeItem('username')
+      storage.removeItem('password')
+      this.routeByName('login')
     }
-  }
+  },
+
 }
 </script>
 

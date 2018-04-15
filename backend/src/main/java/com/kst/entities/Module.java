@@ -3,19 +3,19 @@ package com.kst.entities;
 import java.util.Date;
 
 public class Module {
-    public  int  module_id;
+    private  int  module_id;
 
 
-    public  String  image;
-    public  String  link;
+    private  String  image;
+    private  String  link;
 
-    public  String  title_cn;
-    public  String  title_en;
-    public  String  desc_cn;
+    private  String  title_cn;
+    private  String  title_en;
+    private  String  desc_cn;
 
-    public  String  desc_en;
-    public Date create_at;
-    public  Date  update_at;
+    private  String  desc_en;
+    private Date create_at;
+    private  Date  update_at;
 
     public int getModule_id() {
         return module_id;

@@ -172,7 +172,11 @@ header .nav_bar .nav_bar_li:hover {
   background: rgba(220, 93, 82, 0.7);
 }
 
-header .nav_bar > .active {
+.admin_tab:hover {
+  background: rgba(220, 93, 82, 0.7);
+}
+
+header > .active {
   background: rgba(220, 93, 82, 0.7);
 }
 
@@ -193,6 +197,26 @@ header .nav_bar > .active {
   display: none;
 }
 
+.extra_quit {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  text-align: center;
+  /* padding: 5px 0; */
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .1));
+  -webkit-filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .1));
+  z-index: 1;
+  font-size: 16px;
+   display: none;
+}
+
 header .nav_bar .nav_bar_li:hover > .extra_box {
   display: block;
   transition: 3s;
@@ -206,6 +230,7 @@ header .nav_bar .nav_bar_li:hover > .extra_box {
 
 .extra_box li:hover {
   background-color: #eee;
+  padding: 0 20px;
 }
 
 .extra_box > .active {
@@ -230,8 +255,21 @@ header p {
   color: #fff;
 }
 
-.admin_num span {
+/*.admin_num span {*/
+/*cursor: pointer;*/
+/*}*/
+.admin_tab {
   cursor: pointer;
+  padding: 0 20px;
+  position: relative;
+  color: #fff;
+}
+.admin_tab p{
+  color: #000;
+}
+.admin_tab:hover > .extra_quit {
+  display: block;
+  transition: 3s;
 }
 
 /*login*/

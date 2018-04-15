@@ -9,6 +9,9 @@ import com.kst.utils.MapUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -165,7 +168,7 @@ public class ExhibitServiceImpl implements ExhibitService {
              message += "咨询内容:"+ jjh.getDesc();
 
             email.setMessage(message);
-
+            email.setTitle(form.getEmail_title());
             exhibitRepo.addEmail(email);
 
             result = MapUtil.generateSuccessRes("添加成功");
@@ -199,7 +202,7 @@ public class ExhibitServiceImpl implements ExhibitService {
             message += "介绍:"+ ccr.getDesc();
 
             email.setMessage(message);
-
+            email.setTitle(form.getEmail_title());
             exhibitRepo.addEmail(email);
 
             result = MapUtil.generateSuccessRes("添加成功");
@@ -254,6 +257,61 @@ public class ExhibitServiceImpl implements ExhibitService {
             result = MapUtil.generateFailureRes(e.getMessage());
         }
         return result;
+    }
+
+
+
+    @Value("${email.server}")
+    private String emailserver;
+    @Value("${email.port}")
+    private String emailport;
+    @Value("${email.from}")
+    private String emailfrom;
+    @Value("${email.pwd}")
+    private String emailpwd;
+    @Value("${email.retrycount}")
+    private String emailretrycount;
+
+    @Override
+    public void sendEmail() {
+
+        List<Email>   emailList= exhibitRepo.getEmailList();
+        JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
+        senderImpl.setHost(emailserver);
+        senderImpl.setPort(  Integer.parseInt(emailport) );
+
+        senderImpl.setUsername( emailfrom);//用户名
+        senderImpl.setPassword(emailpwd);//密码
+
+         for(Email email :emailList)
+         {
+             Email update =new  Email();
+
+             try {
+                 SimpleMailMessage message = new SimpleMailMessage();//消息构造器
+                 message.setFrom(emailfrom);//发件人
+                 message.setTo( email.getTo() );//收件人
+                 message.setSubject(   email.getTitle());//主题
+                 message.setText( email.getMessage());//正文
+                 senderImpl.send(message);
+
+                 update.setStatus(1);
+                 update.setEmail_id(  email.getEmail_id());
+                 update.setRetry_count( email.getRetry_count() +1);
+                 exhibitRepo.updateEmail(update);
+             }
+
+             catch (Exception ex)
+             {
+                 update.setEmail_id(  email.getEmail_id());
+                 //update.setStatus(0);
+                 update.setRetry_count( email.getRetry_count() +1);
+                 exhibitRepo.updateEmail(update);
+
+                 logger.error(ex.getMessage());
+             }
+         }
+
     }
 
     /*

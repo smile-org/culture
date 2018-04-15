@@ -5,19 +5,19 @@ import java.util.Date;
 public class Banner {
 
 
-    public  int banner_id;
-    public  String image;
-    public  String link;
-    public  String title_cn;
-    public  String title_en;
+    private  int banner_id;
+    private  String image;
+    private  String link;
+    private  String title_cn;
+    private  String title_en;
 
-    public  String desc_cn;
-    public  String desc_en;
-    public  int status;
-    public  int order;
-    public  Date create_at;
+    private  String desc_cn;
+    private  String desc_en;
+    private  int status;
+    private  int order;
+    private  Date create_at;
 
-    public Date update_at;
+    private Date update_at;
 
 
 

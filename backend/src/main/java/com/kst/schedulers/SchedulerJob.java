@@ -1,8 +1,12 @@
 package com.kst.schedulers;
 
 
+import com.kst.services.ExhibitService;
+import com.kst.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -12,13 +16,17 @@ public class SchedulerJob {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    //第一次延迟1秒执行，当执行完后3分钟再执行
-    @Scheduled(initialDelay = 1000, fixedDelay = 3000 * 60)
+
+    @Autowired
+    private ExhibitService exhibitService;
+
+
+
+    //第一次延迟1秒执行，当执行完后1分钟再执行
+    @Scheduled(initialDelay = 1000, fixedDelay = 6000*10 )
     public void testSchedulerJob() {
         try {
-            logger.info("this is a testing scheduler job.");
-            JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
-
+            exhibitService.sendEmail();
         }
         catch (Exception ex)
         {

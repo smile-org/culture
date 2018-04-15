@@ -1,5 +1,6 @@
 <template>
   <div class="exhibition">
+    <common-header></common-header>
     <!--<header>-->
       <!--<el-row class="header_tab">-->
         <!--<el-col :span="6">-->
@@ -103,7 +104,11 @@
 
 <script>
 import api from '../../service/api'
+import commonHeader from '../../components/CommonHeader.vue'
 export default {
+  components: {
+    commonHeader
+  },
   data:function () {
     return {
       uploadData:{

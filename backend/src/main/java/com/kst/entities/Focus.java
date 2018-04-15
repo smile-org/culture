@@ -3,20 +3,20 @@ package com.kst.entities;
 import java.util.Date;
 
 public class Focus {
-    public  int focus_id;
-    public  String image;
-    public  String link;
-    public  String title_cn;
+    private  int focus_id;
+    private  String image;
+    private  String link;
+    private  String title_cn;
 
 
-    public  String title_en;
-    public  String desc_cn;
-    public  String desc_en;
-    public  int status;
+    private  String title_en;
+    private  String desc_cn;
+    private  String desc_en;
+    private  int status;
 
-    public  int order;
-    public Date create_at;
-    public  Date update_at;
+    private  int order;
+    private Date create_at;
+    private  Date update_at;
 
 
     public int getFocus_id() {

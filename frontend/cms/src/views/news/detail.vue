@@ -1,5 +1,6 @@
 <template>
   <div class="news">
+    <common-header></common-header>
     <section>
       <div class="con_main">
         <aside>
@@ -49,8 +50,8 @@
               </li>
               <li class="list_state">
                 <h4>新闻内容 :</h4>
-                <div class="right_input">
-                  <VueUEditor @ready="editorReady"></VueUEditor>
+                <div class="right_input" >
+                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px)"></VueUEditor>
                 </div>
             </li>
           </ul>
@@ -70,10 +71,12 @@ import api from '../../service/api'
 import VueUEditor from 'vue-ueditor'
 import axios from 'axios'
 import router from '../../router'
+import commonHeader from '../../components/CommonHeader.vue'
 
 export default {
   components: {
-    VueUEditor
+    VueUEditor,
+    commonHeader
   },
   data:function () {
     return {
@@ -275,4 +278,7 @@ export default {
   .el-switch__label.is-active {
     color: #333 !important;
   }
+.right_input {
+
+}
 </style>

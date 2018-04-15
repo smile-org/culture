@@ -5,22 +5,22 @@ import java.util.Date;
 public class Exhibit {
 
 
-    public  int exhibit_id;
-    public  String title_cn;
-    public  String title_en;
-    public  String content_cn;
-    public  String content_en;
+    private  int exhibit_id;
+    private  String title_cn;
+    private  String title_en;
+    private  String content_cn;
+    private  String content_en;
 
-    public  int category;
-    public  Integer form_id;
-    public  String  form_en_name;
-    public   String   form_cn_name;
+    private  int category;
+    private  Integer form_id;
+    private  String  form_en_name;
+    private   String   form_cn_name;
 
 
 
-    public  int status;
-    public Date create_at;
-    public Date update_at;
+    private  int status;
+    private Date create_at;
+    private Date update_at;
 
     public String getForm_en_name() {
         return form_en_name;
