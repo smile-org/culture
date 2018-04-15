@@ -1,5 +1,6 @@
 <template>
   <div class="kernel">
+    <common-header></common-header>
     <!--<header>-->
       <!--<el-row class="header_tab">-->
         <!--<el-col :span="6">-->
@@ -104,7 +105,11 @@
 <script>
 import api from '../../service/api'
 import axios from 'axios'
+import commonHeader from '../../components/CommonHeader.vue'
 export default {
+  components: {
+    commonHeader
+  },
   data:function () {
     return {
       // 上传参数

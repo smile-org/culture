@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import commonHeader from './components/CommonHeader.vue'
+//import commonHeader from './components/CommonHeader.vue'
 
 export default {
-  name: 'App',
-  components: {
-    commonHeader
-  }
+  name: 'App'
+//  components: {
+//    commonHeader
+//  }
 }
 </script>
 

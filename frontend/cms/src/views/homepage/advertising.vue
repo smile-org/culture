@@ -1,5 +1,6 @@
 <template>
   <div class="adver">
+    <common-header></common-header>
     <section>
       <div class="con_main">
         <aside>
@@ -79,7 +80,11 @@
 <script>
 import api from '../../service/api'
 import axios from 'axios'
+import commonHeader from '../../components/CommonHeader.vue'
 export default {
+  components: {
+    commonHeader
+  },
   data: function () {
     return {
       // 上传参数

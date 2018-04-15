@@ -1,5 +1,6 @@
 <template>
   <div class="news">
+    <common-header></common-header>
     <section>
       <div class="con_main">
         <aside>
@@ -70,10 +71,12 @@ import api from '../../service/api'
 import VueUEditor from 'vue-ueditor'
 import axios from 'axios'
 import router from '../../router'
+import commonHeader from '../../components/CommonHeader.vue'
 
 export default {
   components: {
-    VueUEditor
+    VueUEditor,
+    commonHeader
   },
   data:function () {
     return {

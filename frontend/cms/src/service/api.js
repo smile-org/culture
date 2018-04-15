@@ -1,4 +1,4 @@
-import axios from '../../node_modules/axios'
+import axios from 'axios'
 //  生产地址
 axios.defaults.baseURL = 'http://39.107.152.177:8000/'
 axios.defaults.imageURL = 'http://39.107.152.177:8004'
