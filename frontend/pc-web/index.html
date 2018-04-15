@@ -16,6 +16,7 @@
     <!-- 引入组件库 -->
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/swiper.min.js"></script>
+    <script src="js/config.js"></script>
 </head>
 <body>
 <!--#include file="./ins/header.shtml"-->
@@ -55,7 +56,7 @@
     <div class="content_box">
         <div class="index_part">
             <h1 class="">文化 + 赋能生态圈</h1>
-            <ul class="row culture_box clear">
+            <ul class="row culture_box clear" id="ulCulturePlus">
                 <li class="col-sm-4">
                     <!--<div class="">-->
                     <a href="./../inland.html" class="part1_img">
@@ -132,39 +133,6 @@
         </div>
 
         <div class="index_part">
-            <!--<h1 class="">热点聚焦</h1>-->
-            <!--<div class="carousel_news">-->
-            <!--<div class="part3_carousel" id="part3_carousel">-->
-            <!--<a href="" class=" hot_topic">-->
-            <!--<div class="topic_hot">-->
-            <!--<img src="./img/photo_c1_1.jpg" alt="">-->
-            <!--</div>-->
-            <!--<div class=" topic_hot">-->
-            <!--<div>-->
-            <!--<p>中国（北京）国际服务贸易交易会</p>-->
-            <!--<p>中国非物质文化遗产专题展本月开展</p>-->
-            <!--<p>北京 <span>2018/5/28 - 2018/6/1</span></p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</a>-->
-            <!--<a href="" class=" hot_topic">-->
-            <!--<div class="topic_hot">-->
-            <!--<img src="./img/photo_c1_1.jpg" alt="">-->
-            <!--</div>-->
-            <!--<div class=" topic_hot">-->
-            <!--<div>-->
-            <!--<p>中国（北京）国际服务贸易交易会</p>-->
-            <!--<p>中国非物质文化遗产专题展本月开展</p>-->
-            <!--<p>北京 <span>2018/5/28 - 2018/6/1</span></p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</a>-->
-            <!--</div>-->
-            <!--<ul class="img-index"></ul>-->
-            <!--<div class="carousel-prev"><img src="./img/left1.png"></div>-->
-            <!--<div class="carousel-next"><img src="./img/right1.png"></div>-->
-            <!--</div>-->
-
             <div class="index_part">
                 <h1 class="">热点聚焦</h1>
                 <div class="swiper-container hot-swiper-container">
@@ -334,6 +302,31 @@
             $(this).find("img").attr("src", "./img/right2.png");
         }, function () {
             $(this).find("img").attr("src", "./img/right1.png");
+        });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getModuleList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<li class="col-sm-4">\n' +
+                            '<a href="' + item.link + '" class="part1_img">\n' +
+                            '<img src="' + imageUrl() + item.image + '" alt="">\n' +
+                            '</a>\n' +
+                            '<a href="' + item.link + '" class="part1_font">\n' +
+                            '<span class="rectangle c_red"></span>\n' +
+                            '<h4>' + item.title_cn + '</h4>\n' +
+                            '<span>' + item.desc_cn + '</span>\n' +
+                            '</a>\n' +
+                            '</li>';
+                    });
+                    $('#ulCulturePlus').html(htmlObj)
+                }
+            }
         });
     });
 
