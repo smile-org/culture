@@ -50,8 +50,8 @@
               </li>
               <li class="list_state">
                 <h4>新闻内容 :</h4>
-                <div class="right_input">
-                  <VueUEditor @ready="editorReady"></VueUEditor>
+                <div class="right_input" >
+                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px)"></VueUEditor>
                 </div>
             </li>
           </ul>
@@ -278,4 +278,7 @@ export default {
   .el-switch__label.is-active {
     color: #333 !important;
   }
+.right_input {
+
+}
 </style>
