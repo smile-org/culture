@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class CCR {
 
-    public   int ccr_id;
+    private   int ccr_id;
 
 
-    public   String name;
-    public   String phone;
+    private   String name;
+    private   String phone;
 
-    public   String desc;
-    public Date create_at;
+    private   String desc;
+    private Date create_at;
 
     public int getCcr_id() {
         return ccr_id;

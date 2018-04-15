@@ -1,10 +1,10 @@
 package com.kst.entities;
 
 public class NavNode {
-    public  int id;
+    private  int id;
 
-    public  String title;
-    public  int status;
+    private  String title;
+    private  int status;
 
     public int getId() {
         return id;

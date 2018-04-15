@@ -31,4 +31,6 @@ public interface ExhibitService {
 
 
     Map    getExhibitFrontNavList(String lan);
+
+    void  sendEmail();
 }

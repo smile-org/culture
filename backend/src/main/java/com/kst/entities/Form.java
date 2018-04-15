@@ -3,15 +3,25 @@ package com.kst.entities;
 import java.util.Date;
 
 public class Form {
-    public   int form_id;
+    private    int form_id;
 
-    public   String form_en_name;
-    public   String form_cn_name;
+    private   String form_en_name;
+    private   String form_cn_name;
 
-    public  String  form_table;
-    public   String from;
-    public   String to;
-    public Date create_at;
+    private  String  form_table;
+    private   String from;
+    private   String to;
+    private   String email_title;
+
+    public String getEmail_title() {
+        return email_title;
+    }
+
+    public void setEmail_title(String email_title) {
+        this.email_title = email_title;
+    }
+
+    private Date create_at;
 
 
 

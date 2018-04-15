@@ -27,9 +27,7 @@
       select  news_id,   image,  title_cn,  title_en , link  from news
     </select>
 
-
      <select id="getNewsByID"       resultType="com.kst.entities.News" >
          select * from news where news_id =#{news_id}
      </select>
-
 </mapper>

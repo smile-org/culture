@@ -3,14 +3,14 @@ package com.kst.entities;
 import java.util.Date;
 
 public class JJH {
-    public   int jjh_id;
-    public   String name;
-    public   String phone;
+    private   int jjh_id;
+    private   String name;
+    private   String phone;
 
 
-    public   String email;
-    public   String desc;
-    public Date create_at;
+    private   String email;
+    private   String desc;
+    private Date create_at;
 
     public int getJjh_id() {
         return jjh_id;

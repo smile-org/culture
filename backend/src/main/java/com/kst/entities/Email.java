@@ -3,15 +3,18 @@ package com.kst.entities;
 import java.util.Date;
 
 public class Email {
-    public  int  email_id;
-    public  String  from;
-    public  String  to;
-    public  String  message;
+    private  int  email_id;
+    private  String  from;
 
-    public  int  status;
-    public  int  retry_count;
-    public Date create_at;
-    public  Date  update_at;
+
+    private  String  to;
+    private  String  title;
+    private  String  message;
+
+    private  int  status;
+    private  int  retry_count;
+    private Date create_at;
+    private  Date  update_at;
 
 
     public int getEmail_id() {
@@ -36,6 +39,16 @@ public class Email {
 
     public void setTo(String to) {
         this.to = to;
+    }
+
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMessage() {
