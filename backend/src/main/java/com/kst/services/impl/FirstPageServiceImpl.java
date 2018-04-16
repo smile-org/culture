@@ -106,10 +106,15 @@ public class FirstPageServiceImpl implements FirstPageService {
                 {
                     b.setTitle_en(null);
                     b.setDesc_en(null);
+                    b.setImage_en(null);
+                    b.setLink_en(null);
                 } else
                 {
                     b.setTitle_cn(null);
                     b.setDesc_cn(null);
+
+                    b.setImage_cn(null);
+                    b.setLink_cn(null);
 
                 }
 

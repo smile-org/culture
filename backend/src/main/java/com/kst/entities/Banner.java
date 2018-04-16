@@ -6,8 +6,10 @@ public class Banner {
 
 
     private  int banner_id;
-    private  String image;
-    private  String link;
+    private  String image_cn;
+    private  String image_en;
+    private  String link_cn;
+    private  String link_en;
     private  String title_cn;
     private  String title_en;
 
@@ -19,8 +21,37 @@ public class Banner {
 
     private Date update_at;
 
+    public String getImage_cn() {
+        return image_cn;
+    }
 
+    public void setImage_cn(String image_cn) {
+        this.image_cn = image_cn;
+    }
 
+    public String getImage_en() {
+        return image_en;
+    }
+
+    public void setImage_en(String image_en) {
+        this.image_en = image_en;
+    }
+
+    public String getLink_cn() {
+        return link_cn;
+    }
+
+    public void setLink_cn(String link_cn) {
+        this.link_cn = link_cn;
+    }
+
+    public String getLink_en() {
+        return link_en;
+    }
+
+    public void setLink_en(String link_en) {
+        this.link_en = link_en;
+    }
 
     public int getBanner_id() {
         return banner_id;
@@ -30,21 +61,6 @@ public class Banner {
         this.banner_id = banner_id;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
 
     public String getTitle_cn() {
         return title_cn;

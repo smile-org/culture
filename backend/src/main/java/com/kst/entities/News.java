@@ -5,11 +5,13 @@ import java.util.Date;
 public class News {
 
     public  int news_id;
-    public  String image;
+    public  String image_cn;
+    public  String image_en;
 
     public  String title_cn;
     public  String title_en;
-    public  String link;
+    public  String link_cn;
+    public  String link_en;
 
     public  String desc_cn;
     public  String desc_en;
@@ -20,6 +22,39 @@ public class News {
 
     public Date update_at;
 
+
+    public String getImage_cn() {
+        return image_cn;
+    }
+
+    public void setImage_cn(String image_cn) {
+        this.image_cn = image_cn;
+    }
+
+    public String getImage_en() {
+        return image_en;
+    }
+
+    public void setImage_en(String image_en) {
+        this.image_en = image_en;
+    }
+
+    public String getLink_cn() {
+        return link_cn;
+    }
+
+    public void setLink_cn(String link_cn) {
+        this.link_cn = link_cn;
+    }
+
+    public String getLink_en() {
+        return link_en;
+    }
+
+    public void setLink_en(String link_en) {
+        this.link_en = link_en;
+    }
+
     public int getNews_id() {
         return news_id;
     }
@@ -28,13 +63,7 @@ public class News {
         this.news_id = news_id;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getTitle_cn() {
         return title_cn;
@@ -52,13 +81,7 @@ public class News {
         this.title_en = title_en;
     }
 
-    public String getLink() {
-        return link;
-    }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
 
     public String getDesc_cn() {
         return desc_cn;

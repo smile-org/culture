@@ -95,18 +95,29 @@ public class FirstPageController {
             return result;
         }
 
-        Banner  banner =new Banner();
-       banner.setImage ((String) body.get("image"));
-        banner.setLink ((String) body.get("link"));
-        banner.setTitle_cn ((String) body.get("title_cn"));
 
-        banner.setTitle_en ((String) body.get("title_en"));
-        banner.setDesc_cn ((String) body.get("desc_cn"));
-        banner.setDesc_en ((String) body.get("desc_en"));
+
+        Banner  banner =new Banner();
 
         banner.setStatus ((Integer) body.get("status"));
         banner.setOrder ((Integer) body.get("order"));
         banner.setBanner_id ((Integer) body.get("banner_id"));
+
+        String lan = (String) body.get("lan");
+        if(lan.equals("cn"))
+        {
+            banner.setImage_cn ((String) body.get("image_cn"));
+            banner.setLink_cn ((String) body.get("link_cn"));
+            banner.setTitle_cn ((String) body.get("title_cn"));
+            banner.setDesc_cn ((String) body.get("desc_cn"));
+        }
+        else
+        {
+            banner.setImage_en ((String) body.get("image_en"));
+            banner.setLink_en ((String) body.get("link_en"));
+            banner.setTitle_en ((String) body.get("title_en"));
+            banner.setDesc_en ((String) body.get("desc_en"));
+        }
 
         result = firstPageService.updateBannerByID(banner);
         logger.debug("Response: " + result);
@@ -215,8 +226,10 @@ public class FirstPageController {
         }
 
         Module module =new Module();
-        module.setImage ((String) body.get("image"));
-        module.setLink ((String) body.get("link"));
+        module.setImage_cn ((String) body.get("image_cn"));
+        module.setImage_en ((String) body.get("image_en"));
+        module.setLink_cn ((String) body.get("link_cn"));
+        module.setLink_en ((String) body.get("link_en "));
         module.setTitle_cn ((String) body.get("title_cn"));
 
         module.setTitle_en ((String) body.get("title_en"));
@@ -267,8 +280,10 @@ public class FirstPageController {
         }
 
         Focus focus =new Focus();
-        focus.setImage ((String) body.get("image"));
-        focus.setLink ((String) body.get("link"));
+        focus.setImage_cn ((String) body.get("image_cn"));
+        focus.setImage_en ((String) body.get("image_en"));
+        focus.setLink_cn ((String) body.get("link_cn"));
+        focus.setLink_en ((String) body.get("link_en"));
         focus.setTitle_cn ((String) body.get("title_cn"));
 
         focus.setTitle_en ((String) body.get("title_en"));

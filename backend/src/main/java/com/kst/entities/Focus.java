@@ -4,8 +4,10 @@ import java.util.Date;
 
 public class Focus {
     private  int focus_id;
-    private  String image;
-    private  String link;
+    private  String image_cn;
+    private  String image_en;
+    private  String link_cn;
+    private  String link_en;
     private  String title_cn;
 
 
@@ -27,20 +29,36 @@ public class Focus {
         this.focus_id = focus_id;
     }
 
-    public String getImage() {
-        return image;
+    public String getImage_cn() {
+        return image_cn;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage_cn(String image_cn) {
+        this.image_cn = image_cn;
     }
 
-    public String getLink() {
-        return link;
+    public String getImage_en() {
+        return image_en;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setImage_en(String image_en) {
+        this.image_en = image_en;
+    }
+
+    public String getLink_cn() {
+        return link_cn;
+    }
+
+    public void setLink_cn(String link_cn) {
+        this.link_cn = link_cn;
+    }
+
+    public String getLink_en() {
+        return link_en;
+    }
+
+    public void setLink_en(String link_en) {
+        this.link_en = link_en;
     }
 
     public String getTitle_cn() {

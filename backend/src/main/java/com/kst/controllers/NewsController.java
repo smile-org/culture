@@ -56,11 +56,13 @@ public class NewsController {
         }
 
         News news =new News();
-        news.setImage ((String) body.get("image"));
+        news.setImage_cn ((String) body.get("image_cn"));
+        news.setImage_en ((String) body.get("image_en"));
         news.setTitle_cn ((String) body.get("title_cn"));
         news.setTitle_en ((String) body.get("title_en"));
 
-        news.setLink ((String) body.get("link"));
+        news.setLink_cn ((String) body.get("link_cn"));
+        news.setLink_en ((String) body.get("link_en"));
         news.setDesc_cn ((String) body.get("desc_cn"));
         news.setDesc_en ((String) body.get("desc_en"));
 
@@ -124,11 +126,13 @@ public class NewsController {
         }
 
         News news =new News();
-        news.setImage ((String) body.get("image"));
+        news.setImage_cn ((String) body.get("image_cn"));
+        news.setImage_en ((String) body.get("image_en"));
         news.setTitle_cn ((String) body.get("title_cn"));
         news.setTitle_en ((String) body.get("title_en"));
 
-        news.setLink ((String) body.get("link"));
+        news.setLink_cn ((String) body.get("link_cn"));
+        news.setLink_en ((String) body.get("link_en"));
         news.setDesc_cn ((String) body.get("desc_cn"));
         news.setDesc_en ((String) body.get("desc_en"));
 
