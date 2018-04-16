@@ -130,6 +130,7 @@ div.edui-box {
 .edui-default .edui-toolbar .edui-menubutton,
 .edui-default .edui-toolbar .edui-combox {
     margin: 1px;
+    line-height: 11px;
 }
 /*UI工具栏、编辑区域、底部*/
 .edui-default .edui-editor {
