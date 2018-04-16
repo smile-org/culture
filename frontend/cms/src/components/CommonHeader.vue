@@ -10,7 +10,8 @@
         </el-col>
         <el-col :span="12">
           <ul class="nav_bar clear">
-            <li class="nav_bar_li" v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">
+            <!--<li class="nav_bar_li" v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">-->
+            <li class="nav_bar_li">
               <span class="h_icon h_icon04"></span>
               <p>首页</p>
               <ul class="extra_box">
@@ -39,7 +40,7 @@
         </el-col>
         <el-col :span="6" class="admin_num">
           <i class="iconfont icon-tubiaozhizuomoban"></i>
-          <div class="admin_tab fr active">管理员
+          <div class="admin_tab fr">管理员
             <div class="extra_quit">
               <p v-on:click="exit()">退出
               </p>

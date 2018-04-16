@@ -1,6 +1,6 @@
 <template>
   <div class="kernel">
-    <common-header></common-header>
+    <common-header type="kernel"></common-header>
     <!--<header>-->
       <!--<el-row class="header_tab">-->
         <!--<el-col :span="6">-->
