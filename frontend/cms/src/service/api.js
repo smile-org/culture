@@ -69,7 +69,8 @@ export default {
     // *** 文化展览 ***
     getExhibitNavList: 'api/exhibit/getExhibitNavList',
     getExhibitEditPageInfoByID: 'api/exhibit/getExhibitEditPageInfoByID',
-    updateExhibitByID: 'api/exhibit/updateExhibitByID'
+    updateExhibitByID: 'api/exhibit/updateExhibitByID',
+    addExhibit: 'api/exhibit/addExhibit'
   },
   uploadAPI: 'http://39.107.152.177:8000/api/firstPage/uploadPic',
   maxFileSizeBit: 500 * 1024,

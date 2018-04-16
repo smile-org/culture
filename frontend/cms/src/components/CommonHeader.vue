@@ -10,15 +10,14 @@
         </el-col>
         <el-col :span="12">
           <ul class="nav_bar clear">
-            <!--<li class="nav_bar_li" v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">-->
-            <li class="nav_bar_li">
+            <li class="nav_bar_li" v-bind:class="{active: type==='advertising' || type==='kernel' || type==='hotTopic'}">
               <span class="h_icon h_icon04"></span>
               <p>首页</p>
               <ul class="extra_box">
-                <li v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}"><a href="">广告热图</a>
+                <li v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">广告热图
                 </li>
-                <li v-on:click="routeByName('kernel')" v-bind:class="{active: type==='kernel'}"><a href="">核心模块</a></li>
-                <li v-on:click="routeByName('hotTopic')" v-bind:class="{active: type==='hotTopic'}"><a href="">热点聚焦</a>
+                <li v-on:click="routeByName('kernel')" v-bind:class="{active: type==='kernel'}">核心模块</li>
+                <li v-on:click="routeByName('hotTopic')" v-bind:class="{active: type==='hotTopic'}">热点聚焦
                 </li>
               </ul>
             </li>
@@ -40,7 +39,7 @@
         </el-col>
         <el-col :span="6" class="admin_num">
           <i class="iconfont icon-tubiaozhizuomoban"></i>
-          <div class="admin_tab fr">管理员
+          <div class="admin_tab fr active">管理员
             <div class="extra_quit">
               <p v-on:click="exit()">退出
               </p>
@@ -53,28 +52,26 @@
 </template>
 
 <script>
-  import router from '../router'
-  export default {
-    data: function () {
-      return {}
+import router from '../router'
+export default {
+  data: function () {
+    return {}
+  },
+  props: ['type'],
+  methods: {
+    routeByName: function (name) {
+      router.push({name: name})
     },
-    created: function () {
-      console.log(this.type)
-    },
-    props: ['type'],
-    methods: {
-      routeByName: function (name) {
-        router.push({name: name})
-      },
-      exit: function () {
-        var storage = window.localStorage
-        storage.removeItem('token')
-        storage.removeItem('username')
-        storage.removeItem('password')
-        this.routeByName('login')
-      }
+    exit: function () {
+      var storage = window.localStorage
+      storage.removeItem('token')
+      storage.removeItem('username')
+      storage.removeItem('password')
+      this.routeByName('login')
     }
-  }
+  },
+
+}
 </script>
 
 <style scoped>

@@ -1,51 +1,13 @@
 <template>
   <div class="exhibition">
     <common-header  type="exhibitionDetail"></common-header>
-    <!--<header>-->
-      <!--<el-row class="header_tab">-->
-        <!--<el-col :span="6">-->
-          <!--<a class="logo fl">-->
-            <!--<img class="vm" src="img/small_logo.png"/>-->
-            <!--<span class="vm">文化寻力营销平台</span>-->
-          <!--</a>-->
-        <!--</el-col>-->
-        <!--<el-col :span="12">-->
-          <!--<ul class="nav_bar clear">-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon04"></span>-->
-              <!--<p>首页</p>-->
-              <!--<ul class="extra_box">-->
-                <!--<li><a href="">广告热图</a></li>-->
-                <!--<li><a href="">核心模块</a></li>-->
-                <!--<li><a href="">热点聚焦</a></li>-->
-              <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon03"></span>-->
-              <!--<p>新闻</p>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon01"></span>-->
-              <!--<p>文化展览</p>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon02"></span>-->
-              <!--<p>文化旅游</p>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</el-col>-->
-        <!--<el-col :span="6" class="admin_num">-->
-          <!--<span>管理员</span>-->
-        <!--</el-col>-->
-      <!--</el-row>-->
-    <!--</header>-->
     <section>
       <div class="con_main">
         <aside>
-          <h4 class="ad_tit"><span class="img_icon04"></span>文化展览  <span class="small_addBtn">添加</span></h4>
+          <h4 class="ad_tit"><span class="img_icon04"></span>文化展览  <span class="small_addBtn" @click="resetForm('ruleForm')">添加</span></h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="getExhibitEditPageInfoByID" :key="item.id">
-              {{item.title}}返回为null
+            <li v-for="item in items" :id="item.id" @click="getExByClicked" :key="item.id">
+              {{item.title}}
               <!--<span class="blockUp">停用</span>-->
               <span class="blockUp" v-if="!item.status">停用</span>
             </li>
@@ -55,9 +17,11 @@
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <h4 class="ad_tit">
               <el-switch
-                v-model="value2"
-                active-color="#ff4949"
-                inactive-color="#13ce66" inactive-text="启用状态:">
+                v-model="ruleForm.status"
+                inactive-value='0'
+                active-value='1'
+                active-color="#13ce66"
+                inactive-color="#ff4949" inactive-text="启用状态:">
               </el-switch>
             </h4>
             <ul class="con_ul">
@@ -75,7 +39,7 @@
               </li>
               <li class="list_state">
                 <el-form-item label="展览类别" prop="category" class="show_star">
-                  <el-select v-model="ruleForm.region" placeholder="请选择">
+                  <el-select v-model="ruleForm.category" placeholder="请选择">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
@@ -83,8 +47,7 @@
               <li class="list_state">
                 <h4>详细介绍 :</h4>
                 <div class="right_input">
-                  nbvnbvnvnnnnc
-
+                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
                 </div>
               </li>
             </ul>
@@ -93,7 +56,8 @@
             <!--请填写详细介绍-->
           <!--</P>-->
           <div class="tc">
-            <button class="save_btn mt20 mb30">保  存</button>
+            <button class="save_btn mt20 mb30" @click="submitForm('ruleForm')" v-if="addEx">保  存</button>
+            <button class="save_btn mt20 mb30" style="background-color: #7dc71b" @click="submitFormAdd('ruleForm')" v-if="!addEx">添  加</button>
           </div>
         </div>
       </div>
@@ -104,20 +68,24 @@
 
 <script>
 import api from '../../service/api'
+import VueUEditor from 'vue-ueditor'
 import commonHeader from '../../components/CommonHeader.vue'
 export default {
   components: {
-    commonHeader
+    commonHeader,
+    VueUEditor
   },
   data:function () {
     return {
+      //判断添加还是更新
+      addEx:true,
       uploadData:{
         type:'banner'
       },
       ruleForm: {
         title_cn: '',
         order: '',
-        desc_cn: '',
+        content_cn: '',
         link: '',
         status: false
       },
@@ -125,24 +93,24 @@ export default {
         title_cn: [
           { required: true, message: '请在此输入标题', trigger: 'blur' },
         ],
-        desc_cn: [
-          { required: true, message: '请在此输入描述', trigger: 'blur' }
+        content_cn: [
+          { required: true, message: '请输入内容', trigger: 'blur' }
         ],
-        order: [
-          { required: true, message: '请在此输入展示位置', trigger: 'blur' }
-        ],
-        link: [
-          { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
+        category: [
+          { required: true, message: '请选择类别', trigger: 'blur' }
         ]
       },
+      exContent: '',
+      imgUrl:'',
+      currentUEditor:{},
       items:[],
-      value1: true,
+      value1: 1,
       value2: true,
       options: [{
-        value: '选项1',
+        value: 1,
         label: '国内'
       }, {
-        value: '选项2',
+        value: 2,
         label: '国际'
       }],
       value: ''
@@ -154,36 +122,28 @@ export default {
       console.log(data.data.result)
       if (data.data.status === 1) {
         this.items = data.data.result
-        if (this.items.length > 0) {
-          //根据id获取信息
-          api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: this.items[0].id}).then(data => {
-            console.log(data)
-            if (data.data.status === 1) {
-              this.ruleForm = data.data.result.exhibitToBeEdit
-              if(this.ruleForm.status == 1){
-                this.ruleForm.status = '1'
-              }else if(this.ruleForm.status = 0){
-                this.ruleForm.status = '0'
-              }
-            } else {
-              this.msg = data.data.result
-            }
-          }).catch((err) => {
-            console.error(err.message)
-          })
-        }
-      } else {
-        this.msg = '返回错误'
       }
     }).catch((err) => {
       console.error(err.message)
     })
   },
+  filters: {
+    formatImg (img) {
+      return axios.defaults.imageURL + img
+    }
+  },
   methods: {
-    //根据id获取热图信息
-    getExhibitEditPageInfoByID:function(){
-      api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: event.currentTarget.id}).then(data => {
-        console.log(data)
+    editorReady:function (editorInstance) {
+      this.getExhibit(editorInstance, this.items[0].id)
+      this.currentUEditor = editorInstance
+      editorInstance.addListener('contentChange', () => {
+        this.exContent = editorInstance.getContent()
+      })
+    },
+    getExhibit: function (editorInstance, exId) {
+      this.addEx = true
+      api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: exId}).then(data => {
+        console.log(data.data.result)
         if (data.data.status === 1) {
           this.ruleForm = data.data.result.exhibitToBeEdit
           if(this.ruleForm.status == 1){
@@ -191,6 +151,8 @@ export default {
           }else if(this.ruleForm.status = 0){
             this.ruleForm.status = '0'
           }
+          this.exContent = this.ruleForm.content_cn
+          editorInstance.setContent(this.exContent)
         } else {
           this.msg = '返回错误'
         }
@@ -198,28 +160,50 @@ export default {
         console.error(err.message)
       })
     },
+    getExByClicked: function () {
+      this.getExhibit(this.currentUEditor, event.currentTarget.id)
+    },
     //更新banner
     update:function(){
-      api.fetch(
-        api.uri.updateBannerByID,
+      api.post(
+        api.uri.updateExhibitByID,
         {
-          image:"image",
-          link:this.ruleForm.link,
           title_cn:this.ruleForm.title_cn,
           title_en:"",
-          desc_cn:this.ruleForm.desc_cn,
-          desc_en:"",
-          status:this.ruleForm.status,
-          order:this.ruleForm.order,
-          banner_id:this.ruleForm.banner_id
+          content_cn:this.exContent,
+          content_en:"",
+          status:parseInt(this.ruleForm.status),
+          category:this.ruleForm.category,
+          form_id:1,
+          exhibit_id:this.ruleForm.exhibit_id
         }
       ).then(data => {
         console.log(data)
         if (data.data.status === 1) {
-          this.ruleForm = data.data.result
+          location.reload()
         } else {
           this.msg = '返回错误'
         }
+      }).catch((err) => {
+        console.error(err.message)
+      })
+    },
+    addExhibit:function(){
+      api.post(
+        api.uri.addExhibit,
+        {
+          title_cn:this.ruleForm.title_cn,
+          title_en:"",
+          content_cn:this.exContent,
+          content_en:"",
+          status:parseInt(this.ruleForm.status),
+          category:this.ruleForm.category,
+          form_id:null,
+          exhibit_id:this.ruleForm.exhibit_id
+        }
+      ).then(data => {
+        location.reload()
+        this.$message('添加成功！')
       }).catch((err) => {
         console.error(err.message)
       })
@@ -244,7 +228,24 @@ export default {
           console.log('error submit!!');
           return false;
         }
-      });
+      })
+    },
+    submitFormAdd(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          console.log('新增')
+          this.addExhibit()
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      })
+    },
+    resetForm(formName) {
+      this.currentUEditor.setContent('')
+      this.$refs[formName].resetFields();
+      this.$message('请在此添加');
+      this.addEx = false
     }
   }
 }

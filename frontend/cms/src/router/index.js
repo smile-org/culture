@@ -24,6 +24,12 @@ export default new Router({
       meta: {requiresAuth: false}
     },
     {
+      path: '/',
+      name: 'index',
+      component: advertising,
+      meta: {requiresAuth: true}
+    },
+    {
       path: '/homepage/advertising',
       name: 'advertising',
       component: advertising,

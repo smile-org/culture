@@ -124,20 +124,32 @@ export default {
   },
   created () {
     this.headers = api.getUploadHeaders();
-    //获取左侧nav
-    api.fetch(api.uri.getNewsNavList).then(data => {
-      if (data.data.status === 1) {
-        this.items = data.data.result
-      } else {
-        this.msg = '返回错误'
-      }
-    }).catch((err) => {
-      console.error(err.message)
-    })
+    // //获取左侧nav
+    // api.fetch(api.uri.getNewsNavList).then(data => {
+    //   if (data.data.status === 1) {
+    //     this.items = data.data.result
+    //   } else {
+    //     this.msg = '返回错误'
+    //   }
+    // }).catch((err) => {
+    //   console.error(err.message)
+    // })
   },
   methods: {
     editorReady (editorInstance) {
-      this.getNews(editorInstance, this.items[0].id)
+      //获取左侧nav
+      api.fetch(api.uri.getNewsNavList).then(data => {
+        if (data.data.status === 1) {
+          this.items = data.data.result
+          if (this.items.length > 0) {
+            this.getNews(editorInstance, this.items[0].id)
+          }
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
       this.currentUEditor = editorInstance
       editorInstance.addListener('contentChange', () => {
         this.newsContent = editorInstance.getContent()
