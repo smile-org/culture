@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <common-header></common-header>
+    <common-header type="newsDetail"></common-header>
     <section>
       <div class="con_main">
         <aside>

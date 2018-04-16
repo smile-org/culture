@@ -10,7 +10,7 @@
         </el-col>
         <el-col :span="12">
           <ul class="nav_bar clear">
-            <li class="nav_bar_li">
+            <li class="nav_bar_li" v-on:click="routeByName('advertising')" v-bind:class="{active: type==='advertising'}">
               <span class="h_icon h_icon04"></span>
               <p>首页</p>
               <ul class="extra_box">
@@ -30,11 +30,11 @@
               <span class="h_icon h_icon01"></span>
               <p>文化展览</p>
             </li>
-            <li class="nav_bar_li" v-on:click="routeByName('advertising')"
-                v-bind:class="{active: type==='advertising'}">
-              <span class="h_icon h_icon02"></span>
-              <p>文化旅游</p>
-            </li>
+            <!--<li class="nav_bar_li" v-on:click="routeByName('advertising')"-->
+                <!--v-bind:class="{active: type==='advertising'}">-->
+              <!--<span class="h_icon h_icon02"></span>-->
+              <!--<p>文化旅游</p>-->
+            <!--</li>-->
           </ul>
         </el-col>
         <el-col :span="6" class="admin_num">
@@ -56,6 +56,9 @@
   export default {
     data: function () {
       return {}
+    },
+    created: function () {
+      console.log(this.type)
     },
     props: ['type'],
     methods: {

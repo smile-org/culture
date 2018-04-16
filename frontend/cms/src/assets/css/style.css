@@ -176,7 +176,7 @@ header .nav_bar .nav_bar_li:hover {
   background: rgba(220, 93, 82, 0.7);
 }
 
-header > .active {
+header  .active {
   background: rgba(220, 93, 82, 0.7);
 }
 
@@ -214,7 +214,7 @@ header > .active {
   -webkit-filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .1));
   z-index: 1;
   font-size: 16px;
-   display: none;
+  display: none;
 }
 
 header .nav_bar .nav_bar_li:hover > .extra_box {
@@ -264,9 +264,11 @@ header p {
   position: relative;
   color: #fff;
 }
-.admin_tab p{
+
+.admin_tab p {
   color: #000;
 }
+
 .admin_tab:hover > .extra_quit {
   display: block;
   transition: 3s;
@@ -341,7 +343,8 @@ section {
   overflow: hidden;
   /*display: flex;*/
 }
-.aside_ad_list .active{
+
+.aside_ad_list .active {
   background: #eee;
 }
 
@@ -739,3 +742,15 @@ section {
 /*display: flex;*/
 
 /*}*/
+.list_state h4:before,.show_star .el-form-item__label:before{
+  content: '*';
+  color: #f56c6c;
+  margin-right: 4px;
+}
+
+.list_state h4 {
+  font-size: 14px;
+}
+.list_state .el-form-item__label{
+  text-align: left;
+}

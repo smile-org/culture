@@ -1,6 +1,6 @@
 <template>
   <div class="hotTopic">
-    <common-header></common-header>
+    <common-header  type="hotTopic"></common-header>
     <section>
       <div class="con_main">
         <aside>

@@ -1,6 +1,6 @@
 <template>
   <div class="exhibition">
-    <common-header></common-header>
+    <common-header  type="exhibitionDetail"></common-header>
     <!--<header>-->
       <!--<el-row class="header_tab">-->
         <!--<el-col :span="6">-->
@@ -74,7 +74,7 @@
                 </el-form-item>
               </li>
               <li class="list_state">
-                <el-form-item label="展览类别" prop="category">
+                <el-form-item label="展览类别" prop="category" class="show_star">
                   <el-select v-model="ruleForm.region" placeholder="请选择">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>

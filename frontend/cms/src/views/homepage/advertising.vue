@@ -1,6 +1,6 @@
 <template>
   <div class="adver">
-    <common-header></common-header>
+    <common-header type="advertising"></common-header>
     <section>
       <div class="con_main">
         <aside>
@@ -27,7 +27,7 @@
             </h4>
             <ul class="con_ul">
               <li class="list_state">
-                <h4>宣传图片 :</h4>
+                <h4>宣传图片</h4>
                 <div class="right_input">
                   <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
                   <el-upload
