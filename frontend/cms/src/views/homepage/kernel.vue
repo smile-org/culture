@@ -1,44 +1,6 @@
 <template>
   <div class="kernel">
     <common-header type="kernel"></common-header>
-    <!--<header>-->
-      <!--<el-row class="header_tab">-->
-        <!--<el-col :span="6">-->
-          <!--<a class="logo fl">-->
-            <!--<img class="vm" src="img/small_logo.png"/>-->
-            <!--<span class="vm">文化寻力营销平台</span>-->
-          <!--</a>-->
-        <!--</el-col>-->
-        <!--<el-col :span="12">-->
-          <!--<ul class="nav_bar clear">-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon04"></span>-->
-              <!--<p>首页</p>-->
-              <!--<ul class="extra_box">-->
-                <!--<li><a href="">广告热图</a></li>-->
-                <!--<li><a href="">核心模块</a></li>-->
-                <!--<li><a href="">热点聚焦</a></li>-->
-              <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon03"></span>-->
-              <!--<p>新闻</p>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon01"></span>-->
-              <!--<p>文化展览</p>-->
-            <!--</li>-->
-            <!--<li class="nav_bar_li">-->
-              <!--<span class="h_icon h_icon02"></span>-->
-              <!--<p>文化旅游</p>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</el-col>-->
-        <!--<el-col :span="6" class="admin_num">-->
-          <!--<span>管理员</span>-->
-        <!--</el-col>-->
-      <!--</el-row>-->
-    <!--</header>-->
     <section>
       <div class="con_main">
         <aside>
@@ -168,7 +130,11 @@ export default {
           this.items = data.data.result
           if (this.items.length > 0) {
             //根据id获取热图信息
-            this.getModuleByID(this.items[0].id)
+            if (this.tmpid === 0) {
+              this.getModuleByID(this.items[0].id)
+            } else {
+              this.getModuleByID(this.tmpid)
+            }
           }
         } else {
           this.msg = '返回错误'

@@ -151,7 +151,11 @@
             this.items = data.data.result
             if (this.items.length > 0) {
               //根据id获取信息
-              this.getBannerByID(this.items[0].id)
+              if (this.tmpid === 0) {
+                this.getBannerByID(this.items[0].id)
+              } else {
+                this.getBannerByID(this.tmpid)
+              }
             }
           } else {
             this.msg = '返回错误'

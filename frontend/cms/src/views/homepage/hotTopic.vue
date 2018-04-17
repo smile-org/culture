@@ -27,23 +27,29 @@
               </el-switch>
             </h4>
             <ul class="con_ul">
+              <li class="list_state">
+                <el-form-item label="展示位置" prop="order">
+                  <el-input v-model="ruleForm.order" placeholder="请在此输入展示位置"></el-input>
+                </el-form-item>
+              </li>
               <li class="list_state language_con">
-                <span class="active">中文</span>  <span>英文</span>
+                <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
+                <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
               </li>
               <li class="list_state">
                 <el-form-item label="热点名称" prop="title_cn">
-                  <el-input v-model="ruleForm.title_cn" placeholder="请在此输入标题"></el-input>
+                  <el-input v-model="ruleForm.title" placeholder="请在此输入标题"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
                 <el-form-item label="热点简述" prop="desc_cn">
-                  <el-input v-model="ruleForm.desc_cn" placeholder="请在此输入描述"></el-input>
+                  <el-input v-model="ruleForm.desc" placeholder="请在此输入描述"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img alt="" class="style_banner fl" :src="imgUrl | formatImg">
+                  <img alt="" class="style_banner fl" :src="ruleForm.image | formatImg">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -87,40 +93,39 @@
     },
     data: function () {
       return {
+        // 语言
+        lang: 'cn',
         // 上传参数
         uploadAPI: api.uploadAPI,
         headers: {},
         // 里面只有一个附件， 第二个会替换第一个
         fileList: [],
-        // end
-        imgUrl: '',
         uploadData: {
           type: 'focus'
         },
-        tmpid: 1,
+        tmpid: 0,
         ruleForm: {
-          title_cn: '',
-          order: '',
-          desc_cn: '',
+          focus_id: 0,
+          title: '',
+          desc: '',
           link: '',
           image: '',
-          status: false
+          status: '',
+          order: ''
         },
         rules: {
-          title_cn: [
+          title: [
             {required: true, message: '请在此输入标题', trigger: 'blur'},
           ],
-          desc_cn: [
+          desc: [
             {required: true, message: '请在此输入描述', trigger: 'blur'}
-          ],
-          order: [
-            {required: true, message: '请在此输入展示位置', trigger: 'blur'}
           ],
           link: [
             {required: true, message: '请在此输入跳转链接', trigger: 'blur'}
           ]
         },
-        items: []
+        items: [],
+        resultForm: []
       }
     },
     filters: {
@@ -147,22 +152,11 @@
             this.items = data.data.result
             if (this.items.length > 0) {
               //根据id获取热图信息
-              api.fetch(api.uri.getFocusByID, {focus_id: this.items[0].id}).then(data => {
-                console.log(data)
-                if (data.data.status === 1) {
-                  this.ruleForm = data.data.result
-                  if (this.ruleForm.status == 1) {
-                    this.ruleForm.status = '1'
-                  } else if (this.ruleForm.status = 0) {
-                    this.ruleForm.status = '0'
-                  }
-                  this.imgUrl = this.ruleForm.image
-                } else {
-                  this.msg = data.data.result
-                }
-              }).catch((err) => {
-                console.error(err.message)
-              })
+              if (this.tmpid === 0) {
+                this.getFocusByID(this.items[0].id)
+              } else {
+                this.getFocusByID(this.tmpid)
+              }
             }
           } else {
             this.msg = '返回错误'
@@ -174,16 +168,14 @@
       //根据id获取信息
       getFocusByID: function (id) {
         this.tmpid = id;
-          api.fetch(api.uri.getFocusByID, {focus_id: event.currentTarget.id}).then(data => {
+          api.fetch(api.uri.getFocusByID, {focus_id: id}).then(data => {
             console.log(data)
             if (data.data.status === 1) {
-              this.ruleForm = data.data.result
-              if (this.ruleForm.status == 1) {
-                this.ruleForm.status = '1'
-              } else if (this.ruleForm.status = 0) {
-                this.ruleForm.status = '0'
-              }
-              this.imgUrl = this.ruleForm.image
+              this.resultForm = data.data.result
+              this.ruleForm.focus_id = this.resultForm.focus_id
+              this.ruleForm.status = this.resultForm.status === 1 ? '1' : '0'
+              this.ruleForm.order = this.resultForm.order
+              this.setLang(this.lang)
             } else {
               this.msg = '返回错误'
             }
@@ -191,31 +183,69 @@
             console.error(err.message)
           })
       },
+      // 切换语言
+      setLang: function(lang){
+        this.lang = lang
+        if (this.lang === 'cn') {
+          this.ruleForm.title = this.resultForm.title_cn
+          this.ruleForm.desc = this.resultForm.desc_cn
+          this.ruleForm.image = this.resultForm.image_cn
+          this.ruleForm.link = this.resultForm.link_cn
+        } else {
+          this.ruleForm.title = this.resultForm.title_en
+          this.ruleForm.desc = this.resultForm.desc_en
+          this.ruleForm.image = this.resultForm.image_en
+          this.ruleForm.link = this.resultForm.link_en
+        }
+      },
       //更新focus
       update: function () {
+        var params = {}
+        if (this.lang === 'cn') {
+          params = {
+            image_cn: this.ruleForm.image,
+            link_cn: this.ruleForm.link,
+            title_cn: this.ruleForm.title,
+            desc_cn: this.ruleForm.desc,
+            status: parseInt(this.ruleForm.status),
+            order: parseInt(this.ruleForm.order),
+            focus_id: this.ruleForm.focus_id,
+            lan: 'cn'
+          }
+        }else{
+          params = {
+            image_en: this.ruleForm.image,
+            link_en: this.ruleForm.link,
+            title_en: this.ruleForm.title,
+            desc_en: this.ruleForm.desc,
+            status: parseInt(this.ruleForm.status),
+            order: parseInt(this.ruleForm.order),
+            focus_id: this.ruleForm.focus_id,
+            lan: 'en'
+          }
+        }
         api.post(
           api.uri.updateFocusByID,
-          {
-            image: this.imgUrl,
-            link: this.ruleForm.link,
-            title_cn: this.ruleForm.title_cn,
-            title_en: "",
-            desc_cn: this.ruleForm.desc_cn,
-            desc_en: "",
-            status: parseInt(this.ruleForm.status),
-            order: this.ruleForm.order,
-            focus_id: this.ruleForm.focus_id
-          }
+          params
         ).then(data => {
           console.log(data)
+          this.initNav()
           if (data.data.status === 1) {
-            this.ruleForm = data.data.result
-            this.initNav()
+            this.$message({
+              type: 'info',
+              message: '保存成功'
+            })
           } else {
-            this.msg = '返回错误'
+            this.$message({
+              type: 'info',
+              message: '保存失败'
+            })
           }
         }).catch((err) => {
-          console.error(err.message)
+          this.$message({
+            type: 'info',
+            message: err.message
+          })
         })
       },
       submitForm(formName) {
@@ -232,7 +262,7 @@
       // 上传文件
       onContentSuccess(response, file, fileList) {
         console.log(response)
-        this.imgUrl = response.result
+        this.ruleForm.image = response.result
       },
 
       changeContentUpload(file, fileList) {
