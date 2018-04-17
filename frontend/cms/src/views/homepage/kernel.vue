@@ -54,22 +54,23 @@
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <ul class="con_ul">
               <li class="list_state language_con">
-                <span class="active">中文</span>  <span>英文</span>
+                <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
+                <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
               </li>
               <li class="list_state">
                 <el-form-item label="模块名称" prop="title_cn">
-                  <el-input v-model="ruleForm.title_cn" placeholder="请在此输入名称"></el-input>
+                  <el-input v-model="ruleForm.title" placeholder="请在此输入名称"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
                 <el-form-item label="模块简述" prop="desc_cn">
-                  <el-input v-model="ruleForm.desc_cn" placeholder="请在此输入描述"></el-input>
+                  <el-input v-model="ruleForm.desc" placeholder="请在此输入描述"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
+                  <img :src="ruleForm.image | formatImg" alt="" class="style_banner fl">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -115,33 +116,37 @@ export default {
   },
   data:function () {
     return {
+      // 语言
+      lang: 'cn',
       // 上传参数
       uploadAPI: api.uploadAPI,
       headers: {},
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
-      imgUrl:'',
       tmpid: 1,
       uploadData:{
         type:'module'
       },
       ruleForm: {
-        title_cn: '',
-        desc_cn: '',
+        module_id:0,
+        title: '',
+        desc: '',
+        image:'',
         link: ''
       },
       rules: {
-        title_cn: [
+        title: [
           { required: true, message: '请在此输入标题', trigger: 'blur' },
         ],
-        desc_cn: [
+        desc: [
           { required: true, message: '请在此输入描述', trigger: 'blur' }
         ],
         link: [
           { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
         ]
       },
-      items: []
+      items: [],
+      resultForm:[]
     }
   },
   filters: {
@@ -163,19 +168,8 @@ export default {
           this.items = data.data.result
           if (this.items.length > 0) {
             //根据id获取热图信息
-            api.fetch(api.uri.getModuleByID, {module_id: this.items[0].id}).then(data => {
-              console.log(data)
-              if (data.data.status === 1) {
-                this.ruleForm = data.data.result
-                this.imgUrl = data.data.result.image
-              } else {
-                this.msg = data.data.result
-              }
-            }).catch((err) => {
-              console.error(err.message)
-            })
+            this.getModuleByID(this.items[0].id)
           }
-
         } else {
           this.msg = '返回错误'
         }
@@ -186,17 +180,33 @@ export default {
     //根据id信息
     getModuleByID:function(id){
       this.tmpid = id;
-      api.fetch(api.uri.getModuleByID, {module_id: event.currentTarget.id}).then(data => {
+      api.fetch(api.uri.getModuleByID, {module_id: id}).then(data => {
         console.log(data)
         if (data.data.status === 1) {
-          this.ruleForm = data.data.result
-          this.imgUrl = this.ruleForm.image
+          this.resultForm = data.data.result
+          this.ruleForm.module_id = this.resultForm.module_id
+          this.setLang(this.lang)
         } else {
           this.msg = '返回错误'
         }
       }).catch((err) => {
         console.error(err.message)
       })
+    },
+    // 切换语言
+    setLang: function(lang){
+      this.lang = lang
+      if (this.lang === 'cn') {
+        this.ruleForm.title = this.resultForm.title_cn
+        this.ruleForm.desc = this.resultForm.desc_cn
+        this.ruleForm.image = this.resultForm.image_cn
+        this.ruleForm.link = this.resultForm.link_cn
+      } else {
+        this.ruleForm.title = this.resultForm.title_en
+        this.ruleForm.desc = this.resultForm.desc_en
+        this.ruleForm.image = this.resultForm.image_en
+        this.ruleForm.link = this.resultForm.link_en
+      }
     },
     //更新banner
     update:function(){
@@ -237,7 +247,7 @@ export default {
     // 上传文件
     onContentSuccess (response, file, fileList) {
       console.log(response)
-      this.imgUrl = response.result
+      this.ruleForm.image = response.result
     },
 
     changeContentUpload (file, fileList) {

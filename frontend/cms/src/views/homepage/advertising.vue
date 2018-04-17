@@ -204,7 +204,8 @@
             desc_cn: this.ruleForm.desc,
             status: parseInt(this.ruleForm.status),
             order: parseInt(this.ruleForm.order),
-            banner_id: this.ruleForm.banner_id
+            banner_id: this.ruleForm.banner_id,
+            lan: 'cn'
           }
         }else{
           params = {
@@ -214,7 +215,8 @@
             desc_en: this.ruleForm.desc,
             status: parseInt(this.ruleForm.status),
             order: parseInt(this.ruleForm.order),
-            banner_id: this.ruleForm.banner_id
+            banner_id: this.ruleForm.banner_id,
+            lan: 'en'
           }
         }
 
