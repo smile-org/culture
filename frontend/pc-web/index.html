@@ -195,10 +195,10 @@
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
                         htmlObj += '<li class="col-sm-4">\n' +
-                            '<a href="' + item.link + '" class="part1_img">\n' +
-                            '<img src="' + imageUrl() + item.image + '" alt="">\n' +
+                            '<a href="' + item.link_cn + '" class="part1_img">\n' +
+                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</a>\n' +
-                            '<a href="' + item.link + '" class="part1_font">\n' +
+                            '<a href="' + item.link_cn + '" class="part1_font">\n' +
                             '<span class="rectangle c_red"></span>\n' +
                             '<h4>' + item.title_cn + '</h4>\n' +
                             '<span>' + item.desc_cn + '</span>\n' +
@@ -220,9 +220,9 @@
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
                         htmlObj += '<div class="swiper-slide">\n' +
-                            '<a href="' + item.link + '" class=" hot_topic">\n' +
+                            '<a href="' + item.link_cn + '" class=" hot_topic">\n' +
                             '<div class="topic_hot">\n' +
-                            '<img src="' + imageUrl() + item.image + '" alt="">\n' +
+                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</div>\n' +
                             '<div class="topic_hot">\n' +
                             '<div>\n' +
