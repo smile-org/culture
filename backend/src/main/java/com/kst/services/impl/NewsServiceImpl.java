@@ -92,10 +92,14 @@ public class NewsServiceImpl implements NewsService {
                 if( lan.equals("cn"))
                 {
                     obj.setTitle_en(null);
+                    obj.setLink_en(null);
+                    obj.setImage_en(null);
                 }
                 else
                 {
                     obj.setTitle_cn(null);
+                    obj.setLink_cn(null);
+                    obj.setImage_cn(null);
                 }
             }
 
@@ -144,6 +148,9 @@ public class NewsServiceImpl implements NewsService {
 
                 news.setContent_en(null);
                 news.setDesc_en(null);
+
+                news.setLink_en(null);
+                news.setImage_en(null);
             }
             else
             {
@@ -151,6 +158,9 @@ public class NewsServiceImpl implements NewsService {
 
                 news.setContent_cn(null);
                 news.setDesc_cn(null);
+
+                news.setLink_cn(null);
+                news.setImage_cn(null);
             }
 
             result = MapUtil.generateSuccessRes(news);

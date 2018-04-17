@@ -42,7 +42,7 @@ public class NewsController {
     */
 
 
-
+  /*
 
     @RequestMapping(value = "/addNews", method = RequestMethod.POST)
     public Map addNews(@RequestHeader Map header , @RequestBody Map body) {
@@ -75,7 +75,7 @@ public class NewsController {
         return result;
     }
 
-
+ */
 
     @RequestMapping(value = "/getNewsNavList", method = RequestMethod.GET)
     public Map getNewsNavList(@RequestHeader Map header) {
@@ -125,19 +125,27 @@ public class NewsController {
             return result;
         }
 
+        String lan = (String) body.get("lan");
         News news =new News();
-        news.setImage_cn ((String) body.get("image_cn"));
-        news.setImage_en ((String) body.get("image_en"));
-        news.setTitle_cn ((String) body.get("title_cn"));
-        news.setTitle_en ((String) body.get("title_en"));
 
-        news.setLink_cn ((String) body.get("link_cn"));
-        news.setLink_en ((String) body.get("link_en"));
-        news.setDesc_cn ((String) body.get("desc_cn"));
-        news.setDesc_en ((String) body.get("desc_en"));
+        if(lan.equals("cn"))
+        {
+            news.setImage_cn ((String) body.get("image_cn"));
+            news.setTitle_cn ((String) body.get("title_cn"));
+            news.setLink_cn ((String) body.get("link_cn"));
+            news.setDesc_cn ((String) body.get("desc_cn"));
 
-        news.setContent_cn ((String) body.get("content_cn"));
-        news.setContent_en ((String) body.get("content_en"));
+            news.setContent_cn ((String) body.get("content_cn"));
+        }
+        else
+        {
+            news.setImage_en ((String) body.get("image_en"));
+            news.setTitle_en ((String) body.get("title_en"));
+            news.setLink_en ((String) body.get("link_en"));
+            news.setDesc_en ((String) body.get("desc_en"));
+            news.setContent_en ((String) body.get("content_en"));
+        }
+
         news.setNews_id ((Integer) body.get("news_id"));
 
         result = newsService.updateNewsByID(news);

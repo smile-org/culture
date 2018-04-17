@@ -39,12 +39,18 @@ public class ExhibitController {
 
         Exhibit exhibit =new Exhibit();
 
-        exhibit.setTitle_cn ((String) body.get("title_cn"));
-        exhibit.setTitle_en ((String) body.get("title_en"));
+        String lan = (String) body.get("lan");
 
-        exhibit.setContent_cn ((String) body.get("content_cn"));
-        exhibit.setContent_en ((String) body.get("content_en"));
-
+        if(lan.equals("cn"))
+        {
+            exhibit.setTitle_cn ((String) body.get("title_cn"));
+            exhibit.setContent_cn ((String) body.get("content_cn"));
+        }
+        else
+        {
+            exhibit.setTitle_en ((String) body.get("title_en"));
+            exhibit.setContent_en ((String) body.get("content_en"));
+        }
 
         exhibit.setCategory ((int) body.get("category"));
 
@@ -124,11 +130,20 @@ public class ExhibitController {
 
         Exhibit exhibit =new Exhibit();
 
-        exhibit.setTitle_cn ((String) body.get("title_cn"));
-        exhibit.setTitle_en ((String) body.get("title_en"));
+        String lan = (String) body.get("lan");
 
-        exhibit.setContent_cn ((String) body.get("content_cn"));
-        exhibit.setContent_en ((String) body.get("content_en"));
+        if(lan.equals("cn")) {
+
+            exhibit.setTitle_cn((String) body.get("title_cn"));
+
+
+            exhibit.setContent_cn((String) body.get("content_cn"));
+        }
+        else {
+
+            exhibit.setTitle_en((String) body.get("title_en"));
+            exhibit.setContent_en((String) body.get("content_en"));
+        }
 
 
         exhibit.setCategory ((int) body.get("category"));

@@ -226,15 +226,23 @@ public class FirstPageController {
         }
 
         Module module =new Module();
-        module.setImage_cn ((String) body.get("image_cn"));
-        module.setImage_en ((String) body.get("image_en"));
-        module.setLink_cn ((String) body.get("link_cn"));
-        module.setLink_en ((String) body.get("link_en "));
-        module.setTitle_cn ((String) body.get("title_cn"));
+        String lan = (String) body.get("lan");
 
-        module.setTitle_en ((String) body.get("title_en"));
-        module.setDesc_cn ((String) body.get("desc_cn"));
-        module.setDesc_en ((String) body.get("desc_en"));
+        if(lan.equals("cn"))
+        {
+            module.setImage_cn ((String) body.get("image_cn"));
+            module.setLink_cn ((String) body.get("link_cn"));
+            module.setTitle_cn ((String) body.get("title_cn"));
+            module.setDesc_cn ((String) body.get("desc_cn"));
+        }
+        else
+        {
+            module.setImage_en ((String) body.get("image_en"));
+            module.setLink_en ((String) body.get("link_en"));
+
+            module.setTitle_en ((String) body.get("title_en"));
+            module.setDesc_en ((String) body.get("desc_en"));
+        }
 
         module.setModule_id ((Integer) body.get("module_id"));
 
@@ -279,16 +287,26 @@ public class FirstPageController {
             return result;
         }
 
-        Focus focus =new Focus();
-        focus.setImage_cn ((String) body.get("image_cn"));
-        focus.setImage_en ((String) body.get("image_en"));
-        focus.setLink_cn ((String) body.get("link_cn"));
-        focus.setLink_en ((String) body.get("link_en"));
-        focus.setTitle_cn ((String) body.get("title_cn"));
+        String lan=   (String)body.get("lan");
 
-        focus.setTitle_en ((String) body.get("title_en"));
-        focus.setDesc_cn ((String) body.get("desc_cn"));
-        focus.setDesc_en ((String) body.get("desc_en"));
+        Focus focus =new Focus();
+
+
+        if(lan.equals("cn"))
+        {
+            focus.setImage_cn ((String) body.get("image_cn"));
+            focus.setLink_cn ((String) body.get("link_cn"));
+            focus.setTitle_cn ((String) body.get("title_cn"));
+            focus.setDesc_cn ((String) body.get("desc_cn"));
+        }
+        else
+        {
+            focus.setImage_en ((String) body.get("image_en"));
+            focus.setLink_en ((String) body.get("link_en"));
+            focus.setTitle_en ((String) body.get("title_en"));
+            focus.setDesc_en ((String) body.get("desc_en"));
+        }
+
 
         focus.setStatus ((Integer) body.get("status"));
         focus.setOrder ((Integer) body.get("order"));
