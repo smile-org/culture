@@ -210,27 +210,49 @@ export default {
     },
     //更新banner
     update:function(){
+      var params = {}
+      if (this.lang === 'cn') {
+        params = {
+          image_cn: this.ruleForm.image,
+          link_cn: this.ruleForm.link,
+          title_cn: this.ruleForm.title,
+          desc_cn: this.ruleForm.desc,
+          module_id: this.ruleForm.module_id,
+          lan: 'cn'
+        }
+      }else{
+        params = {
+          image_en: this.ruleForm.image,
+          link_en: this.ruleForm.link,
+          title_en: this.ruleForm.title,
+          desc_en: this.ruleForm.desc,
+          module_id: this.ruleForm.module_id,
+          lan: 'en'
+        }
+      }
       api.post(
         api.uri.updateModuleByID,
-        {
-          image:this.imgUrl,
-          link:this.ruleForm.link,
-          title_cn:this.ruleForm.title_cn,
-          title_en:"",
-          desc_cn:this.ruleForm.desc_cn,
-          desc_en:"",
-          module_id:this.ruleForm.module_id
-        }
+        params
       ).then(data => {
         console.log(data)
+        this.initNav()
         if (data.data.status === 1) {
-          this.ruleForm = data.data.result
-          this.initNav()
+          this.$message({
+            type: 'info',
+            message: '保存成功'
+          })
         } else {
-          this.msg = '返回错误'
+          this.$message({
+            type: 'info',
+            message: '保存失败'
+          })
         }
       }).catch((err) => {
         console.error(err.message)
+        this.$message({
+          type: 'info',
+          message: err.message
+        })
       })
     },
     submitForm(formName) {
