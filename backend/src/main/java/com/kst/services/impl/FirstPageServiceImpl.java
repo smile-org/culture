@@ -187,11 +187,17 @@ public class FirstPageServiceImpl implements FirstPageService {
                 {
                     m.setTitle_en(null);
                     m.setDesc_en(null);
+
+                    m.setImage_en(null);
+                    m.setLink_en(null);
                 }
                 else
                 {
                     m.setTitle_cn(null);
                     m.setDesc_cn(null);
+
+                    m.setImage_cn(null);
+                    m.setLink_cn(null);
                 }
             }
 
@@ -250,11 +256,17 @@ public class FirstPageServiceImpl implements FirstPageService {
                 {
                     f.setTitle_en(null);
                     f.setDesc_en(null);
+
+                    f.setImage_en(null);
+                    f.setLink_en(null);
                 }
                 else
                 {
                     f.setTitle_cn(null);
                     f.setDesc_cn(null);
+
+                    f.setImage_cn(null);
+                    f.setLink_cn(null);
 
                 }
             }
