@@ -28,7 +28,7 @@
             </h4>
             <ul class="con_ul">
               <li class="list_state language_con">
-                <span class="">中文</span>  <span>英文</span>
+                <span class="active">中文</span>  <span>英文</span>
               </li>
               <li class="list_state">
                 <el-form-item label="热点名称" prop="title_cn">
