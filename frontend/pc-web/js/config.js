@@ -1,7 +1,7 @@
 function baseUrl() {
-    return "http://culture:8000/"
+    return "http://39.107.152.177:8000/"
 }
 
 function imageUrl() {
-    return "http://culture:8004/"
+    return "http://39.107.152.177:8004/"
 }
