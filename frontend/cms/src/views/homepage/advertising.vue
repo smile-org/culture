@@ -145,22 +145,7 @@ export default {
           this.items = data.data.result
           if (this.items.length > 0) {
             //根据id获取信息
-            api.fetch(api.uri.getBannerByID, {banner_id: this.items[0].id}).then(data => {
-              console.log(data)
-              if (data.data.status === 1) {
-                this.ruleForm = data.data.result
-                if(this.ruleForm.status == 1){
-                  this.ruleForm.status = '1'
-                }else if(this.ruleForm.status = 0){
-                  this.ruleForm.status = '0'
-                }
-                this.imgUrl = this.ruleForm.image
-              } else {
-                this.msg = data.data.result
-              }
-            }).catch((err) => {
-              console.error(err.message)
-            })
+            this.getBannerByID(this.items[0].id)
           }
         } else {
           this.msg = '返回错误'
@@ -171,8 +156,8 @@ export default {
     },
     //根据id获取热图信息
     getBannerByID:function(id){
-      this.tmpid = id;
-      api.fetch(api.uri.getBannerByID, {banner_id: event.currentTarget.id}).then(data => {
+      // this.tmpid = id;
+      api.fetch(api.uri.getBannerByID, {banner_id: id}).then(data => {
         console.log(data)
         if (data.data.status === 1) {
           this.ruleForm = data.data.result
