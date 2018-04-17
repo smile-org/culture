@@ -6,7 +6,7 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon05"></span>新闻列表</h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="getNewsByClicked" :key="item.id">
+            <li v-for="item in items" :id="item.id" @click="getNewsByClicked(item.id)" :key="item.id" v-bind:class="{active: item.id == tmpid}">
               {{item.title}}
             </li>
           </ul>
@@ -86,6 +86,7 @@ export default {
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
       // end
+      tmpid: 1,
       newsContent: '',
       imgUrl:'',
       uploadData:{
@@ -176,7 +177,8 @@ export default {
         })
     },
 
-    getNewsByClicked: function () {
+    getNewsByClicked: function (id) {
+      this.tmpid = id;
       this.getNews(this.currentUEditor, event.currentTarget.id)
     },
 

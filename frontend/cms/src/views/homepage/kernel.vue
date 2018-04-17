@@ -44,7 +44,7 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon02"></span>核心模块</h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="getModuleByID" :key="item.id">
+            <li v-for="item in items" :id="item.id" @click="getModuleByID(item.id)" :key="item.id" v-bind:class="{active: item.id == tmpid}">
               {{item.title}}
             </li>
           </ul>
@@ -118,6 +118,7 @@ export default {
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
       imgUrl:'',
+      tmpid: 1,
       uploadData:{
         type:'module'
       },
@@ -180,7 +181,8 @@ export default {
       })
     },
     //根据id信息
-    getModuleByID:function(){
+    getModuleByID:function(id){
+      this.tmpid = id;
       api.fetch(api.uri.getModuleByID, {module_id: event.currentTarget.id}).then(data => {
         console.log(data)
         if (data.data.status === 1) {

@@ -39,7 +39,7 @@
         </el-col>
         <el-col :span="6" class="admin_num">
           <i class="iconfont icon-tubiaozhizuomoban"></i>
-          <div class="admin_tab fr active">管理员
+          <div class="admin_tab fr">管理员
             <div class="extra_quit">
               <p v-on:click="exit()">退出
               </p>
