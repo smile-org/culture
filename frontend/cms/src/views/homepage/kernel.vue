@@ -53,6 +53,9 @@
         <div class="con_right">
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <ul class="con_ul">
+              <li class="list_state language_con">
+                <span class="">中文</span>  <span>英文</span>
+              </li>
               <li class="list_state">
                 <el-form-item label="模块名称" prop="title_cn">
                   <el-input v-model="ruleForm.title_cn" placeholder="请在此输入名称"></el-input>

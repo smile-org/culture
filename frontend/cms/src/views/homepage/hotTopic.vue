@@ -27,6 +27,9 @@
               </el-switch>
             </h4>
             <ul class="con_ul">
+              <li class="list_state language_con">
+                <span class="">中文</span>  <span>英文</span>
+              </li>
               <li class="list_state">
                 <el-form-item label="热点名称" prop="title_cn">
                   <el-input v-model="ruleForm.title_cn" placeholder="请在此输入标题"></el-input>

@@ -51,7 +51,7 @@
               <li class="list_state">
                 <h4>新闻内容 :</h4>
                 <div class="right_input" >
-                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
+                  <VueUEditor @ready="editorReady" style="max-Width : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
                 </div>
             </li>
           </ul>

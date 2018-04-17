@@ -759,3 +759,15 @@ section {
 .list_state .el-form-item__label{
   text-align: left;
 }
+.language_con span{
+  color: #7a7a7a;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 20px;
+}
+.language_con span:hover{
+  color: #f96235;
+}
+.language_con .active{
+  color: #f96235;
+}
