@@ -63,7 +63,21 @@
 
     <update id="updateModuleByID"    parameterType="com.kst.entities.Module">
         update module
-set image= #{image}, link=#{link} , title_cn=#{title_cn}, title_en=#{title_en} ,     desc_cn=#{desc_cn}, desc_en= #{desc_en},  update_at=now()
+<set>
+        <if test="title_cn !=null">image_cn=#{image_cn},</if>
+        <if test="title_cn !=null">link_cn=#{link_cn},</if>
+        <if test="title_cn !=null">title_cn=#{title_cn},</if>
+        <if test="title_cn !=null">desc_cn=#{desc_cn},</if>
+
+        <if test="title_en !=null">image_en=#{image_en},</if>
+        <if test="title_en !=null">link_en=#{link_en},</if>
+        <if test="title_en !=null">title_en=#{title_en},</if>
+        <if test="title_en !=null"> desc_en=#{desc_en},</if>
+
+
+        <if test="true"> update_at= now()</if>
+
+</set>
  where module_id=#{module_id}
     </update>
 
@@ -88,7 +102,24 @@ set image= #{image}, link=#{link} , title_cn=#{title_cn}, title_en=#{title_en} ,
     </select>
 
     <update id="updateFocusByID"    parameterType="com.kst.entities.Focus">
-         update focus set image=#{image},  link=#{link}, title_cn=#{title_cn}, title_en=#{title_en} , desc_cn=#{desc_cn} , desc_en=#{desc_en},  `status`=#{status}, `order`= #{order} ,update_at= now()
+         update focus
+        <set>
+            <if test="title_cn !=null">image_cn=#{image_cn},</if>
+            <if test="title_cn !=null">link_cn=#{link_cn},</if>
+            <if test="title_cn !=null">title_cn=#{title_cn},</if>
+            <if test="title_cn !=null">desc_cn=#{desc_cn},</if>
+
+            <if test="title_en !=null">image_en=#{image_en},</if>
+            <if test="title_en !=null">link_en=#{link_en},</if>
+            <if test="title_en !=null">title_en=#{title_en},</if>
+            <if test="title_en !=null"> desc_en=#{desc_en},</if>
+
+            <if test="true"> `status`=#{status},</if>
+            <if test="true">`order`= #{order} ,</if>
+            <if test="true"> update_at= now()</if>
+
+
+        </set>
 
          where  focus_id =#{focus_id}
     </update>

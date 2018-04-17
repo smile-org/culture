@@ -6,7 +6,7 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon04"></span>文化展览  <span class="small_addBtn" @click="resetForm('ruleForm')">添加</span></h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="getExByClicked" :key="item.id">
+            <li v-for="item in items" :id="item.id" @click="getExByClicked(item.id)" :key="item.id" v-bind:class="{active: item.id == tmpid}">
               {{item.title}}
               <!--<span class="blockUp">停用</span>-->
               <span class="blockUp" v-if="!item.status">停用</span>
@@ -82,6 +82,7 @@ export default {
       uploadData:{
         type:'banner'
       },
+      tmpid: 1,
       ruleForm: {
         title_cn: '',
         order: '',
@@ -160,7 +161,8 @@ export default {
         console.error(err.message)
       })
     },
-    getExByClicked: function () {
+    getExByClicked: function (id) {
+      this.tmpid = id;
       this.getExhibit(this.currentUEditor, event.currentTarget.id)
     },
     //更新banner

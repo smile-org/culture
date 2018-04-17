@@ -338,14 +338,22 @@ section {
 .aside_ad_list li {
   padding: 15px 20px;
   border-bottom: 1px solid #eee;
+  border-left: 2px solid #fff;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   /*display: flex;*/
 }
+.aside_ad_list li:hover {
+  background: #eee;
+  border-left: 2px solid #f96235;
+}
+
 
 .aside_ad_list .active {
   background: #eee;
+  color: #f96235;
+  border-left: 2px solid #f96235;
 }
 
 .aside_ad_list li span {
@@ -438,9 +446,6 @@ section {
 /*.blockUp:hover{*/
 /*color: #999;*/
 /*}*/
-.aside_ad_list li:hover {
-  background: #eee;
-}
 
 .con_ul {
   padding: 0 20px;
@@ -753,4 +758,16 @@ section {
 }
 .list_state .el-form-item__label{
   text-align: left;
+}
+.language_con span{
+  color: #7a7a7a;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 20px;
+}
+.language_con span:hover{
+  color: #f96235;
+}
+.language_con .active{
+  color: #f96235;
 }

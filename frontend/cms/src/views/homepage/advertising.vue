@@ -6,7 +6,7 @@
         <aside>
           <h4 class="ad_tit"><span class="img_icon01"></span>广告热图</h4>
           <ul class="aside_ad_list">
-            <li v-for="item in items" :id="item.id" @click="getBannerByID" :key="item.id">
+            <li v-for="item in items" :id="item.id" @click="getBannerByID(item.id)" :key="item.id" v-bind:class="{ active: item.id == tmpid}">
               {{item.title}}
               <!--<span class="blockUp">停用</span>-->
               <span class="blockUp" v-if="!item.status">停用</span>
@@ -26,6 +26,9 @@
               </el-switch>
             </h4>
             <ul class="con_ul">
+              <li class="list_state language_con">
+                <span class="">中文</span>  <span>英文</span>
+              </li>
               <li class="list_state">
                 <h4>宣传图片</h4>
                 <div class="right_input">
@@ -95,6 +98,7 @@ export default {
       uploadData:{
         type:'banner'
       },
+      tmpid: 1,
       // end
       imgUrl:'',
       ruleForm: {
@@ -166,7 +170,8 @@ export default {
       })
     },
     //根据id获取热图信息
-    getBannerByID:function(){
+    getBannerByID:function(id){
+      this.tmpid = id;
       api.fetch(api.uri.getBannerByID, {banner_id: event.currentTarget.id}).then(data => {
         console.log(data)
         if (data.data.status === 1) {
