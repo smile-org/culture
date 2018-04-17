@@ -32,7 +32,7 @@
               <li class="list_state">
                 <h4>宣传图片</h4>
                 <div class="right_input">
-                  <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
+                  <img :src="ruleForm.image_cn | formatImg" alt="" class="style_banner fl">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -61,7 +61,7 @@
               </li>
               <li class="list_state">
                 <el-form-item label="跳转链接" prop="link">
-                  <el-input v-model="ruleForm.link" placeholder="请在此输入跳转链接"></el-input>
+                  <el-input v-model="ruleForm.link_cn" placeholder="请在此输入跳转链接"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
@@ -105,9 +105,9 @@ export default {
         title_cn: '',
         order: '',
         desc_cn: '',
-        link: '',
+        link_cn: '',
         status: false,
-        image:''
+        image_cn:''
       },
       rules: {
         title_cn: [
