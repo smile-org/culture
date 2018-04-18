@@ -19,9 +19,9 @@
     </div>
     <div class="slogan">
         <img src="./img/slogan.png" alt="slogan">
-        <p class="language_key">中文</p>
-        <div class="language_e">
-            English
-        </div>
+        <!--<p class="language_key">中文</p>-->
+        <!--<div class="language_e">-->
+            <!--English-->
+        <!--</div>-->
     </div>
 </header>

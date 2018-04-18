@@ -143,12 +143,13 @@
                 if (data.status == 1) {
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
-                        htmlObj += '<li style="background-image:url(' + imageUrl() + item.image_cn + ')" href="' + item.link_cn + '">\n' +
+                        htmlObj += '<li style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
+                            '<a href="' + item.link_cn + '" class="banner_a">\n' +
                             '<div class="banner_text">\n' +
                             '<h5 class="font24">' + item.title_cn + '</h5>\n' +
                             '<p class="b_con">\n' + item.desc_cn + '</p>\n' +
                             '</div>\n' +
-//                            '<img src="' + imageUrl() + item.image_cn + '">\n' +
+                            '</a>\n' +
                             '</li>';
                     });
                     $('#ulBanner').html(htmlObj);
