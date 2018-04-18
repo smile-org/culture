@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
     <title>文化寻力</title>
-    <link rel="stylesheet" href="">
+    <link rel="Shortcut Icon" href="img/logo.ico"  >
     <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link href="./css/base.css" type="text/css" rel="stylesheet"/>
@@ -23,20 +23,60 @@
 <section>
     <div class="banner_box">
         <div class="carousel-content">
-            <ul class="carousel  aaa">
-                <li>
+            <ul class="carousel">
+                <li style="background:url(./img/photo_a1.jpg) no-repeat">
+                    <div class="banner_text">
+                        <h5 class="font24">
+                            民族血液里的中国红
+                        </h5>
+                        <p class="b_con">
+                            红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                        </p>
+                    </div>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
-                <li>
+                <li style="background:url(./img/photo_a1.jpg) no-repeat">
+                    <div class="banner_text">
+                        <h5 class="font24">
+                            民族血液里的中国红
+                        </h5>
+                        <p class="b_con">
+                            红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                        </p>
+                    </div>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
-                <li>
+                <li style="background:url(./img/photo_a1.jpg) no-repeat">
+                    <div class="banner_text">
+                        <h5 class="font24">
+                            民族血液里的中国红
+                        </h5>
+                        <p class="b_con">
+                            红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                        </p>
+                    </div>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
-                <li>
+                <li style="background:url(./img/photo_a1.jpg) no-repeat">
+                    <div class="banner_text">
+                        <h5 class="font24">
+                            民族血液里的中国红
+                        </h5>
+                        <p class="b_con">
+                            红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                        </p>
+                    </div>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
-                <li>
+                <li style="background:url(./img/photo_a1.jpg) no-repeat">
+                    <div class="banner_text">
+                        <h5 class="font24">
+                            民族血液里的中国红
+                        </h5>
+                        <p class="b_con">
+                            红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                        </p>
+                    </div>
                     <!--<img src="./img/banner.jpg">-->
                 </li>
             </ul>
@@ -44,14 +84,7 @@
             <div class="carousel-prev"><img src="./img/left1.png"></div>
             <div class="carousel-next"><img src="./img/right1.png"></div>
         </div>
-        <div class="banner_text">
-            <h5 class="font24">
-                民族血液里的中国红
-            </h5>
-            <p class="b_con">
-                红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
-            </p>
-        </div>
+
     </div>
     <div class="content_box">
         <div class="index_part">
@@ -194,12 +227,12 @@
                 if (data.status == 1) {
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
-                        htmlObj += '<li class="col-sm-4">\n' +
+                        htmlObj += '<li class="col-sm-4 hight_third">\n' +
                             '<a href="' + item.link_cn + '" class="part1_img">\n' +
                             '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</a>\n' +
                             '<a href="' + item.link_cn + '" class="part1_font">\n' +
-                            '<span class="rectangle c_red"></span>\n' +
+                            '<span class="rectangle c_span'+i+'"></span>\n' +
                             '<h4>' + item.title_cn + '</h4>\n' +
                             '<span>' + item.desc_cn + '</span>\n' +
                             '</a>\n' +
@@ -233,35 +266,40 @@
                             '</a>\n' +
                             '</div>';
                     });
-                    $('#divFocusList').html(htmlObj)
+                    $('#divFocusList').html(htmlObj);
+                    window.setTimeout(function(){
+                        initSwiper()
+                    },1)
                 }
             }
         });
     });
-
-    var hotSwiper = new Swiper('.hot-swiper-container', {
-        speed: 1000,
+    var initSwiper = function (){
+        var hotSwiper = new Swiper('.hot-swiper-container', {
+            speed: 1000,
 //        autoplay: {
 //            delay: 3000
 //        },
 //        loop: true,
-        // 如果需要分页器
-        pagination: {
-            el: '.hot-swiper-pagination',
-            clickable: true,
-        },
+            // 如果需要分页器
+            pagination: {
+                el: '.hot-swiper-pagination',
+                clickable: true,
+            },
 
-        // 如果需要前进后退按钮
-        navigation: {
-            nextEl: '.hot-swiper-button-next',
-            prevEl: '.hot-swiper-button-prev',
-        },
-    })
-    $(".hot-swiper-container").mouseenter(function () {//滑过悬停
-        hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
-    }).mouseleave(function () {//离开开启
-        hotSwiper.autoplay.start();
-    });
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.hot-swiper-button-next',
+                prevEl: '.hot-swiper-button-prev',
+            },
+        })
+        $(".hot-swiper-container").mouseenter(function () {//滑过悬停
+            hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
+        }).mouseleave(function () {//离开开启
+            hotSwiper.autoplay.start();
+        });
+    }
+
 
 </script>
 <script type="text/javascript" src="./js/carousel.js"></script>

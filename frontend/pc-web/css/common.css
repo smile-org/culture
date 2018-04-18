@@ -13,7 +13,7 @@ body, div, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, 
 }
 
 body {
-    font-family: 'DENGL';
+    font-family: 'DENGL','Microsoft YaHei', '微软雅黑';
     min-width: 1209px;
 }
 
