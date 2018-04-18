@@ -33,7 +33,7 @@
                 </el-form-item>
               </li>
               <li class="list_state">
-                <el-form-item label="表单选择" prop="category" >
+                <el-form-item label="表单选择" prop="form_id" >
                   <el-select v-model="ruleForm.form_id" placeholder="请选择">
                     <el-option v-for="item in ruleForm.formList" :key="item.value" :label="item.text" :value="item.value"></el-option>
                   </el-select>
@@ -204,41 +204,50 @@ export default {
       this.lan = 'cn'
       this.addEx = true
       this.operation = 'edit'
+      var that = this
       api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: exId}).then(data => {
         console.log(data.data.result)
         if (data.data.status === 1) {
           var message = data.data.result.exhibitToBeEdit
           //中文
-          this.messageCn.title = message.title_cn
-          this.messageCn.content = message.content_cn
-          this.messageCn.status = message.status
-          this.messageCn.category = message.category + ""
-          this.messageCn.form_cn_name = message.form_cn_name
-          this.messageCn.exhibit_id = message.exhibit_id
-          this.messageCn.form_id = message.form_id + ""
-          this.messageCn.formList = data.data.result.formList
-          this.messageCn.options = data.data.result.categoryList
+          that.messageCn.title = message.title_cn
+          that.messageCn.content = message.content_cn
+          that.messageCn.status = message.status
+          that.messageCn.category = message.category + ""
+          that.messageCn.form_cn_name = message.form_cn_name
+          that.messageCn.exhibit_id = message.exhibit_id
+          if (message.form_id === null) {
+            that.messageCn.form_id = -1
+          } else {
+            that.messageCn.form_id = message.form_id + ""
+          }
+          that.messageCn.formList = [{value:-1, text: '请选择'}].concat(data.data.result.formList)
+          that.messageCn.options = data.data.result.categoryList
           //英文
-          this.messageEn.title = message.title_en
-          this.messageEn.content = message.content_en
-          this.messageEn.status = message.status
-          this.messageEn.category = message.category + ""
-          this.messageEn.form_en_name = message.form_en_name
-          this.messageEn.exhibit_id = message.exhibit_id
-          this.messageEn.form_id = message.form_id + ""
-          this.messageEn.formList = data.data.result.formList
-          this.messageEn.options = data.data.result.categoryList
+          that.messageEn.title = message.title_en
+          that.messageEn.content = message.content_en
+          that.messageEn.status = message.status
+          that.messageEn.category = message.category + ""
+          that.messageEn.form_en_name = message.form_en_name
+          that.messageEn.exhibit_id = message.exhibit_id
+          if (message.form_id === null) {
+            that.messageEn.form_id = -1
+          } else {
+            that.messageEn.form_id = message.form_id + ""
+          }
+          that.messageEn.formList = [{value:-1, text: '请选择'}].concat(data.data.result.formList)
+          that.messageEn.options = data.data.result.categoryList
 
-          this.ruleForm = this.messageCn
-          if(this.ruleForm.status == 1){
-            this.ruleForm.status = '1'
-          }else if(this.ruleForm.status = 0){
-            this.ruleForm.status = '0'
+          that.ruleForm = that.messageCn
+          if(that.ruleForm.status == 1){
+            that.ruleForm.status = '1'
+          }else if(that.ruleForm.status = 0){
+            that.ruleForm.status = '0'
           }
           console.log(this.ruleForm)
-          editorInstance.setContent(this.ruleForm.content || '')
+          editorInstance.setContent(that.ruleForm.content || '')
         } else {
-          this.msg = '返回错误'
+          that.msg = '返回错误'
         }
       }).catch((err) => {
         console.error(err.message)
@@ -248,7 +257,7 @@ export default {
       this.tmpid = id;
       this.getExhibit(this.currentUEditor, event.currentTarget.id)
     },
-    //更新banner
+
     update:function(){
       var params = {}
       if (this.lan === 'cn') {
@@ -259,7 +268,7 @@ export default {
           title_cn:this.ruleForm.title,
           content_cn: this.ruleForm.content,
           exhibit_id:this.ruleForm.exhibit_id,
-          form_id:parseInt(this.ruleForm.form_id)
+          form_id:this.ruleForm.form_id === -1 ? null: parseInt(this.ruleForm.form_id)
         }
       }else{
         params = {
@@ -269,9 +278,10 @@ export default {
           title_en:this.ruleForm.title,
           content_en: this.ruleForm.content,
           exhibit_id:this.ruleForm.exhibit_id,
-          form_id:parseInt(this.ruleForm.form_id)
+          form_id:this.ruleForm.form_id === -1 ? null: parseInt(this.ruleForm.form_id)
         }
       }
+
       api.post(
         api.uri.updateExhibitByID,
         params
@@ -309,11 +319,15 @@ export default {
           form_id:parseInt(this.ruleForm.form_id)
         }
       }
+      // 如果页面没有选择form，那传null给后台才能保存
+      if (params.form_id === -1) {
+        params.form_id = null
+      }
       api.post(
         api.uri.addExhibit,
         params
       ).then(data => {
-        // location.reload()
+        location.reload()
         this.$message('添加成功！')
       }).catch((err) => {
         console.error(err.message)
@@ -388,7 +402,7 @@ export default {
             formList:[],
             options:[]
           }
-          this.ruleForm.formList = data.data.result.formList
+          this.ruleForm.formList = [{value:-1, text: '请选择'}].concat(data.data.result.formList)
           this.ruleForm.status = 0
           this.ruleForm.options = data.data.result.categoryList
         } else {
