@@ -848,6 +848,7 @@ footer .footer_about a:active {
 .carousel li {
     float: left;
     /*background: url(./../img/photo_a1.jpg) no-repeat;*/
+    background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 100%;
     min-height: 755px;
