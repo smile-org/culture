@@ -215,7 +215,7 @@ export default {
           this.messageCn.category = message.category + ""
           this.messageCn.form_cn_name = message.form_cn_name
           this.messageCn.exhibit_id = message.exhibit_id
-          this.messageCn.form_id = message.form_id
+          this.messageCn.form_id = message.form_id + ""
           this.messageCn.formList = data.data.result.formList
           this.messageCn.options = data.data.result.categoryList
           //英文
@@ -225,7 +225,7 @@ export default {
           this.messageEn.category = message.category + ""
           this.messageEn.form_en_name = message.form_en_name
           this.messageEn.exhibit_id = message.exhibit_id
-          this.messageEn.form_id = message.form_id
+          this.messageEn.form_id = message.form_id + ""
           this.messageEn.formList = data.data.result.formList
           this.messageEn.options = data.data.result.categoryList
 
