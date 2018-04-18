@@ -59,40 +59,8 @@
 
         <div class="index_part">
             <h1 class="">新闻动态</h1>
-            <ul class="row clear">
-                <li class="col-sm-4">
-                    <div class="">
-                        <a href="./news.html" class="part1_img">
-                            <img src="./img/photo_d1_1.jpg" alt="" class="animation_scale">
-                        </a>
-                        <a class="part3_font">
-                            <h4 class="ellipsis">政协文艺界委员议中国文化走出去</h4>
-                            <p class="ellipsis">刚刚结束的全国两会“部长通道”上，刚刚结束的全国两会“部长通道”上</p>
-                        </a>
-                    </div>
-                </li>
-                <li class="col-sm-4">
-                    <div class="">
-                        <a href="./news.html" class="part1_img">
-                            <img src="./img/photo_d2_1.jpg" alt="" class="animation_scale">
-                        </a>
-                        <a href="./news.html" class="part3_font">
-                            <h4 class="ellipsis">政协文艺界委员议中国文化走出去</h4>
-                            <p class="ellipsis">刚刚结束的全国两会“部长通道”上，刚刚结束的全国两会“部长通道”上</p>
-                        </a>
-                    </div>
-                </li>
-                <li class="col-sm-4">
-                    <div class="">
-                        <a href="./news.html" class="part1_img">
-                            <img src="./img/photo_d3_1.jpg" alt="" class="">
-                        </a>
-                        <a href="./news.html" class="part3_font">
-                            <h4 class="ellipsis">政协文艺界委员议中国文化走出去</h4>
-                            <p class="ellipsis">刚刚结束的全国两会“部长通道”上，刚刚结束的全国两会“部长通道”上</p>
-                        </a>
-                    </div>
-                </li>
+            <ul class="row clear" id="ulNews">
+
             </ul>
         </div>
         <div class="index_part pb30">
@@ -246,6 +214,38 @@
                 }
             }
         });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/news/getNewsList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                var htmlObj = '';
+                $.each(data.result, function (i, item) {
+                    htmlObj += ' <li class="col-sm-4">\n' +
+                      '<div class="">\n';
+                    if (item.link_cn == null){
+                        htmlObj += '<a href="./news.html?newsid='+item.news_id+'" class="part1_img">\n';
+                    } else {
+                        htmlObj += '<a href="'+item.link_cn+'" class="part1_img">\n';
+                    }
+                    htmlObj += '<img src="' + item.image_cn + '" alt="" class="">\n' +
+                      '</a>\n';
+                    if (item.link_cn == null) {
+                       htmlObj += '<a href="./news.html?newsid='+item.news_id+'" class="part3_font">\n';
+                    }else {
+                        htmlObj += '<a href="'+item.link_cn+'" class="part3_font">\n';
+                    }
+                    htmlObj +=  '<h4 class="ellipsis">' + item.title_cn + '</h4>\n' +
+                      '<p class="ellipsis">' + item.desc_cn + '</p>\n' +
+                      '</a>\n' +
+                      '</div>\n' +
+                      '</li>';
+                })
+                $('#ulNews').html(htmlObj)
+            }
+        })
     });
     var initSwiper = function () {
         var hotSwiper = new Swiper('.hot-swiper-container', {
