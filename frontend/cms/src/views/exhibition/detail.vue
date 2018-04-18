@@ -53,6 +53,13 @@
                   <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
                 </div>
               </li>
+              <li class="list_state">
+                <el-form-item label="表单选择" prop="category" class="show_star">
+                  <el-select v-model="ruleForm.category" placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  </el-select>
+                </el-form-item>
+              </li>
             </ul>
           </el-form>
           <!--<P class="input_warn">-->
