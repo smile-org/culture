@@ -41,7 +41,7 @@
 
 
      <select id="getBannerList" resultType="com.kst.entities.Banner">
-            select * from banner where status=1 order by   'order'
+            select * from banner where status=1 order by   `order`
      </select>
 
 
