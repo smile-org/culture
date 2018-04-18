@@ -273,6 +273,8 @@ section .content_box h4 {
     width: 100%;
     display: block;
     transition: .5s;
+    min-height: 223px;
+    background: #dcdcdc;
 }
 
 .part1_img img:hover {
@@ -329,7 +331,7 @@ section .content_box h4 {
 }
 
 .part3_font {
-    margin: 30px 0px 30px 0px;
+    margin: 30px 0px 0px 0px;
     display: block;
     cursor: pointer;
 }
@@ -851,7 +853,7 @@ footer .footer_about a:active {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 100%;
-    min-height: 755px;
+    max-height: 755px;
     cursor: pointer;
     position: relative;
     /*-webkit-animation: scaleImg 3s linear forwards;*/

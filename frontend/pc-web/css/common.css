@@ -320,3 +320,8 @@ ol, ul {
     float: left;
     padding: 0 15px;
 }
+.col-sm-6 {
+    width: 50%;
+    float: left;
+    padding: 0 15px;
+}
