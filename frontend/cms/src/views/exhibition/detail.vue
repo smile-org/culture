@@ -25,8 +25,23 @@
               </el-switch>
             </h4>
             <ul class="con_ul">
+              <li class="list_state">
+                <el-form-item label="展览类别" prop="category" class="show_star">
+                  <el-select v-model="ruleForm.category" placeholder="请选择">
+                    <el-option v-for="item in ruleForm.options" :key="item.value" :label="item.text" :value="item.value"></el-option>
+                  </el-select>
+                </el-form-item>
+              </li>
+              <li class="list_state">
+                <el-form-item label="表单选择" prop="category" >
+                  <el-select v-model="ruleForm.form_id" placeholder="请选择">
+                    <el-option v-for="item in ruleForm.formList" :key="item.value" :label="item.text" :value="item.value"></el-option>
+                  </el-select>
+                </el-form-item>
+              </li>
               <li class="list_state language_con">
-                <span class="active">中文</span>  <span>英文</span>
+                <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
+                <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
               </li>
               <!--<li class="list_state">-->
                 <!--<h4>宣传图片 :</h4>-->
@@ -36,29 +51,16 @@
                 <!--</div>-->
               <!--</li>-->
               <li class="list_state">
-                <el-form-item label="展览名称" prop="title_cn">
-                  <el-input v-model="ruleForm.title_cn" placeholder="请在此输入标题"></el-input>
+                <el-form-item label="展览名称" prop="title">
+                  <el-input v-model="ruleForm.title" placeholder="请在此输入标题"></el-input>
                 </el-form-item>
               </li>
-              <li class="list_state">
-                <el-form-item label="展览类别" prop="category" class="show_star">
-                  <el-select v-model="ruleForm.category" placeholder="请选择">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                  </el-select>
-                </el-form-item>
-              </li>
+
               <li class="list_state">
                 <h4>详细介绍 :</h4>
                 <div class="right_input">
                   <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
                 </div>
-              </li>
-              <li class="list_state">
-                <el-form-item label="表单选择" prop="category" class="show_star">
-                  <el-select v-model="ruleForm.category" placeholder="请选择">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                  </el-select>
-                </el-form-item>
               </li>
             </ul>
           </el-form>
@@ -87,56 +89,65 @@ export default {
   },
   data:function () {
     return {
+      lan:'cn',
+      operation:'edit',
       //判断添加还是更新
       addEx:true,
       uploadData:{
         type:'banner'
       },
       tmpid: 1,
-      ruleForm: {
-        title_cn: '',
-        order: '',
-        content_cn: '',
-        link: '',
-        status: false
+      messageCn:{
+        title:'',
+        content:'',
+        exhibit_id:'',
+        status:'',
+        category:'',
+        form_id:'',
+        form_cn_name:'',
+        formList:[],
+        options:[]
       },
+      messageEn:{
+        title:'',
+        content:'',
+        exhibit_id:'',
+        status:'',
+        category:'',
+        form_id:'',
+        form_en_name:'',
+        formList:[],
+        options:[]
+      },
+      ruleForm: {
+        title: '',
+        content: '',
+        exhibit_id: '',
+        status: '',
+        category: '',
+        form_id:'',
+        formList:[]
+      },
+      // formList:{},
       rules: {
-        title_cn: [
+        title: [
           { required: true, message: '请在此输入标题', trigger: 'blur' },
         ],
-        content_cn: [
+        content: [
           { required: true, message: '请输入内容', trigger: 'blur' }
         ],
         category: [
           { required: true, message: '请选择类别', trigger: 'blur' }
         ]
       },
-      exContent: '',
       imgUrl:'',
       currentUEditor:{},
       items:[],
       value1: 1,
       value2: true,
-      options: [{
-        value: 1,
-        label: '国内'
-      }, {
-        value: 2,
-        label: '国际'
-      }],
+      // options: [],
       value: ''
     }
-  },
-  created () {
-    //获取左侧nav
-    api.fetch(api.uri.getExhibitNavList).then(data => {
-      console.log(data.data.result)
-      if (data.data.status === 1) {
-        this.items = data.data.result
-      }
-    }).catch((err) => {
-      console.error(err.message)
-    })
   },
   filters: {
     formatImg (img) {
@@ -144,26 +155,88 @@ export default {
     }
   },
   methods: {
+    lanChange:function(type){
+      if(type == 'cn'){
+        this.lan = 'cn'
+        if(this.operation === 'edit'){
+          this.ruleForm = this.messageCn
+        }else if(this.operation === 'new'){
+          this.messageEn = this.ruleForm
+          this.ruleForm = this.messageCn
+        }
+        if(this.ruleForm.content == null){
+          this.ruleForm.content = ''
+        }
+        this.currentUEditor.setContent(this.ruleForm.content)
+      }else if(type == 'en'){
+        this.lan = 'en'
+        if(this.operation == 'edit'){
+          this.ruleForm = this.messageEn
+        }else if(this.operation == 'new'){
+          this.messageCn = this.ruleForm
+          this.messageEn.form_id = this.messageCn.form_id
+          this.messageEn.category = this.messageCn.category
+          this.ruleForm = this.messageEn
+        }
+        if(this.ruleForm.content == null){
+          this.ruleForm.content = ''
+        }
+        this.currentUEditor.setContent(this.ruleForm.content)
+      }
+    },
+
     editorReady:function (editorInstance) {
-      this.getExhibit(editorInstance, this.items[0].id)
+      api.fetch(api.uri.getExhibitNavList).then(data => {
+        console.log(data.data.result)
+        if (data.data.status === 1) {
+          this.items = data.data.result
+          this.getExhibit(editorInstance, this.items[0].id)
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
       this.currentUEditor = editorInstance
       editorInstance.addListener('contentChange', () => {
-        this.exContent = editorInstance.getContent()
+        this.ruleForm.content = editorInstance.getContent()
       })
     },
     getExhibit: function (editorInstance, exId) {
+      this.lan = 'cn'
       this.addEx = true
+      this.operation = 'edit'
       api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: exId}).then(data => {
         console.log(data.data.result)
         if (data.data.status === 1) {
-          this.ruleForm = data.data.result.exhibitToBeEdit
+          var message = data.data.result.exhibitToBeEdit
+          //中文
+          this.messageCn.title = message.title_cn
+          this.messageCn.content = message.content_cn
+          this.messageCn.status = message.status
+          this.messageCn.category = message.category + ""
+          this.messageCn.form_cn_name = message.form_cn_name
+          this.messageCn.exhibit_id = message.exhibit_id
+          this.messageCn.form_id = message.form_id
+          this.messageCn.formList = data.data.result.formList
+          this.messageCn.options = data.data.result.categoryList
+          //英文
+          this.messageEn.title = message.title_en
+          this.messageEn.content = message.content_en
+          this.messageEn.status = message.status
+          this.messageEn.category = message.category + ""
+          this.messageEn.form_en_name = message.form_en_name
+          this.messageEn.exhibit_id = message.exhibit_id
+          this.messageEn.form_id = message.form_id
+          this.messageEn.formList = data.data.result.formList
+          this.messageEn.options = data.data.result.categoryList
+
+          this.ruleForm = this.messageCn
           if(this.ruleForm.status == 1){
             this.ruleForm.status = '1'
           }else if(this.ruleForm.status = 0){
             this.ruleForm.status = '0'
           }
-          this.exContent = this.ruleForm.content_cn
-          editorInstance.setContent(this.exContent)
+          console.log(this.ruleForm)
+          editorInstance.setContent(this.ruleForm.content || '')
         } else {
           this.msg = '返回错误'
         }
@@ -177,18 +250,31 @@ export default {
     },
     //更新banner
     update:function(){
+      var params = {}
+      if (this.lan === 'cn') {
+        params = {
+          lan:'cn',
+          status:parseInt(this.ruleForm.status),
+          category:parseInt(this.ruleForm.category),
+          title_cn:this.ruleForm.title,
+          content_cn: this.ruleForm.content,
+          exhibit_id:this.ruleForm.exhibit_id,
+          form_id:parseInt(this.ruleForm.form_id)
+        }
+      }else{
+        params = {
+          lan:'en',
+          status:parseInt(this.ruleForm.status),
+          category:parseInt(this.ruleForm.category),
+          title_en:this.ruleForm.title,
+          content_en: this.ruleForm.content,
+          exhibit_id:this.ruleForm.exhibit_id,
+          form_id:parseInt(this.ruleForm.form_id)
+        }
+      }
       api.post(
         api.uri.updateExhibitByID,
-        {
-          title_cn:this.ruleForm.title_cn,
-          title_en:"",
-          content_cn:this.exContent,
-          content_en:"",
-          status:parseInt(this.ruleForm.status),
-          category:this.ruleForm.category,
-          form_id:1,
-          exhibit_id:this.ruleForm.exhibit_id
-        }
+        params
       ).then(data => {
         console.log(data)
         if (data.data.status === 1) {
@@ -201,20 +287,33 @@ export default {
       })
     },
     addExhibit:function(){
+      var params = {}
+      if (this.lan === 'cn') {
+        params = {
+          lan:'cn',
+          status:parseInt(this.ruleForm.status),
+          category:parseInt(this.ruleForm.category),
+          title_cn:this.ruleForm.title,
+          content_cn: this.ruleForm.content,
+          exhibit:this.ruleForm.exhibit_id,
+          form_id:parseInt(this.ruleForm.form_id)
+        }
+      }else{
+        params = {
+          lan:'en',
+          status:parseInt(this.ruleForm.status),
+          category:parseInt(this.ruleForm.category),
+          title_en:this.ruleForm.title,
+          content_en: this.ruleForm.content,
+          exhibit:this.ruleForm.exhibit_id,
+          form_id:parseInt(this.ruleForm.form_id)
+        }
+      }
       api.post(
         api.uri.addExhibit,
-        {
-          title_cn:this.ruleForm.title_cn,
-          title_en:"",
-          content_cn:this.exContent,
-          content_en:"",
-          status:parseInt(this.ruleForm.status),
-          category:this.ruleForm.category,
-          form_id:null,
-          exhibit_id:this.ruleForm.exhibit_id
-        }
+        params
       ).then(data => {
-        location.reload()
+        // location.reload()
         this.$message('添加成功！')
       }).catch((err) => {
         console.error(err.message)
@@ -254,6 +353,50 @@ export default {
       })
     },
     resetForm(formName) {
+      this.lan = 'cn'
+      this.operation = 'new'
+      api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: null}).then(data => {
+        console.log(data.data.result)
+        if (data.data.status === 1) {
+          this.ruleForm = {
+            title: '',
+            content: '',
+            exhibit_id: '',
+            status: '',
+            category: '',
+            form_id:''
+          }
+          this.messageCn={
+            title:'',
+            content:'',
+            exhibit_id:'',
+            status:'',
+            category:'',
+            form_id:'',
+            form_cn_name:'',
+            formList:[],
+            options:[]
+          }
+          this.messageEn={
+            title:'',
+            content:'',
+            exhibit_id:'',
+            status:'',
+            category:'',
+            form_id:'',
+            form_en_name:'',
+            formList:[],
+            options:[]
+          }
+          this.ruleForm.formList = data.data.result.formList
+          this.ruleForm.status = 0
+          this.ruleForm.options = data.data.result.categoryList
+        } else {
+          this.msg = '返回错误'
+        }
+      }).catch((err) => {
+        console.error(err.message)
+      })
       this.currentUEditor.setContent('')
       this.$refs[formName].resetFields();
       this.$message('请在此添加');

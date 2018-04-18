@@ -15,22 +15,23 @@
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <ul class="con_ul">
               <li class="list_state language_con">
-                <span class="active">中文</span>  <span>英文</span>
+                <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
+                <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
               </li>
               <li class="list_state">
-                <el-form-item label="新闻标题" prop="title_cn">
-                  <el-input v-model="ruleForm.title_cn" placeholder="请输入标题"></el-input>
+                <el-form-item label="新闻标题" prop="title">
+                  <el-input v-model="ruleForm.title" placeholder="请输入标题"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
-                <el-form-item label="新闻摘要" prop="desc_cn">
-                  <el-input type="textarea" v-model="ruleForm.desc_cn" placeholder="请输入新闻摘要"></el-input>
+                <el-form-item label="新闻摘要" prop="desc">
+                  <el-input type="textarea" v-model="ruleForm.desc" placeholder="请输入新闻摘要"></el-input>
                 </el-form-item>
               </li>
               <li class="list_state">
               <h4>标题图片 :</h4>
               <div class="right_input">
-                <img :src="imgUrl | formatImg" alt="" class="style_banner fl">
+                <img :src="ruleForm.img | formatImg" alt="" class="style_banner fl">
                 <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
@@ -85,28 +86,47 @@ export default {
     return {
       // 上传参数
       uploadAPI: api.uploadAPI,
+      lan:'cn',
       headers: {},
       // 里面只有一个附件， 第二个会替换第一个
       fileList: [],
       // end
       tmpid: 1,
-      newsContent: '',
       imgUrl:'',
       uploadData:{
         type:'news'
+      },
+      messageCn:{
+        title:'',
+        content:'',
+        desc:'',
+        img:'',
+        link:'',
+        news_id:'',
+        status:''
+      },
+      messageEn:{
+        title:'',
+        content:'',
+        desc:'',
+        img:'',
+        link:'',
+        news_id:'',
+        status:''
       },
       ruleForm: {
         title_cn: '',
         order: '',
         desc_cn: '',
         link: '',
+        img:'',
         status: false
       },
       rules: {
-        title_cn: [
+        title: [
           { required: true, message: '请在此输入标题', trigger: 'blur' },
         ],
-        desc_cn: [
+        desc: [
           { required: true, message: '请在此输入描述', trigger: 'blur' }
         ],
         order: [
@@ -156,22 +176,49 @@ export default {
       })
       this.currentUEditor = editorInstance
       editorInstance.addListener('contentChange', () => {
-        this.newsContent = editorInstance.getContent()
+        this.ruleForm.content = editorInstance.getContent()
       })
     },
-
+    lanChange:function(type){
+      if(type == 'cn'){
+        this.lan = 'cn'
+        this.ruleForm = this.messageCn
+        this.currentUEditor.setContent(this.ruleForm.content)
+      }else if(type == 'en'){
+        this.lan = 'en'
+        this.ruleForm = this.messageEn
+        if(this.messageEn.content == null){
+          this.messageEn.content = '请输入'
+        }
+        this.currentUEditor.setContent(this.ruleForm.content)
+      }
+    },
     getNews: function (editorInstance, newsId) {
+      this.lan = 'cn'
       api.fetch(api.uri.getNewsByID, {news_id: newsId}).then(data => {
+          console.log(data.data)
           if (data.data.status === 1) {
-            this.ruleForm = data.data.result
-            if(this.ruleForm.status == 1){
-              this.ruleForm.status = '1'
-            }else if(this.ruleForm.status = 0){
-              this.ruleForm.status = '0'
-            }
-            this.imgUrl = this.ruleForm.image
-            this.newsContent = this.ruleForm.content_cn
-            editorInstance.setContent(this.newsContent)
+//            this.ruleForm = data.data.result
+            var message = data.data.result
+            //中文
+            this.messageCn.content = message.content_cn
+            this.messageCn.desc = message.desc_cn
+            this.messageCn.img = message.image_cn
+            this.messageCn.link = message.link_cn
+            this.messageCn.title = message.title_cn
+            this.messageCn.news_id = message.news_id
+            this.messageCn.status = message.status
+            //英文
+            this.messageEn.content = message.content_en
+            this.messageEn.desc = message.desc_en
+            this.messageEn.img = message.image_en
+            this.messageEn.link = message.link_en
+            this.messageEn.title = message.title_en
+            this.messageEn.news_id = message.news_id
+            this.messageEn.status = message.status
+            //初始为中文
+            this.ruleForm = this.messageCn
+            editorInstance.setContent(this.ruleForm.content)
           } else {
             this.msg = '返回错误'
           }
@@ -187,28 +234,46 @@ export default {
 
     //更新新闻
     update:function(){
-      api.post(
-        api.uri.updateNewsByID,
-        {
-          image:this.imgUrl,
-          link:this.ruleForm.link,
-          title_cn:this.ruleForm.title_cn,
-          title_en:"",
-          desc_cn:this.ruleForm.desc_cn,
-          desc_en:"",
-          content_cn: this.newsContent,
+      var params = {}
+      if (this.lan === 'cn') {
+        params = {
+          lan:'cn',
+          image_cn:this.ruleForm.img,
+          link_cn:this.ruleForm.link,
+          title_cn:this.ruleForm.title,
+          desc_cn:this.ruleForm.desc,
+          content_cn: this.ruleForm.content,
           news_id:this.ruleForm.news_id
         }
+      }else{
+        params = {
+          lan:'en',
+          image_en:this.ruleForm.img,
+          link_en:this.ruleForm.link,
+          title_en:this.ruleForm.title,
+          desc_en:this.ruleForm.desc,
+          content_en: this.ruleForm.content,
+          news_id:this.ruleForm.news_id
+        }
+      }
+
+      api.post(
+        api.uri.updateNewsByID,
+        params
       ).then(data => {
         console.log(data)
         if (data.data.status === 1) {
-          location.reload()
+        location.reload()
         } else {
           this.msg = '返回错误'
         }
       }).catch((err) => {
         console.error(err.message)
       })
+
+
+
+
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -224,7 +289,7 @@ export default {
     // 上传文件
     onContentSuccess (response, file, fileList) {
       console.log(response)
-      this.imgUrl = response.result
+      this.ruleForm.img = response.result
     },
 
     changeContentUpload (file, fileList) {
