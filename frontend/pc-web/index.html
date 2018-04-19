@@ -214,14 +214,14 @@
                 $.each(data.result, function (i, item) {
                     htmlObj += ' <li class="col-sm-4">\n' +
                         '<div class="">\n';
-                    if (item.link_cn == null) {
+                    if (item.link_cn == null || item.link_cn == '') {
                         htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="part1_img">\n';
                     } else {
                         htmlObj += '<a href="' + item.link_cn + '" class="part1_img">\n';
                     }
                     htmlObj += '<img src="' + imageUrl() + item.image_cn + '" alt="" class="">\n' +
                         '</a>\n';
-                    if (item.link_cn == null) {
+                    if (item.link_cn == null  || item.link_cn == '') {
                         htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="part3_font">\n';
                     } else {
                         htmlObj += '<a href="' + item.link_cn + '" class="part3_font">\n';
