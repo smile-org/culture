@@ -443,7 +443,16 @@ aside .aside_list .active {
     font-size: 18px;
     line-height: 42px;
 }
-
+.news_conList p{
+    margin-top: 30px;
+}
+.news_conList img{
+    margin-top: 40px;
+}
+.news_date{
+    padding-left:65px;
+    margin-bottom: 65px;
+}
 .news_detail p {
     margin-bottom: 50px;
 }
