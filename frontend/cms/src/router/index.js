@@ -14,7 +14,6 @@ import newsDetail from '@/views/news/detail'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     // 登录
     {

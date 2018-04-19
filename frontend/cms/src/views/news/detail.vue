@@ -197,32 +197,34 @@ export default {
     },
     getNews: function (editorInstance, newsId) {
       this.lan = 'cn'
+      var that = this;
       api.fetch(api.uri.getNewsByID, {news_id: newsId}).then(data => {
           console.log(data.data)
           if (data.data.status === 1) {
 //            this.ruleForm = data.data.result
             var message = data.data.result
             //中文
-            this.messageCn.content = message.content_cn
-            this.messageCn.desc = message.desc_cn
-            this.messageCn.img = message.image_cn
-            this.messageCn.link = message.link_cn
-            this.messageCn.title = message.title_cn
-            this.messageCn.news_id = message.news_id
-            this.messageCn.status = message.status
+            that.messageCn.content = message.content_cn
+            that.messageCn.desc = message.desc_cn
+            that.messageCn.img = message.image_cn
+            that.messageCn.link = message.link_cn
+            that.messageCn.title = message.title_cn
+            that.messageCn.news_id = message.news_id
+            that.messageCn.status = message.status
             //英文
-            this.messageEn.content = message.content_en
-            this.messageEn.desc = message.desc_en
-            this.messageEn.img = message.image_en
-            this.messageEn.link = message.link_en
-            this.messageEn.title = message.title_en
-            this.messageEn.news_id = message.news_id
-            this.messageEn.status = message.status
+            that.messageEn.content = message.content_en
+            that.messageEn.desc = message.desc_en
+            that.messageEn.img = message.image_en
+            that.messageEn.link = message.link_en
+            that.messageEn.title = message.title_en
+            that.messageEn.news_id = message.news_id
+            that.messageEn.status = message.status
             //初始为中文
-            this.ruleForm = this.messageCn
-            editorInstance.setContent(this.ruleForm.content)
+            that.ruleForm = that.messageCn
+            console.log(that.ruleForm.content)
+            editorInstance.setContent(that.ruleForm.content)
           } else {
-            this.msg = '返回错误'
+            that.msg = '返回错误'
           }
         }).catch((err) => {
           console.error(err.message)
