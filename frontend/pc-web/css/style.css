@@ -170,6 +170,7 @@ section {
 section .content_box {
     max-width: 1170px;
     margin: 30px auto;
+    min-height: 400px;
 }
 
 section .content_box h4 {
@@ -441,6 +442,7 @@ aside .aside_list .active {
 .news_con {
     overflow: auto;
     font-size: 18px;
+    font-size: 18px;
     line-height: 42px;
 }
 .news_conList p{
@@ -459,6 +461,7 @@ aside .aside_list .active {
 
 .news_detail .con_img {
     margin-bottom: 50px;
+    width: 100%;
 }
 
 .news_detail ul {
