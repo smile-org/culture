@@ -971,6 +971,12 @@ footer .footer_about a:active {
 }
 
 /*媒体查询*/
+@media screen and (min-width: 1696px){
+    section .content_box {
+        max-width: 1400px;
+        margin: 30px auto;
+    }
+}
 
 @media screen and (max-width: 1696px) {
     .submit_pop {
@@ -997,13 +1003,20 @@ footer .footer_about a:active {
     }
 
     .carousel li {
-        min-height: 755px;
+        min-height: 575px;
     }
 
     .dddd {
         min-height: 755px;
     }
 }
+@media screen and (max-width: 1366px){
+    .tab_list li a{
+        padding:0 15px;
+        font-size:18px;
+    }
+}
+
 
 .hot-swiper-position {
     bottom: 14px;
