@@ -135,7 +135,7 @@ section {
 .banner_text {
     position: absolute;
     bottom: 21%;
-    left: 175px;
+    left: 155px;
     width: 530px;
     max-width: 530px;
     min-height: 155px;
@@ -975,6 +975,9 @@ footer .footer_about a:active {
     section .content_box {
         max-width: 1400px;
         margin: 30px auto;
+    }
+    .carousel li {
+        min-height: 755px;
     }
 }
 
