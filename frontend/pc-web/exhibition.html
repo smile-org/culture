@@ -10,6 +10,7 @@
     <link href="./css/style.css" type="text/css" rel="stylesheet"/>
     <!-- 引入组件库 -->
     <script src="./js/jquery-3.3.1.js"></script>
+    <script src="js/config.js"></script>
 </head>
 <body>
 <header class="clear">
@@ -49,120 +50,40 @@
     </div>
     <div class="content_box clear detail_con">
         <aside>
-            <ul class="aside_list" id="">
-                <li>
+            <ul class="aside_list">
+                <li id="liNav1">
                     <h4>
                         <span class="vm">|</span> <span class="vm ml5"> 国内</span>
                     </h4>
-                    <a class="culture_dom active" id="inland">京交会 CIFTIS</a>
                 </li>
-                <li>
+                <li id="liNav2">
                     <h4>
                         <span class="vm">|</span> <span class="vm ml5"> 国际</span>
                     </h4>
-                    <a class="culture_dom" id="inter_round">周而复始</a>
-                    <a class="culture_dom" id="inter_enter">传承人驻场计划</a>
                 </li>
             </ul>
         </aside>
         <div class="news_con">
             <ul id="con">
-                <li class="news_detail">
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <h4 class="font22 mb40">
-                        <img class="vm" src="img/icon2.png" alt="">
-                        <span class="vm ml20">文化+ 赋能生态圈</span>
-                    </h4>
-                    <p>
-                        根据联合国教科文组织的《保护非物质文化遗产公约》定义：非物质文化遗产指被各群体、团体、有时为个人所视为其文化遗产的各种实践、表演、表现形式、知识体系和技能及其有关的工具、实物、工艺品和文化场所。各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                    <p>
-                        各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <p>
-                        根据联合国教科文组织的《保护非物质文化遗产公约》定义：非物质文化遗产指被各群体、团体、有时为个人所视为其文化遗产的各种实践、表演、表现形式、知识体系和技能及其有关的工具、实物、工艺品和文化场所。各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                        各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                </li>
-                <li class="news_detail" style="display: none">
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <p>
-                        2根据联合国教科文组织的《保护非物质文化遗产公约》定义：非物质文化遗产指被各群体、团体、有时为个人所视为其文化遗产的各种实践、表演、表现形式、知识体系和技能及其有关的工具、实物、工艺品和文化场所。各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                        各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <p>中国文字自诞生之日起，其书体发生了巨大的变化</p>
-                    <ul>
-                        <li>
-                            各个群体和团体随着其所处环境、与自然界的相互关系和
-                        </li>
-                        <li>
-                            历史条件的变化不断使这种代代相传的非物质文化
-                        </li>
-                        <li>
-                            遗产得到创新，同时使他们自己具有一种认同感和历史感
-                        </li>
-                        <li>
-                            从而促进了文化多样性和激发人类的创造力。公约所
-                        </li>
-                        <li>
-                            定义的“非物质文化遗产”包括以下方面：1、 口头传统和表现形式
-                        </li>
-                        <li>
-                            包括作为非物质文化遗产媒介的语言； 2、表演艺术
-                        </li>
-                        <li>
-                            社会实践、仪式、节庆活动；4、 有关自然界和
-                        </li>
-
-                        <li>宇宙遗产得到创新，同时使他们自己具有一种认同感和历史感
-                        <li>遗产得到创新，同时使他们自己具有一种认同感和历史感
-                        </li>
-                    </ul>
-                </li>
-                <li class="news_detail" style="display: none">
-                    <p>
-                        3根据联合国教科文组织的《保护非物质文化遗产公约》定义：非物质文化遗产指被各群体、团体、有时为个人所视为其文化遗产的各种实践、表演、表现形式、知识体系和技能及其有关的工具、实物、工艺品和文化场所。各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                        各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-                    <p>
-                        根据联合国教科文组织的《保护非物质文化遗产公约》定义：非物质文化遗产指被各群体、团体、有时为个人所视为其文化遗产的各种实践、表演、表现形式、知识体系和技能及其有关的工具、实物、工艺品和文化场所。各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                        各个群体和团体随着其所处环境、与自然界的相互关系和历史条件的变化不断使这种代代相传的非物质文化遗产得到创新，同时使他们自己具有一种认同感和历史感，从而促进了文化多样性和激发人类的创造力。公约所定义的“非物质文化遗产”包括以下方面：1、
-                        口头传统和表现形式，包括作为非物质文化遗产媒介的语言； 2、表演艺术；3、 社会实践、仪式、节庆活动；4、 有关自然界和宇宙的知识和实践；5、传统手工艺。
-                    </p>
-                    <img class="con_img" src="img/demo01.jpg" alt="">
-
-
-                </li>
             </ul>
             <div class="pop_div">
                 <div class="popup_font font20" id="popup_no1">
-                    <img class="vm" src="img/icon2.png" alt="">
-                    <span class="vm ml20">更多展会合作详情：</span>
-                    <a href="javaScript:;" class="vm" id="plane">欢迎咨询文化寻力项目组</a>
+                    <div>
+                        <img class="vm" src="img/icon2.png" alt="">
+                        <span class="vm ml20">更多展会合作详情：</span>
+                        <a href="javaScript:;" class="vm" id="plane">欢迎咨询文化寻力项目组</a>
+                    </div>
+
                     <div class="submit_pop" id="consult_part1" style="display: none;">
                         <h4 class="p_icon  font22"><img src="./img/icon1.png" class="mr20" alt="">展览咨询</h4>
                         <span class="close" id="closed">x</span>
                         <div class="p_con">
                             <p class="p_font">同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
-                            <form class="" action="">
-                                <input type="text" placeholder="姓名">
-                                <input type="tel" placeholder="电话">
-                                <input type="text" placeholder="邮箱">
-                                <textarea name="" id="" placeholder="想资讯的内容"></textarea>
+                            <form class="">
+                                <input type="text" placeholder="姓名" id="txtName">
+                                <input type="tel" placeholder="电话" id="txtTel">
+                                <input type="text" placeholder="邮箱" id="txtEmail">
+                                <textarea name="" id="txtContent" placeholder="想资讯的内容"></textarea>
                             </form>
                             <button class="submit_btn show" id="submit">提 交</button>
                         </div>
@@ -201,9 +122,9 @@
                         <div class="p_con">
                             <p class="p_font">同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
                             <form class="" action="">
-                                <input type="text" placeholder="姓名">
-                                <input type="tel" placeholder="电话">
-                                <textarea name="" id="" placeholder="相关介绍"></textarea>
+                                <input type="text" placeholder="姓名" id="txtName1">
+                                <input type="tel" placeholder="电话" id="txtTel1">
+                                <textarea name="" id="txtContent1" placeholder="相关介绍"></textarea>
                             </form>
                             <button class="submit_btn show" id="submit_enter">提 交</button>
                         </div>
@@ -234,7 +155,59 @@
 </section>
 <!--#include file="./ins/footer.shtml"-->
 <script>
+    $('#popup_no1').hide();
     $('#popup_no2').hide();
+    $(function () {
+        var exId = getQueryStringByName('id');
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/exhibit/getExhibitFrontNavList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    $.each(data.result.internalList, function (i, item) {
+                        if(exId == ""){
+                            exId = item.exhibit_id
+                        }
+                        if(exId == item.exhibit_id){
+                            $('#liNav1').append('<a class="culture_dom active" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        } else {
+                            $('#liNav1').append('<a class="culture_dom" href="exhibition.html?id=' + item.exhibit_id + '">'+item.title_cn+'</a>');
+                        }
+                    });
+                    $.each(data.result.internationalList, function (i, item) {
+                        if(exId == item.exhibit_id) {
+                            $('#liNav2').append('<a class="culture_dom active" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        } else {
+                            $('#liNav2').append('<a class="culture_dom" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        }
+                    });
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/exhibit/getExhibitByID",
+            data: {lan: "cn", exhibit_id: exId},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    $('#con').html(data.result.content_cn);
+                    if(data.result.form_id == 1){
+                        $('#popup_no1').show();
+                    }
+                    if(data.result.form_id == 2){
+                        $('#popup_no2').show();
+                    }
+                }
+            }
+        });
+
+    });
+
     $('.culture_dom').click(function (e) {
         e.preventDefault();
         var i = $(this).index('.aside_list .culture_dom');//下标第一种写法
@@ -263,9 +236,25 @@
         $('#consult_sure').hide();
     });
     $('#submit').click(function () {
-        $('#consult_sure').show();
-        $('#consult_part1').hide();
-        $(".reveal_bg").show();
+        var name = $('#txtName').val();
+        var tel = $('#txtTel').val();
+        var email = $('#txtEmail').val();
+        var content = $('#txtContent').val();
+        $.ajax({
+            type: "POST",
+            url: baseUrl() + "api/exhibit/addJJH",
+            data: JSON.stringify({name: name, phone: tel, email: email,desc: content}),
+            dataType: "json",
+            contentType:"application/json",
+            success: function (data){
+                if (data.status == 1){
+                    $('#consult_sure').show();
+                    $('#consult_part1').hide();
+                    $(".reveal_bg").show();
+                }
+            }
+        });
+
     });
 
     $('#plane_enter').click(function () {
@@ -278,9 +267,24 @@
         $('#part2').hide();
     });
     $('#submit_enter').click(function () {
-        $('#part2').show();
-        $('#part1').hide();
-        $(".reveal_bg").show();
+        var name = $('#txtName1').val();
+        var tel = $('#txtTel1').val();
+        var content = $('#txtContent1').val();
+        $.ajax({
+            type: "POST",
+            url: baseUrl() + "api/exhibit/addCCR",
+            data: JSON.stringify({name: name, phone: tel, desc: content}),
+            dataType: "json",
+            contentType:"application/json",
+            success: function (data){
+                if (data.status == 1){
+                    $('#part2').show();
+                    $('#part1').hide();
+                    $(".reveal_bg").show();
+                }
+            }
+        });
+
     });
 
 </script>
