@@ -32,7 +32,7 @@
     // serverUrl: URL + 'ueditor/php/controller.php?action=config',
     // serverUrl: 'http://localhost:3000/ueditor/ue',
 
-    serverUrl: 'http://localhost:3000/ueditor/ue',
+    serverUrl: 'http://39.107.152.177:8001/ueditor/ue',
     // serverUrl: 'http://39.107.152.177:8005/ueditor/ue',
 
     // toolbars: [[

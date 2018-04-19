@@ -54,8 +54,8 @@ app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, re
 //     res.render('ueditor');
 // });
 
-app.listen(3000, function () {
-    console.log('app listen : 3000');
+app.listen(8001, function () {
+    console.log('app listen : 8001');
 });
 
 module.exports = app;

@@ -1,7 +1,9 @@
 import axios from 'axios'
 //  生产地址
-axios.defaults.baseURL = 'http://39.107.152.177:8000/'
-axios.defaults.imageURL = 'http://39.107.152.177:8004'
+const baseURL = 'http://39.107.152.177:8000/'
+axios.defaults.baseURL = baseURL
+const imageURL = 'http://39.107.152.177:8004/'
+axios.defaults.imageURL = imageURL
 /**
  * 拦截器， 对所有的请求。
  * 作用： 可以为每个请求加上额外参数
@@ -72,7 +74,7 @@ export default {
     updateExhibitByID: 'api/exhibit/updateExhibitByID',
     addExhibit: 'api/exhibit/addExhibit'
   },
-  uploadAPI: 'http://39.107.152.177:8000/api/firstPage/uploadPic',
+  uploadAPI: baseURL + 'api/firstPage/uploadPic',
   maxFileSizeBit: 500 * 1024,
   maxFileSize: '50kb',
   extension: ['JPG', 'PNG'],
