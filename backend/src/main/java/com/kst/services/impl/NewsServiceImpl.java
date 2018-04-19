@@ -94,12 +94,14 @@ public class NewsServiceImpl implements NewsService {
                     obj.setTitle_en(null);
                     obj.setLink_en(null);
                     obj.setImage_en(null);
+                    obj.setDesc_en(null);
                 }
                 else
                 {
                     obj.setTitle_cn(null);
                     obj.setLink_cn(null);
                     obj.setImage_cn(null);
+                    obj.setDesc_cn(null);
                 }
             }
 

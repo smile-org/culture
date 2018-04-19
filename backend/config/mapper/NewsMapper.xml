@@ -39,7 +39,7 @@
     </update>
 
     <select id="getNewsList"  resultType="com.kst.entities.News">
-      select  news_id,   image_cn,  image_en, title_cn,  title_en , link_cn, link_en from news
+      select  news_id,   image_cn,  image_en, title_cn,  title_en , link_cn, link_en, desc_cn  ,desc_en from news
     </select>
 
      <select id="getNewsByID"       resultType="com.kst.entities.News" >
