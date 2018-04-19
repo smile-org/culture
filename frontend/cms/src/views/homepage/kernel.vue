@@ -16,8 +16,10 @@
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <ul class="con_ul">
               <li class="list_state language_con">
-                <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
-                <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
+                <div class="tr" style="width: 100%;">
+                  <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
+                  <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
+                </div>
               </li>
               <li class="list_state">
                 <el-form-item label="模块名称" prop="title_cn">

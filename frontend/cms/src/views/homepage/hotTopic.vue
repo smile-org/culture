@@ -25,16 +25,16 @@
                 active-value='1'
                 inactive-color="#ff4949" inactive-text="启用状态:">
               </el-switch>
+              <div class="language_con fr">
+                <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
+                <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
+              </div>
             </h4>
             <ul class="con_ul">
               <li class="list_state">
                 <el-form-item label="展示位置" prop="order">
                   <el-input v-model="ruleForm.order" placeholder="请在此输入展示位置"></el-input>
                 </el-form-item>
-              </li>
-              <li class="list_state language_con">
-                <span v-bind:class="{ active: this.lang == 'cn'}" @click="setLang('cn')">中文</span>
-                <span v-bind:class="{ active: this.lang == 'en'}" @click="setLang('en')">英文</span>
               </li>
               <li class="list_state">
                 <el-form-item label="热点名称" prop="title_cn">

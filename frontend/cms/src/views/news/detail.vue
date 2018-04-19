@@ -15,8 +15,10 @@
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <ul class="con_ul">
               <li class="list_state language_con">
-                <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
-                <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
+               <div class="tr" style="width: 100%;">
+                 <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
+                 <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
+               </div>
               </li>
               <li class="list_state">
                 <el-form-item label="新闻标题" prop="title">
@@ -55,7 +57,7 @@
               <li class="list_state">
                 <h4>新闻内容 :</h4>
                 <div class="right_input" >
-                  <VueUEditor @ready="editorReady" style="max-Width : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
+                  <VueUEditor @ready="editorReady" style="max-Width : calc(100% - 400px);padding: 20px 0;"></VueUEditor>
                 </div>
             </li>
           </ul>

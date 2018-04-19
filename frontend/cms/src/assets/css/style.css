@@ -312,6 +312,7 @@ section {
 
 .con_main aside {
   width: 300px;
+  min-width: 300px;
   background: #fff;
 
 }
@@ -337,6 +338,7 @@ section {
 
 .aside_ad_list li {
   padding: 15px 20px;
+  min-height: 50px;
   border-bottom: 1px solid #eee;
   border-left: 2px solid #fff;
   cursor: pointer;

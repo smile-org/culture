@@ -23,6 +23,10 @@
                 active-color="#13ce66"
                 inactive-color="#ff4949" inactive-text="启用状态:">
               </el-switch>
+              <div class="language_con fr">
+                <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
+                <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
+              </div>
             </h4>
             <ul class="con_ul">
               <li class="list_state">
@@ -38,10 +42,6 @@
                     <el-option v-for="item in ruleForm.formList" :key="item.value" :label="item.text" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
-              </li>
-              <li class="list_state language_con">
-                <span @click="lanChange('cn')" v-bind:class="{active: this.lan == 'cn'}">中文</span>
-                <span @click="lanChange('en')" v-bind:class="{active: this.lan == 'en'}">英文</span>
               </li>
               <!--<li class="list_state">-->
                 <!--<h4>宣传图片 :</h4>-->
@@ -59,7 +59,7 @@
               <li class="list_state">
                 <h4>详细介绍 :</h4>
                 <div class="right_input">
-                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 300px);padding: 20px 0;"></VueUEditor>
+                  <VueUEditor @ready="editorReady" style="maxWidth : calc(100% - 400px);padding: 20px 0;"></VueUEditor>
                 </div>
               </li>
             </ul>
