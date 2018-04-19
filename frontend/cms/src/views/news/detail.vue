@@ -55,7 +55,7 @@
                 </el-form-item>
               </li>
               <li class="list_state">
-                <h4>新闻内容 :</h4>
+                新闻内容 :
                 <div class="right_input" >
                   <VueUEditor @ready="editorReady" style="max-Width : calc(100% - 400px);padding: 20px 0;"></VueUEditor>
                 </div>
@@ -133,10 +133,10 @@ export default {
         ],
         order: [
           { required: true, message: '请在此输入展示位置', trigger: 'blur' }
-        ],
-        link: [
-          { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
         ]
+        // link: [
+        //   { required: true, message: '请在此输入跳转链接', trigger: 'blur' }
+        // ]
       },
       value: '',
       items: [],
