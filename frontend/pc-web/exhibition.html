@@ -157,7 +157,9 @@
 <script>
     $('#popup_no1').hide();
     $('#popup_no2').hide();
+
     $(function () {
+
         var exId = getQueryStringByName('id');
 
         $.ajax({
@@ -169,7 +171,7 @@
                 if (data.status == 1) {
                     $.each(data.result.internalList, function (i, item) {
                         if(exId == ""){
-                            exId = item.exhibit_id
+                            exId = item.exhibit_id;
                         }
                         if(exId == item.exhibit_id){
                             $('#liNav1').append('<a class="culture_dom active" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
@@ -184,27 +186,31 @@
                             $('#liNav2').append('<a class="culture_dom" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
                         }
                     });
+
+                    $.ajax({
+                        type: "GET",
+                        url: baseUrl() + "/api/exhibit/getExhibitByID",
+                        data: {lan: "cn", exhibit_id: exId},
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.status == 1) {
+                                $('#con').html(data.result.content_cn);
+                                if(data.result.form_id == 1){
+                                    $('#popup_no1').show();
+                                }
+                                if(data.result.form_id == 2){
+                                    $('#popup_no2').show();
+                                }
+                            }
+                        }
+                    });
                 }
             }
         });
 
-        $.ajax({
-            type: "GET",
-            url: baseUrl() + "/api/exhibit/getExhibitByID",
-            data: {lan: "cn", exhibit_id: exId},
-            dataType: "json",
-            success: function (data) {
-                if (data.status == 1) {
-                    $('#con').html(data.result.content_cn);
-                    if(data.result.form_id == 1){
-                        $('#popup_no1').show();
-                    }
-                    if(data.result.form_id == 2){
-                        $('#popup_no2').show();
-                    }
-                }
-            }
-        });
+
+
+
 
     });
 
