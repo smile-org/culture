@@ -34,7 +34,7 @@
               <li class="list_state">
                 <h4>宣传图片 :</h4>
                 <div class="right_input">
-                  <img :src="ruleForm.image | formatImg" alt="" class="style_banner fl">
+                  <img :src="ruleForm.image | formatImg" alt="" class="style_hotImg fl">
                   <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"

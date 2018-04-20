@@ -33,7 +33,7 @@
               <li class="list_state">
               <h4>标题图片 :</h4>
               <div class="right_input">
-                <img :src="ruleForm.img | formatImg" alt="" class="style_banner fl">
+                <img :src="ruleForm.img | formatImg" alt="" class="style_newsImg fl">
                 <el-upload
                     class="upload-demo fl upAd"
                     :action="uploadAPI"
