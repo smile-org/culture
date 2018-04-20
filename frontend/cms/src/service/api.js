@@ -74,9 +74,11 @@ export default {
     updateExhibitByID: 'api/exhibit/updateExhibitByID',
     addExhibit: 'api/exhibit/addExhibit'
   },
+
   uploadAPI: baseURL + 'api/firstPage/uploadPic',
-  maxFileSizeBit: 500 * 1024,
-  maxFileSize: '50kb',
+  maxFileSizeBit: 1 * 1024 * 1024,
+  maxFileSize: '1MB',
+
   extension: ['JPG', 'PNG'],
   getUploadHeaders: function () {
     var token = sessionStorage.getItem('token')
