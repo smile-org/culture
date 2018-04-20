@@ -332,7 +332,7 @@ section .content_box h4 {
 }
 
 .part3_font {
-    margin: 30px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
     display: block;
     cursor: pointer;
 }
@@ -353,7 +353,7 @@ section .content_box h4 {
 .part3_font p {
     font-size: 20px;
     color: #777;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .part3_font p:hover {
@@ -442,14 +442,14 @@ aside .aside_list .active {
 .news_con {
     overflow: auto;
     font-size: 18px;
-    font-size: 18px;
     line-height: 42px;
 }
 .news_conList p{
     margin-top: 30px;
 }
 .news_conList img{
-    margin-top: 40px;
+    /*margin-top: 40px;*/
+    width: 100%;
 }
 .news_date{
     padding-left:65px;
