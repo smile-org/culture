@@ -20,7 +20,7 @@ export default {
 <style>
   @import './assets/css/common.css';
   @import './assets/css/style.css';
-  @import './assets/css/mend.css';
+  /*@import './assets/css/mend.css';*/
   /*@import './assets/css/iconfont.css';*/
 
   #app {
