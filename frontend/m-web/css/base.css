@@ -1,0 +1,50 @@
+
+/*媒体查询*/
+@media screen and (min-width: 1696px){
+    section .content_box {
+        max-width: 1400px;
+        margin: 30px auto;
+    }
+    .carousel li {
+        min-height: 755px;
+    }
+}
+
+@media screen and (max-width: 1696px) {
+    .submit_pop {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        margin: -302px 0 0 -350px;
+    }
+
+    .banner_text {
+        transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        -o-transform: scale(0.9);
+        -moz-transform: scale(0.9);
+    }
+
+    section {
+        background: none;
+    }
+
+    .carousel-content {
+        min-height: 575px;
+    }
+
+    .carousel li {
+        min-height: 575px;
+    }
+
+    .dddd {
+        min-height: 755px;
+    }
+}
+@media screen and (max-width: 1366px){
+    .tab_list li a{
+        padding:0 15px;
+        font-size:18px;
+    }
+}

@@ -1,11 +1,243 @@
-<html>
-<header>
-    <title>
-        m web
-    </title>
-</header>
-<body>
-m web is on the way.
-</body>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name=”MobileOptimized” content=”375″>-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <title>文化寻力</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
 
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<header>
+    <ul class="header_con">
+        <li class="iHome text_l" id="nav_mobile">
+            <a href="#">
+                <img src="./img/home.png" alt="">
+            </a>
+        </li>
+        <li>
+            i 非遗
+        </li>
+        <li class="iShop text_r">
+            <a href="https://shop.iculturechina.com/">
+                <img src="./img/ishop.png" alt="">
+            </a>
+        </li>
+    </ul>
+    <ul class="menu_lit" id="menu_box">
+        <li><a href="">主页</a></li>
+        <li><a href="./exhibition.html">文化展览</a></li>
+        <li><a href="">文化之旅</a></li>
+        <li><a href="">文化记忆</a></li>
+        <li><a href="">文化教育</a></li>
+        <li><a href="">非遗地图</a></li>
+        <li><a href="">关于我们</a></li>
+    </ul>
+</header>
+<div class="reveal_bg" style=""></div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image:url(./img/banner.jpg)">
+            <div class="banner_font">
+                <h4>
+                    民族血sdfds国红
+                </h4>
+                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url(./img/banner.jpg)">
+            <div class="banner_font">
+                <h4>
+                    民族sdfds的中国红
+                </h4>
+                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url(./img/banner.jpg)">
+            <div class="banner_font">
+                <h4>
+                    民dfds中国红
+                </h4>
+                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url(./img/banner.jpg)">
+            <div class="banner_font">
+                <h4>
+                    民族血液里的中国红
+                </h4>
+                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+            </div>
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination banner_circle" style="height: 46px;"></div>
+    <img class="banner_logo" src="./img/logo.jpg" alt="">
+</div>
+<section class="con_style">
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>走向世界的中国非遗</span></h3>
+        <ul class="box_style">
+            <li class="">
+                <img src="./img/img01.jpg" alt="" class="part_img">
+                <h4>文化展览</h4>
+                <p>让世界认识中国非遗</p>
+            </li>
+            <li>
+                <img src="./img/img02.jpg" alt="" class="part_img">
+                <h4>文化之旅</h4>
+                <p>传播文化的种子</p>
+            </li>
+            <li>
+                <img src="./img/img03.jpg" alt="" class="part_img">
+                <h4>文化记忆</h4>
+                <p>点亮古老的智慧</p>
+            </li>
+            <li>
+                <img src="./img/img04.jpg" alt="" class="part_img">
+                <h4>文化教育</h4>
+                <p>青少年的文化复兴</p>
+            </li>
+            <li>
+                <img src="./img/img05.jpg" alt="" class="part_img">
+                <h4>非遗地图</h4>
+                <p>挖掘非遗技艺的火种</p>
+            </li>
+            <li>
+                <img src="./img/img06.jpg" alt="" class="part_img">
+                <h4>服务升级</h4>
+                <p>场景化打造文化闭环</p>
+            </li>
+        </ul>
+    </div>
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>热点聚焦</span></h3>
+        <div class="swiper-container hotSwiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hotSwiper-slide" style="background-image:url(./img/img07.jpg)">
+                    <div class="hotSwiper-foot">
+                        <p>中国（北京）国际服务贸易交易会</p>
+                        <p>中国非物质文化遗产专题展本月开展 </p>
+                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                    </div>
+                </div>
+                <div class="swiper-slide hotSwiper-slide" style="background-image:url(./img/img07.jpg)">
+                    <div class="hotSwiper-foot">
+                        <p>中国（北京）国际服务贸易交易会</p>
+                        <p>中国非物质文化遗产专题展本月开展 </p>
+                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                    </div>
+                </div>
+                <div class="swiper-slide hotSwiper-slide" style="background-image:url(./img/img07.jpg)">
+                    <div class="hotSwiper-foot">
+                        <p>中国（北京）国际服务贸易交易会</p>
+                        <p>中国非物质文化遗产专题展本月开展 </p>
+                        <p>北京 <span>2018/5/28 - 2018/6/1</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination hotSwiper-pagination"></div>
+        </div>
+    </div>
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>新闻动态</span></h3>
+        <ul class="box_style">
+            <li>
+                <img src="./img/img08.jpg" alt="" class="part_img">
+                <h4>政协文艺界委员议中国文化走出去</h4>
+                <p class="ellipsis">刚刚结束的全国两会“部长通道”上国两通会“部道”上，…</p>
+            </li>
+            <li>
+                <img src="./img/img09.jpg" alt="" class="part_img">
+                <h4>京交会现场直击非遗文化强劲活力</h4>
+                <p class="ellipsis">顺应中国文化走出去的国家战略出去的国家的国家，以“…</p>
+            </li>
+            <li>
+                <img src="./img/img10.jpg" alt="" class="part_img">
+                <h4>强化京交会作为服贸龙头地位作用</h4>
+                <p class="ellipsis">非遗文化属于民族、国家乃至人类、国家乃至人类共同…</p>
+            </li>
+        </ul>
+    </div>
+    <div class="part_box part_partner">
+        <h3><img src="./img/icon1.png"><span>合作伙伴</span></h3>
+        <img class="" style="width: 100%;" src="./img/img11.jpg" alt="">
+    </div>
+</section>
+<footer>
+    <div class="footer_about">
+        <a href="./../about.html">关于我们</a>
+        <a href="./../privacy.html">隐私说明</a>
+    </div>
+    <div class="footer_p">
+        <p>Office Phone Number: (703) 429-4664, </p>
+        <p>at 607 Herndon Pkwy #210, Herndon, VA 20170</p>
+        <p>gazucena@newoasisedu.com</p>
+        <p>Copyrights © ifeiyi 2018</p>
+        <img class="weChart" src="./img/wecharted.png" alt="">
+        <img class="box_code" src="./img/weChart.jpg" alt="">
+    </div>
+</footer>
+
+<script src="./js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+    var hotswiper = new Swiper('.hotSwiper-container', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.hotSwiper-pagination',
+            clickable: true,
+        },
+    });
+    $("#nav_mobile").click(function(){
+        $("#menu_box").slideToggle("slow");
+//        $('.reveal_bg').addClass("box_open");
+    });
+    $("#m_close").click(function(){
+        $("#tab_main_nav_mobile_container").removeClass("mobile-menu-open");
+    });
+
+</script>
+
+</body>
 </html>
