@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
     <title>文化寻力</title>
     <link rel="Shortcut Icon" href="./img/favicon.ico">
-    <link href="./css/base.css" type="text/css" rel="stylesheet"/>
     <link href="./css/common.css" type="text/css" rel="stylesheet"/>
     <link href="./css/swiper.min.css" type="text/css" rel="stylesheet"/>
     <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/base.css" type="text/css" rel="stylesheet"/>
     <!-- 引入组件库 -->
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/swiper.min.js"></script>
@@ -157,14 +157,14 @@
                 if (data.status == 1) {
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
-                        htmlObj += '<li class="col-sm-4 hight_third">\n' +
+                        htmlObj += '<li class="col-sm-4 hight_third ellipsis">\n' +
                             '<a href="' + item.link_cn + '" class="part1_img">\n' +
                             '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</a>\n' +
                             '<a href="' + item.link_cn + '" class="part1_font">\n' +
                             '<span class="rectangle c_span' + i + '"></span>\n' +
                             '<h4>' + item.title_cn + '</h4>\n' +
-                            '<span>' + item.desc_cn + '</span>\n' +
+                            '<span class="">' + item.desc_cn + '</span>\n' +
                             '</a>\n' +
                             '</li>';
                     });
