@@ -12,7 +12,7 @@ header {
     align-items: center;
     font-size: 20px;
     color: #555;
-    font-family: 'FZZXHJW';
+    font-family: 'weiruanyahei';
 }
 
 header .header_img {
@@ -240,6 +240,7 @@ section .content_box h4 {
 .hot_topic .topic_hot img {
     display: block;
     width: 100%;
+    height: 440px;
 }
 
 .hot_topic p {
@@ -247,6 +248,7 @@ section .content_box h4 {
     margin-bottom: 20px;
     font-family: 'FZZXHJW';
     color: #000;
+    padding: 0 35px;
 }
 
 .hot_topic p:last-child {
@@ -448,6 +450,12 @@ aside .aside_list .active {
     overflow: auto;
     font-size: 18px;
     line-height: 42px;
+}
+.exhibition_style video{
+    width: 100%;
+    background: #dcdcdc;
+    max-height: 520px;
+    min-height: 420px;
 }
 .news_conList p{
     margin-top: 30px;
