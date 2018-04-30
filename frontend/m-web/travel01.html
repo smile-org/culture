@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name=”MobileOptimized” content=”375″>-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <title>文化寻力</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<!--#include file="./ins/header.shtml"-->
+<div class="second_page">
+    <div class="second_bg" style="background-image:url(./img/bg02.jpg)">
+        <div class="banner_font">
+            <h4>
+                民族血sdfds国红
+            </h4>
+            <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+        </div>
+    </div>
+    <img class="banner_logo" src="./img/logo.jpg" alt="">
+</div>
+<div class="sec_menu">
+    <div class="tit_select" id="c_select">
+        <p>
+            文化寻力美国行
+        </p>
+        <img class="select_down" id="down_jt" src="./img/down.png" alt="">
+    </div>
+    <ul class="select_lit" id="select_box">
+        <li><a href="">
+            <span>
+               文化寻力美国行
+            </span>
+        </a></li>
+        <li><a href="">
+            <span>
+                 文化寻力中国行
+            </span>
+
+        </a></li>
+    </ul>
+</div>
+<section class="con_style">
+    <div class="meets_con">
+        <h2>2018年夏季文化寻力美国行</h2>
+        <h2 class="t_font">机器人&地球科学课程体验项目</h2>
+        <img src="./img/travel/t01.jpg" alt="">
+       <p>
+           五大课程强调各个学科融会贯通，注重动手实践和探索过程，激发学生好奇的天性和创新能力。引导同伴之间的合作和自主解决问题的能力，基于创新意识下，结合动手实践和探索，真正唤醒孩子与生俱来的创造力潜能。此次项目以机器人和地球科学为主题，带你走入一个精彩纷呈的世界！通过艺术课程，感悟世界艺术的美丽；通过编程，来驱动和解密世界，感受智慧的力量和赋予生命的乐趣，体验跨界思维和手脑结合的方式，全面拓展逻辑思维能力、组织能力、管理能力和创造力。
+       </p>
+       <p>
+        时间：2018.07.08—2018.07.28
+       </p>
+        <h3>
+            项目简介
+        </h3>
+        <p>
+            •     融汇五大课程（艺术、机器人、音乐、舞蹈、地球科学），激发探索和创造能力。
+        </p>
+        <img src="./img/travel/t2-1.jpg" alt="">
+        <img src="./img/travel/t2-2.jpg" alt="">
+        <p>
+            •     通过机器人和地球科学课程的主题式学习，唤醒孩子与生俱来的动手实践和创新思维能力。
+        </p>
+        <img src="./img/travel/t3-1.jpg" alt="">
+        <img src="./img/travel/t2-2.jpg" alt="">
+        <p>
+            •     课外研习、名校探访，全方位体验和感受每个学生眼中不一样的美国文化。
+        </p>
+        <img src="./img/travel/t4-1.jpg" alt="">
+        <img src="./img/travel/t4-2.jpg" alt="">
+        <p>
+            •     结业后收获“文化交流小使者”证书，提升个人多元化背景。
+        </p>
+        <img src="./img/travel/t5-1.jpg" alt="">
+        <img src="./img/travel/t5-2.jpg" alt="">
+        <h3>
+            项目特色和厚力支撑
+        </h3>
+        <img src="./img/travel/t6-1.jpg" alt="">
+        <img src="./img/travel/t6-2.jpg" alt="">
+        <h3>
+            行程安排
+        </h3>
+        <img src="./img/travel/t9.jpg" alt="">
+        <h3>
+            <a href="">NOW，加入我们的旅途吧！</a>
+        </h3>
+    </div>
+</section>
+<script>
+    $("#c_select").click(function () {
+        $("#select_box").slideToggle("slow");
+        $('#down_jt').toggleClass("select_up");
+    });
+    $("#select_box li").click(function () {
+        $("#select_box").slideToggle("slow");
+        $('#down_jt').toggleClass("select_up");
+    });
+</script>
+</body>
+</html>

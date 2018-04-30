@@ -39,7 +39,7 @@
 <header>
     <ul class="header_con">
         <li class="iHome text_l">
-            <a href="./exhibition.html">
+            <a href="./index.html">
                 <img src="./img/back.png" alt="">
             </a>
         </li>
@@ -54,45 +54,37 @@
     </ul>
 </header>
 <section class="con_style">
-    <div id="popup_no1">
-        <div class="from_submit" id="consult_text">
-            <h3>展览咨询</h3>
-            <p>同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
-            <form action="">
-                <input type="text" placeholder="姓名" id="txtName">
-                <input type="tel" placeholder="电话" id="txtTel">
-                <input type="text" placeholder="邮箱" id="txtEmail">
-                <textarea name="" id="txtContent" placeholder="相关介绍"></textarea>
+    <div id="popup_no2">
+        <div class="from_submit" style="display: block;" id="consult_text">
+            <h3>行程报名咨询</h3>
+            <p style="text-align: center">2018年夏季文化寻力未来学者项目北卡24天</p>
+                <form action="">
+                <input type="text" placeholder="姓名" id="txtName1">
+                <input type="tel" placeholder="电话" id="txtTel1">
+                <textarea name="" id="txtContent1" placeholder="备注说明"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
         <div class="from_submit submit_popSure" style="display: none;" id="consult_sure">
-            <h3>您已提交入驻申请</h3>
-            <p>感谢您的来信，我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注非遗官方微信公众号。</p>
+            <h3>您已提交报名咨询</h3>
+            <p>我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注i非遗官方微信公众号。</p>
             <img class="weChart_code" src="img/weChart.jpg" alt="">
-            <div class="p_con">
-                <p>指定邮箱：ifeiyi@tbiedu.com</p>
-                <p>联系人：魏洋洋、刘清涛</p>
-                <p>手机：183 1033 8281 / 185 1155 1979</p>
-            </div>
-            <button class="submit_btn show " id="sure">确 定</button>
+            <button class="submit_btn show mt_btn" id="sure">确 定</button>
         </div>
     </div>
-    <!--<div id="success_text" style="display: none;">success</div>-->
+    <!--<div id="success_text">success</div>-->
 </section>
 
 <script>
-
     $('#submit_enter').click(function () {
         $('#consult_sure').show();
         $('#consult_text').hide();
-
     });
-//    $('#sure').click(function () {
-//        $('#consult_text').hide();
-//        $("#consult_sure").hide();
-//        $('#success_text').show();
-//    });
+//        $('#sure').click(function () {
+//            $('#consult_text').hide();
+//            $(".consult_sure").hide();
+//            $('#success_text').show();
+//        });
     $('#submit_enter').click(function () {
         var name = $('#txtName1').val();
         var tel = $('#txtTel1').val();
@@ -107,6 +99,7 @@
                 if (data.status == 1){
                     $('#success_text').hide();
                     $('#consult_sure').show();
+
                 }
             }
         });

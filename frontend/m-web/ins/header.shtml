@@ -1,0 +1,36 @@
+<header>
+    <ul class="header_con">
+        <li class="iHome text_l" id="nav_mobile">
+            <a href="#">
+                <img src="./img/home.png" alt="">
+            </a>
+        </li>
+        <li>
+            i 非遗
+        </li>
+        <li class="iShop text_r">
+            <a href="https://shop.iculturechina.com/">
+                <img src="./img/ishop.png" alt="">
+            </a>
+        </li>
+    </ul>
+    <ul class="menu_lit" id="menu_box">
+        <li><a href="./index.html">主页</a></li>
+        <li><a href="./exhibition.html">文化展览</a></li>
+        <li><a href="./travel.html">文化之旅</a></li>
+        <li><a href="./memory.html">文化记忆</a></li>
+        <li><a href="./education.html">文化教育</a></li>
+        <li><a href="./map.html">非遗地图</a></li>
+        <li><a href="./about.html">关于我们</a></li>
+    </ul>
+</header>
+<div class="reveal_bg" id="header_bg" style=""></div>
+<script>
+    $("#nav_mobile").click(function () {
+        $("#menu_box").slideToggle("slow");
+        $('#header_bg').addClass("box_open");
+    });
+//    $("#m_close").click(function () {
+//        $("#tab_main_nav_mobile_container").removeClass("mobile-menu-open");
+//    });
+</script>

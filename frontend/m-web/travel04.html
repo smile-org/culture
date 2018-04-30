@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name=”MobileOptimized” content=”375″>-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <title>文化寻力</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<!--#include file="./ins/header.shtml"-->
+<div class="second_page">
+    <div class="second_bg" style="background-image:url(./img/bg02.jpg)">
+        <div class="banner_font">
+            <h4>
+                民族血sdfds国红
+            </h4>
+            <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+        </div>
+    </div>
+    <img class="banner_logo" src="./img/logo.jpg" alt="">
+</div>
+<div class="sec_menu">
+    <div class="tit_select" id="c_select">
+        <p>
+            文化寻力美国行
+        </p>
+        <img class="select_down" id="down_jt" src="./img/down.png" alt="">
+    </div>
+    <ul class="select_lit" id="select_box">
+        <li><a href="">
+            <span>
+               文化寻力美国行
+            </span>
+        </a></li>
+        <li><a href="">
+            <span>
+                 文化寻力中国行
+            </span>
+
+        </a></li>
+    </ul>
+</div>
+<section class="con_style">
+    <div class="meets_con">
+        <h2>2018年夏季文化寻力美国行</h2>
+        <h2 class="t_font">中国非遗课堂项目</h2>
+        <img src="./img/travel/zg01.jpg" alt="">
+      <p>
+          我是谁？什么最中国？中国非物质文化遗产告诉你。中国非遗课堂项目面向热爱中国传统文化的青少年设立。参加的学员在中国非物质文化遗产代表性传承人的带领下，先在国内集中学习、体验中国茶艺、皮影、古法造纸、年画、剪纸等非物质文化遗产，然后作为文化使者，飞赴美国加州，在课堂上向美国学生讲述中国非遗的故事、展示中国非遗的魅力。在非遗文化的习得中，建立文化认知和文化自觉，在非遗文化的传播中，收获文化自信和人生成长。
+      </p>
+       <p>
+           时间：2018.07.10—2018.07.30
+       </p>
+        <h3>
+            项目简介
+        </h3>
+        <p>
+            •     在北京亲身体验非遗项目，感受非遗魅力。
+        </p>
+        <img src="./img/travel/zg02.jpg" alt="">
+        <img src="./img/travel/zg03.jpg" alt="">
+        <p>
+            •    在加州作为文化使者，传递非遗文化。
+        </p>
+        <img src="./img/travel/zg04.jpg" alt="">
+        <img src="./img/travel/zg05.jpg" alt="">
+        <p>
+            •     入住美国家庭，体验美式课堂，感受美国文化。
+        </p>
+        <img src="./img/travel/zg06.jpg" alt="">
+        <img src="./img/travel/zg07.jpg" alt="">
+        <p>
+            •     结业后收获“文化交流小使者”证书，提升个人多元化背景。
+        </p>
+        <img src="./img/travel/t5-1.jpg" alt="">
+        <img src="./img/travel/t5-2.jpg" alt="">
+        <h3>
+            项目特色和厚力支撑
+        </h3>
+        <img src="./img/travel/t6-1.jpg" alt="">
+        <img src="./img/travel/t6-2.jpg" alt="">
+        <h3>
+            行程安排
+        </h3>
+        <img src="./img/travel/9_1.jpg" alt="">
+        <h3>
+            魅力加利福尼亚州
+        </h3>
+        <img src="./img/travel/jfny_01.jpg" alt="">
+        加利福尼亚州面积上是全美第三大州，人口上是全美第一大州。加州拥有众多的公立大学、私立大学和社区学院。其中比较著名的学校有斯坦福大学，加州理工学院，美国加州大学伯克利分校等等。茉莉塔市是美国加利福尼亚州最年轻、最安全、最富裕的城市之一，地理位置绝佳且投资环境良好。美国同类城市中安全系数排名前八位。学区为学生们提供内容丰富的课程，包括权威的视觉和表演艺术课程。山谷高中是美国为数不多的提供IB课程的公立高中。茉莉塔梅萨高中是“全美最佳高中银奖学校”。
+        <h3>
+            <a href="">NOW，加入我们的旅途吧！</a>
+        </h3>
+    </div>
+</section>
+<script>
+    $("#c_select").click(function () {
+        $("#select_box").slideToggle("slow");
+        $('#down_jt').toggleClass("select_up");
+    });
+    $("#select_box li").click(function () {
+        $("#select_box").slideToggle("slow");
+        $('#down_jt').toggleClass("select_up");
+    });
+</script>
+</body>
+</html>
