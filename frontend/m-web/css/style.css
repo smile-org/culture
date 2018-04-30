@@ -53,6 +53,7 @@ header .header_con .iShop a img {
     font-size: .26rem;
     color: #555;
     margin-left: .6rem;
+    display: block;
 }
 
 .reveal_bg {
