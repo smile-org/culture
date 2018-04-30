@@ -105,7 +105,7 @@
             </li>
             <li id="popup_no2">• 寻找更多文化展览合作机会
                 <p class="click_pop">
-                    <a href="">洽谈文化展览合作机会</a>
+                    <a href="./exhibition_pop2.html">洽谈文化展览合作机会</a>
                 </p>
             </li>
             <!--<li>• 如果您是非遗传承人或创新传承非遗项目-->
@@ -161,11 +161,11 @@
                             if (data.status == 1) {
                                 $('#con').html(data.result.content_cn);
                                 if (data.result.form_id == 1) {
-//                                    $('#popup_no1').show();
+                                    $('#popup_no1').show();
 //                                    window.open('./exhibition_pop.html');
                                 }
                                 if (data.result.form_id == 2) {
-//                                    $('#popup_no2').show();
+                                    $('#popup_no2').show();
                                 }
                             }
                         }

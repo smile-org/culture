@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name=”MobileOptimized” content=”375″>-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="js/config.js"></script>
+    <title>文化寻力</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<!--#include file="./ins/header.shtml"-->
+<section class="con_style">
+    <div class="meets_con">
+        <h2 style="padding-top: .86rem;" id="newsTitle">2018年夏季文化寻力美国行</h2>
+        <div class="newsContent_size" id="newsContent"></div>
+    </div>
+</section>
+<!--#include file="./ins/footer.shtml"-->
+<script>
+    $(function () {
+        var newsId = getQueryStringByName('newsid');
+        if(newsId == ""){
+            $('#newsContent').html('<p>对不起，没有找到该内容！</p>')
+        } else {
+            $.ajax({
+                type: "GET",
+                url: baseUrl() + "api/news/getNewsInformationByID",
+                data: {lan: "cn", news_id:parseInt(newsId)},
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 1) {
+                        $('#newsTitle').html(data.result.title_cn);
+                        $('#newsContent').html(data.result.content_cn);
+                    }
+                }
+            });
+        }
+    })
+</script>
+</body>
+</html>

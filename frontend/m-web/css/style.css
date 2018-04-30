@@ -681,3 +681,6 @@ footer .footer_about a {
     font-size: .44rem;
     margin-bottom: .86rem;
 }
+.newsContent_size img{
+    margin-bottom: 0;
+}

@@ -2,7 +2,7 @@
     <ul class="header_con">
         <li class="iHome text_l" id="nav_mobile">
             <a href="#">
-                <img src="./img/home.png" alt="">
+                <img src="./img/home.png" id="home_" alt="">
             </a>
         </li>
         <li>
@@ -28,7 +28,8 @@
 <script>
     $("#nav_mobile").click(function () {
         $("#menu_box").slideToggle("slow");
-        $('#header_bg').addClass("box_open");
+//        $('#header_bg').addClass("box_open");
+        $('#header_bg').slideToggle("fast");
     });
 //    $("#m_close").click(function () {
 //        $("#tab_main_nav_mobile_container").removeClass("mobile-menu-open");
