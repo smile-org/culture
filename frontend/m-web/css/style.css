@@ -528,6 +528,14 @@ footer .footer_about a {
     -o-transform: rotate(180deg);
     transition: 1s;
 }
+.home_rotate {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -moz-transform: rotate(90deg); /* Firefox */
+    -webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+    -o-transform: rotate(90deg);
+    transition: 1s;
+}
 
 .meets_con h3 {
     font-size: .44rem;
