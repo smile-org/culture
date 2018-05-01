@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/config.js"></script>
     <title>文化寻力</title>
     <script>
         (function (doc, win) {
@@ -105,6 +106,8 @@
             contentType:"application/json",
             success: function (data){
                 if (data.status == 1){
+                    alert('111')
+
                     $('#success_text').hide();
                     $('#consult_sure').show();
                 }
