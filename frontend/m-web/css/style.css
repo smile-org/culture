@@ -594,6 +594,7 @@ footer .footer_about a {
     border: 1px solid #dcdcdc;
     margin: .175rem 0;
     padding-left: .3rem;
+    -webkit-appearance: none;
 }
 
 .from_submit textarea {
@@ -602,6 +603,7 @@ footer .footer_about a {
     border: 1px solid #dcdcdc;
     margin: .175rem 0 .35rem;
     padding: .3rem;
+    -webkit-appearance: none;
 
 }
 
