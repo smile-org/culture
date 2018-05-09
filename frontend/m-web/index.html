@@ -188,7 +188,7 @@
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
                         htmlObj += '<div class="swiper-slide" style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
-                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+                            '<a href="' + item.link_cn + '" class="block_a bg_blockA">\n' +
                             '<div class="banner_font">\n' +
                             '<h4 class="font24">' + item.title_cn + '</h4>\n' +
                             '<p class="twoLine_ellipsis">\n' + item.desc_cn + '</p>\n' +
@@ -198,7 +198,7 @@
                     });
                     $('#ulBanner').html(htmlObj);
                     window.setTimeout(function () {
-                        initBanner()
+                        initSwiper()
                     }, 1)
                 }
             }
@@ -261,23 +261,23 @@
                     });
                     $('#divFocusList').html(htmlObj);
                     window.setTimeout(function () {
-                        initSwiper()
+                        inithotswiper()
                     }, 1)
                 }
             }
         });
         var inithotswiper = function () {
             var hotswiper = new Swiper('.hotSwiper-container', {
-                spaceBetween: 10,
+                spaceBetween: 0,
                 centeredSlides: true,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
                 },
-                pagination: {
-                    el: '.hotSwiper-pagination',
-                    clickable: true,
-                },
+//                pagination: {
+//                    el: '.hotSwiper-pagination',
+//                    clickable: true,
+//                },
             });
         };
         $.ajax({

@@ -4,16 +4,29 @@
         <a href="./privacy.html">隐私说明</a>
     </div>
     <div class="footer_p">
-        <p >Office Phone Number:(703) 429-4664, </span> </p>
+        <p>Office Phone Number:(703) 429-4664, </span> </p>
         <p>at 607 Herndon Pkwy #210, Herndon, VA 20170</p>
         <p>gazucena@newoasisedu.com</p>
         <p>Copyrights © ifeiyi 2018</p>
         <img class="weChart" id="weChart" src="./img/wecharted.png" alt="">
-        <img class="box_code" id="box_code" src="./img/weChart.jpg" alt="">
+        <div class="box_allCode" id="box_code">
+            <img class="box_code" src="./img/weChart.jpg" alt="">
+            <p> 关注i非遗公众号，了解更多非遗项目动态</p>
+        </div>
+
     </div>
 </footer>
 <script>
-$("#weChart").click(function () {
-    $("#box_code").toggle('slow')
-})
+    $("#weChart").click(function (e) {
+        e.stopPropagation();
+        $("#box_code").toggle('fast');
+
+    });
+    $(document).click(function (e) {
+        var _con = $('.box_allCode');   // 设置目标区域
+        if (!_con.is(e.target) && _con.has(e.target).length === 0) {
+            $('.box_allCode').hide();
+        }
+    });
+
 </script>

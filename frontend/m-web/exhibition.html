@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--<meta name=”MobileOptimized” content=”375″>-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name = "format-detection" content="telephone = no" />
+    <meta name="format-detection" content="telephone = no"/>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.3.1.js"></script>
@@ -36,11 +36,13 @@
 <!--#include file="./ins/header.shtml"-->
 <div class="second_page">
     <div class="second_bg" style="background-image:url(./img/bg01.jpg)">
-        <div class="banner_font">
-            <h4>
-                民族血sdfds国红
-            </h4>
-            <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+        <div class="bg_blockA">
+            <div class="banner_font">
+                <h4>
+                    民族血sdfds国红
+                </h4>
+                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+            </div>
         </div>
     </div>
     <img class="banner_logo" src="./img/logo.jpg" alt="">
@@ -50,51 +52,20 @@
         <p id="select_all">
             <span id="select_type"></span>
             <span>|</span>
-            <span class="active" id="select_title"></span>
+            <span class="" id="select_title"></span>
         </p>
         <img class="select_down" id="down_jt" src="./img/down.png" alt="">
     </div>
     <ul class="select_lit" id="select_box">
         <li id="liNav1">
-            <!--<a href="">-->
-            <!--<span>国内</span>-->
-            <!--<span>|</span>-->
-            <!--<span>京交会</span>-->
-            <!--</a>-->
         </li>
         <li id="liNav2">
-            <!--<a href="">-->
-            <!--<span>国际</span><span>|</span>-->
-            <!--<span>周而复始</span>-->
-            <!--</a>-->
-            <!--<a href="">-->
-            <!--<span>国际</span>-->
-            <!--<span>|</span>-->
-            <!--<span>传承人入场计划</span>-->
-            <!--</a>-->
         </li>
     </ul>
 </div>
 
 <section class="con_style">
     <div class="meets_con" id="con">
-        <!--<video src="./img/text.mp4" controls="controls">您的浏览器不支持 video 标签。</video>-->
-        <!--<h2>第五届中国（北京）国际服务贸易交易会</h2>-->
-        <!--<h2 style="margin-bottom: .86rem;">非物质文化遗产专题</h2>-->
-        <!--<p>-->
-        <!--中国（北京）国际服务贸易交易会（简称：京交会），是经由中华人民共和国国务院批准，由商务部和北京市人民政府共同主办的，全球首个覆盖世界贸易组织界定的商业服务、环境服务、文化体育服务等12大服务贸易领域的国际性综合型服务贸易交易平台。获得了世界贸易组织、联合国贸发会议、经合组织三大国际组织永久支持，得到了中国政府高度重视。通过搭建全球服务贸易领域的专题展示、高峰论坛、交易洽谈平台，京交会成为国家地区、-->
-        <!--行业组织、以及服务贸易企业间凝聚共识、共享商机的国际盛会。-->
-        <!--</p>-->
-        <!--<p>-->
-        <!--中国第五届京交会于2018年5月28日至6月1日在北京国家会议中心开幕，并授权北京寻力通桥文化科技有限公司为“非物质文化遗产专题”独家承办方。为顺应中国文化走出去的国家战略、助力文化扶贫攻坚、推动传统文化产业发展，本届京交会非遗板块将全面升级。以非物质文化遗产的国际化、数字化、生活化为主题，重磅打造“走向世界的中国非物质文化遗产”国际营销与传播平台。-->
-        <!--</p>-->
-        <!--<h3>走向世界的中国非遗</h3>-->
-        <!--<img class="" style="width: 100%;" src="./img/img11.jpg" alt="">-->
-        <!--<ul>-->
-        <!--<li>• 行业论坛<p>走向世界的中国非遗 - 中国非物质文化遗产的国际传播与营销</p></li>-->
-        <!--<li>• 行业论坛<p>走向世界的中国非遗 - 中国非物质文化遗产的国际传播与营销</p></li>-->
-        <!--<li>• 行业论坛<p>走向世界的中国非遗 - 中国非物质文化遗产的国际传播与营销</p></li>-->
-        <!--</ul>-->
     </div>
     <div class="pop_all part_box">
         <h3><img src="./img/icon1.png"><span>更多展会合作详情</span></h3>
@@ -109,11 +80,6 @@
                     <a href="./exhibition_pop2.html">洽谈文化展览合作机会</a>
                 </p>
             </li>
-            <!--<li>• 如果您是非遗传承人或创新传承非遗项目-->
-            <!--<p class="click_pop">-->
-            <!--<a href="">加入非遗传承人驻场计划</a>-->
-            <!--</p>-->
-            <!--</li>-->
         </ul>
     </div>
 </section>
@@ -145,16 +111,12 @@
                     });
                     $.each(data.result.internationalList, function (i, item) {
                         if (exId == item.exhibit_id) {
-//                            $('#select_all').append('<a class="" href="exhibition.html?id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>'  + item.title_cn + '</a>');
                             $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>' + item.title_cn + '</a>');
                         } else {
-//                            $('#select_all').append('<a class="" href="exhibition.html?id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>'  + item.title_cn + '</a>');
                             $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>' + item.title_cn + '</a>');
                         }
                     });
-//                    $('#liNav2').click(function () {
-//                        $('#select_all').append('<a class="" href="exhibition.html?id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>' + item.title_cn + '</a>');
-//                    })
+
                     $.ajax({
                         type: "GET",
                         url: baseUrl() + "/api/exhibit/getExhibitByID",
@@ -164,7 +126,7 @@
                             if (data.status == 1) {
                                 $('#con').html(data.result.content_cn);
                                 $('#select_title').text(data.result.title_cn);
-                                $('#select_type').text(parseInt(type) === 1 ? '国内':'国外');
+                                $('#select_type').text(parseInt(type) === 1 ? '国内' : '国际');
                                 if (data.result.form_id == 1) {
                                     $('#popup_no1').show();
                                 }
@@ -179,11 +141,11 @@
         });
     });
     $("#c_select").click(function () {
-        $("#select_box").slideToggle("slow");
+        $("#select_box").slideToggle("fast");
         $('#down_jt').toggleClass("select_up");
     });
     $("#select_box li").click(function () {
-        $("#select_box").slideToggle("slow");
+        $("#select_box").slideToggle("fast");
         $('#down_jt').toggleClass("select_up");
     });
     $('#plane_enter').click(function () {

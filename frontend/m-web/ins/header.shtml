@@ -27,7 +27,7 @@
 <div class="reveal_bg" id="header_bg" style=""></div>
 <script>
     $("#nav_mobile").click(function () {
-        $("#menu_box").slideToggle("slow");
+        $("#menu_box").slideToggle("fast");
 //        $('#header_bg').addClass("box_open");
         $('#header_bg').slideToggle("fast");
         $('#home_icon').toggleClass("home_rotate");
