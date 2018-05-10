@@ -11,7 +11,7 @@
 
 
     <insert id="addExhibit"  parameterType="com.kst.entities.Exhibit">
-          insert     exhibit  VALUES (0, #{title_cn},#{title_en},#{content_cn},#{content_en},#{category},#{form_id},#{status}, now(),  now() )
+          insert     exhibit  VALUES (0, #{title_cn},#{title_en},#{content_cn},#{content_en},#{category},#{status}, now(),  now() )
     </insert>
 
     <resultMap type="com.kst.entities.NavNode" id="exhibitNavMap">
@@ -51,7 +51,7 @@ update   exhibit
             <if test="title_en !=null">content_en=#{content_en},</if>
             <if test="title_en !=null">title_en=#{title_en},</if>
             <if test="true"> category=#{category},</if>
-            <if test="true"> form_id=#{form_id} ,</if>
+
             <if test="true">  status=#{status} ,</if>
             <if test="true"> update_at= now()</if>
         </set>

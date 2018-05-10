@@ -68,12 +68,12 @@ public class ExhibitServiceImpl implements ExhibitService {
             e.categoryList.add(new SelectOptionItem("1", "国内"));
             e.categoryList.add(new SelectOptionItem("2", "国外"));
 
-            List<Form> lst = exhibitRepo.getFormList();
-            e.formList = new ArrayList<SelectOptionItem>();
+            //List<Form> lst = exhibitRepo.getFormList();
+           // e.formList = new ArrayList<SelectOptionItem>();
 
-            for (Form f : lst) {
-                e.formList.add(new SelectOptionItem(String.valueOf(f.getForm_id()), f.getForm_cn_name()));
-            }
+           // for (Form f : lst) {
+           //     e.formList.add(new SelectOptionItem(String.valueOf(f.getForm_id()), f.getForm_cn_name()));
+           // }
 
 
             if (exhibit_id != null) {
@@ -116,6 +116,7 @@ public class ExhibitServiceImpl implements ExhibitService {
             Exhibit exhibit = exhibitRepo.getExhibitByID(exhibit_id);
 
 
+            /*
             if (exhibit.getForm_id() != null) {
                 Form f = exhibitRepo.getFormByID(exhibit.getForm_id());
 
@@ -123,6 +124,7 @@ public class ExhibitServiceImpl implements ExhibitService {
                 exhibit.setForm_en_name(f.getForm_en_name());
 
             }
+            */
 
             if(lan.equals("cn"))
             {

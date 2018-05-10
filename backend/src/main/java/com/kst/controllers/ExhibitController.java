@@ -54,18 +54,7 @@ public class ExhibitController {
 
         exhibit.setCategory ((int) body.get("category"));
 
-        Integer  form_id =null;
-        Object   form_idObject =   body.get("form_id");
-        if(form_idObject !=null)
-        {
-            form_id =  (Integer) form_idObject ;
-        }
-        exhibit.setForm_id (form_id);
-
         exhibit.setStatus ((int) body.get("status"));
-
-
-
 
         result = exhibitService.addExhibit(exhibit);
         logger.debug("Response: " + result);
@@ -148,6 +137,7 @@ public class ExhibitController {
 
         exhibit.setCategory ((int) body.get("category"));
 
+        /*
         Integer  form_id =null;
         Object   form_idObject =   body.get("form_id");
         if(form_idObject !=null)
@@ -155,6 +145,7 @@ public class ExhibitController {
             form_id =  (Integer) form_idObject ;
         }
         exhibit.setForm_id (form_id);
+        */
 
         exhibit.setStatus ((int) body.get("status"));
         exhibit.setExhibit_id ((int) body.get("exhibit_id"));
@@ -194,8 +185,8 @@ public class ExhibitController {
 
 
 
-
-    @RequestMapping(value = "/addJJH", method = RequestMethod.POST)
+   //用于联系我们
+    @RequestMapping(value = "/addLXWM", method = RequestMethod.POST)
     public Map addJJH(@RequestHeader Map header , @RequestBody Map body) {
         logger.debug("RequestBody: " +  "null");
         Map result;
@@ -217,7 +208,7 @@ public class ExhibitController {
 
 
 
-    @RequestMapping(value = "/addCCR", method = RequestMethod.POST)
+    @RequestMapping(value = "/addXCBM", method = RequestMethod.POST)
     public Map addCCR(@RequestHeader Map header , @RequestBody Map body) {
         logger.debug("RequestBody: " +  "null");
         Map result;

@@ -4,10 +4,6 @@ import java.util.Date;
 
 public class Form {
     private    int form_id;
-
-    private   String form_en_name;
-    private   String form_cn_name;
-
     private  String  form_table;
     private   String from;
     private   String to;
@@ -23,8 +19,6 @@ public class Form {
 
     private Date create_at;
 
-
-
     public String getForm_table() {
         return form_table;
     }
@@ -39,22 +33,6 @@ public class Form {
 
     public void setForm_id(int form_id) {
         this.form_id = form_id;
-    }
-
-    public String getForm_en_name() {
-        return form_en_name;
-    }
-
-    public void setForm_en_name(String form_en_name) {
-        this.form_en_name = form_en_name;
-    }
-
-    public String getForm_cn_name() {
-        return form_cn_name;
-    }
-
-    public void setForm_cn_name(String form_cn_name) {
-        this.form_cn_name = form_cn_name;
     }
 
     public String getFrom() {

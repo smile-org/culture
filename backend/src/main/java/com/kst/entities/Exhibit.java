@@ -12,32 +12,12 @@ public class Exhibit {
     private  String content_en;
 
     private  int category;
-    private  Integer form_id;
-    private  String  form_en_name;
-    private   String   form_cn_name;
-
 
 
     private  int status;
     private Date create_at;
     private Date update_at;
 
-
-    public String getForm_en_name() {
-        return form_en_name;
-    }
-
-    public void setForm_en_name(String form_en_name) {
-        this.form_en_name = form_en_name;
-    }
-
-    public String getForm_cn_name() {
-        return form_cn_name;
-    }
-
-    public void setForm_cn_name(String form_cn_name) {
-        this.form_cn_name = form_cn_name;
-    }
 
 
     public int getExhibit_id() {
@@ -86,14 +66,6 @@ public class Exhibit {
 
     public void setCategory(int category) {
         this.category = category;
-    }
-
-    public Integer getForm_id() {
-        return form_id;
-    }
-
-    public void setForm_id(Integer form_id) {
-        this.form_id = form_id;
     }
 
     public int getStatus() {
