@@ -9,10 +9,10 @@
             <li><a href=",/../travel.html">文化之旅</a></li>
             <li><a href="./../memory.html">文化记忆</a></li>
             <li><a href="./../education.html">文化教育</a></li>
-            <li><a href="./../map.html">非遗地图</a></li>
+            <li><a href="./../city.html">寻力城市</a></li>
             <li>
                 <a href="https://shop.iculturechina.com/" target="_blank">
-                    <img src="./img/cart.png" alt="cart" class="vm mr10"><span class="vm">ESHOP</span>
+                    <img src="./img/cart.png" class="cart_img" alt="cart" ><span class="vm">ESHOP</span>
                 </a>
             </li>
         </ul>

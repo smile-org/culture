@@ -17,19 +17,32 @@
 <body>
 <!--#include file="./ins/header.shtml"-->
 <section>
-    <div class="banner_box">
-        <div class="carousel-content">
-            <ul class="carousel" id="ulBanner">
+    <!--<div class="banner_box">-->
+        <!--<div class="carousel-content">-->
+            <!--<ul class="carousel" id="ulBanner">-->
 
-            </ul>
-            <ul class="img-index"></ul>
-            <div class="carousel-prev"><img src="./img/left1.png"></div>
-            <div class="carousel-next"><img src="./img/right1.png"></div>
+            <!--</ul>-->
+            <!--<ul class="img-index"></ul>-->
+            <!--<div class="carousel-prev"><img src="./img/left1.png"></div>-->
+            <!--<div class="carousel-next"><img src="./img/right1.png"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="swiper-container banner-swiper-container">
+        <div class="swiper-wrapper" id="ulBanner2">
+            <!--<div class="swiper-slide"><img src="./img/img4.jpg"></div>-->
+            <!--<div class="swiper-slide"><img src="./img/img2.jpg"></div>-->
+            <!--<div class="swiper-slide"><img src="./img/img3.jpg"></div>-->
         </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination banner-swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev banner-swiper-button-prev"></div>
+        <div class="swiper-button-next banner-swiper-button-next"></div>
     </div>
-    <div class="content_box">
+    <div class="content_box minContent_box">
         <div class="index_part">
-            <h1 class="">文化 + 赋能生态圈</h1>
+            <h1 class="">文化寻力 · 赋能  赋值  赋路</h1>
             <ul class="row culture_box clear" id="ulCulturePlus">
             </ul>
         </div>
@@ -100,16 +113,16 @@
                 if (data.status == 1) {
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
-                        htmlObj += '<li style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
+                        htmlObj += '<div class="swiper-slide newLi" style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
                             '<a href="' + item.link_cn + '" class="banner_a">\n' +
                             '<div class="banner_text">\n' +
-                            '<h5 class="font24">' + item.title_cn + '</h5>\n' +
+                            '<h5 class="">' + item.title_cn + '</h5>\n' +
                             '<p class="b_con">\n' + item.desc_cn + '</p>\n' +
                             '</div>\n' +
                             '</a>\n' +
-                            '</li>';
+                            '</div>';
                     });
-                    $('#ulBanner').html(htmlObj);
+                    $('#ulBanner2').html(htmlObj);
                     window.setTimeout(function () {
                         initBanner()
                     }, 1)
@@ -117,35 +130,60 @@
             }
         });
         var initBanner = function () {
-            $(".carousel-content").carousel({
-                carousel: ".carousel",//轮播图容器
-                indexContainer: ".img-index",//下标容器
-                prev: ".carousel-prev",//左按钮
-                next: ".carousel-next",//右按钮
-                timing: 3000,//自动播放间隔
-                animateTime: 700,//动画时间
-                autoPlay: true,//是否自动播放 true/false
-                direction: "left",//滚动方向 right/left
-            });
+//            $(".carousel-content").carousel({
+//                carousel: ".carousel",//轮播图容器
+//                indexContainer: ".img-index",//下标容器
+//                prev: ".carousel-prev",//左按钮
+//                next: ".carousel-next",//右按钮
+//                timing: 3000,//自动播放间隔
+//                animateTime: 700,//动画时间
+//                autoPlay: true,//是否自动播放 true/false
+//                direction: "left",//滚动方向 right/left
+//            });
+//
+//            $(".carousel-content").hover(function () {
+//                $(".carousel-prev,.carousel-next").fadeIn(300);
+//            }, function () {
+//                $(".carousel-prev,.carousel-next").fadeOut(300);
+//            });
+//            // $(".carousel li").click(function () {
+//            //   window.location.href = "./inland.html";
+//            // });
+//            $(".carousel-prev").hover(function () {
+//                $(this).find("img").attr("src", "./img/left2.png");
+//            }, function () {
+//                $(this).find("img").attr("src", "./img/left1.png");
+//            });
+//            $(".carousel-next").hover(function () {
+//                $(this).find("img").attr("src", "./img/right2.png");
+//            }, function () {
+//                $(this).find("img").attr("src", "./img/right1.png");
+//            });
+            var mySwiper = new Swiper('.banner-swiper-container', {
+                autoplay:true,
+                spaceBetween: 30,
+//                observer:true,//修改swiper自己或子元素时，自动初始化swiper
+//                observeParents:true,//修改swiper的父元素时，自动初始化swiper
+                speed: 3000,
+                effect: 'fade',
+                // 如果需要分页器
+                pagination: {
+                    el: '.banner-swiper-pagination',
+                    clickable: true,
+                },
 
-            $(".carousel-content").hover(function () {
-                $(".carousel-prev,.carousel-next").fadeIn(300);
-            }, function () {
-                $(".carousel-prev,.carousel-next").fadeOut(300);
-            });
-            // $(".carousel li").click(function () {
-            //   window.location.href = "./inland.html";
-            // });
-            $(".carousel-prev").hover(function () {
-                $(this).find("img").attr("src", "./img/left2.png");
-            }, function () {
-                $(this).find("img").attr("src", "./img/left1.png");
-            });
-            $(".carousel-next").hover(function () {
-                $(this).find("img").attr("src", "./img/right2.png");
-            }, function () {
-                $(this).find("img").attr("src", "./img/right1.png");
-            });
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.banner-swiper-button-next',
+                    prevEl: '.banner-swiper-button-prev',
+                }
+            })
+
+//            $(".banner-swiper-container").mouseenter(function () {//滑过悬停
+//                mySwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
+//            }).mouseleave(function () {//离开开启
+//                mySwiper.autoplay.start();
+//            });
         }
 
         $.ajax({
@@ -162,9 +200,9 @@
                             '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</a>\n' +
                             '<a href="' + item.link_cn + '" class="part1_font">\n' +
-                            '<span class="rectangle c_span' + i + '"></span>\n' +
+//                            '<span class="rectangle c_span' + i + '"></span>\n' +
                             '<h4>' + item.title_cn + '</h4>\n' +
-                            '<span class="">' + item.desc_cn + '</span>\n' +
+                            '<p class="P_des">' + item.desc_cn + '</p>\n' +
                             '</a>\n' +
                             '</li>';
                     });
@@ -188,7 +226,7 @@
                             '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</div>\n' +
                             '<div class="topic_hot">\n' +
-                            '<div>\n' +
+                            '<div class="hot_widthNews">\n' +
                             '<p>' + item.title_cn + '</p>\n' +
                             '<p>' + item.desc_cn + '</p>\n' +
                             '</div>\n' +
@@ -221,7 +259,7 @@
                     }
                     htmlObj += '<img src="' + imageUrl() + item.image_cn + '" alt="" class="">\n' +
                         '</a>\n';
-                    if (item.link_cn == null  || item.link_cn == '') {
+                    if (item.link_cn == null || item.link_cn == '') {
                         htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="part3_font">\n';
                     } else {
                         htmlObj += '<a href="' + item.link_cn + '" class="part3_font">\n';
@@ -239,9 +277,9 @@
     var initSwiper = function () {
         var hotSwiper = new Swiper('.hot-swiper-container', {
             speed: 1000,
-//        autoplay: {
-//            delay: 3000
-//        },
+        autoplay: {
+            delay: 3000
+        },
 //        loop: true,
             // 如果需要分页器
             pagination: {
@@ -255,11 +293,11 @@
                 prevEl: '.hot-swiper-button-prev',
             },
         })
-        $(".hot-swiper-container").mouseenter(function () {//滑过悬停
-            hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
-        }).mouseleave(function () {//离开开启
-            hotSwiper.autoplay.start();
-        });
+//        $(".hot-swiper-container").mouseenter(function () {//滑过悬停
+//            hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
+//        }).mouseleave(function () {//离开开启
+//            hotSwiper.autoplay.start();
+//        });
     }
 
 
