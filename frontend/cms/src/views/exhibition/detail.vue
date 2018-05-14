@@ -36,13 +36,13 @@
                   </el-select>
                 </el-form-item>
               </li>
-              <li class="list_state">
+              <!-- <li class="list_state">
                 <el-form-item label="表单选择" prop="form_id" >
                   <el-select v-model="ruleForm.form_id" placeholder="请选择">
                     <el-option v-for="item in ruleForm.formList" :key="item.value" :label="item.text" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
-              </li>
+              </li> -->
               <!--<li class="list_state">-->
                 <!--<h4>宣传图片 :</h4>-->
                 <!--<div class="right_input">-->
@@ -206,7 +206,6 @@ export default {
       this.operation = 'edit'
       var that = this
       api.fetch(api.uri.getExhibitEditPageInfoByID, {exhibit_id: exId}).then(data => {
-        console.log(data.data.result)
         if (data.data.status === 1) {
           var message = data.data.result.exhibitToBeEdit
           //中文
@@ -244,6 +243,7 @@ export default {
           }else if(that.ruleForm.status = 0){
             that.ruleForm.status = '0'
           }
+          console.log('-----------')
           console.log(this.ruleForm)
           editorInstance.setContent(that.ruleForm.content || '')
         } else {
