@@ -64,7 +64,7 @@ update   exhibit
 
 
     <insert id="addCCR"    parameterType="com.kst.entities.CCR" >
-        insert ccr values( 0,  #{name} ,#{phone} , #{desc}  ,  now() );
+        insert ccr values( 0,  #{name} ,#{phone} , #{desc}  ,  now() , #{journey_type}  , #{march} );
     </insert>
 
 

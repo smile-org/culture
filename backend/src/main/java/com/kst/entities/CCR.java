@@ -6,12 +6,15 @@ public class CCR {
 
     private   int ccr_id;
 
-
     private   String name;
     private   String phone;
 
     private   String desc;
     private Date create_at;
+
+
+    private   String journey_type;
+    private   String  march;
 
     public int getCcr_id() {
         return ccr_id;
@@ -51,6 +54,23 @@ public class CCR {
 
     public void setCreate_at(Date create_at) {
         this.create_at = create_at;
+    }
+
+
+    public String getJourney_type() {
+        return journey_type;
+    }
+
+    public void setJourney_type(String journey_type) {
+        this.journey_type = journey_type;
+    }
+
+    public String getMarch() {
+        return march;
+    }
+
+    public void setMarch(String march) {
+        this.march = march;
     }
 
 }
