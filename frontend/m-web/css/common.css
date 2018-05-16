@@ -122,6 +122,6 @@ ol, ul {
     width: .12rem;
     height: .12rem;
 }
-/*.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {*/
-    /*bottom: .4rem;*/
-/*}*/
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: .3rem;
+}

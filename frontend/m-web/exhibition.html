@@ -39,9 +39,9 @@
         <div class="bg_blockA">
             <div class="banner_font">
                 <h4>
-                    民族血sdfds国红
+                    多国多地塑造城市品牌
                 </h4>
-                <p class="twoLine_ellipsis">红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和</p>
+                <p class="twoLine_ellipsis">以城市文化为核心内容，在国内和国外“一带一路”上的国家、地区举办专题展会、推介会和交流坊。以文会友，推进贸易畅通、资金融通，塑造国际化的城市品牌</p>
             </div>
         </div>
     </div>
@@ -65,22 +65,16 @@
 </div>
 
 <section class="con_style">
-    <div class="meets_con" id="con">
+    <div class="meets_con exhibition" id="con">
     </div>
-    <div class="pop_all part_box">
-        <h3><img src="./img/icon1.png"><span>更多展会合作详情</span></h3>
-        <ul>
-            <li id="popup_no1">• 寻找非遗传承人的珍贵作品
-                <p class="click_pop">
-                    <a href="./exhibition_pop.html">中国非物质文化遗产在线国际营销平台</a>
-                </p>
-            </li>
-            <li id="popup_no2">• 寻找更多文化展览合作机会
-                <p class="click_pop">
-                    <a href="./exhibition_pop2.html">洽谈文化展览合作机会</a>
-                </p>
-            </li>
-        </ul>
+    <div class="p_font2 contact_us">
+        <h4 class="pre_icon new_margin">了解更多</h4>
+        <hr class="hr_dashed">
+        <p>如果你想加入“让家乡与世界相连—寻力城市全球计划”</p>
+        <p>如果你想共享中国传统文化的国际营销和品牌传播资源</p>
+        <p>如果你想参与中国传统文化国内外交流活动（如京交会非遗专题、国际文化巡展、非遗传承人驻场计划、中国非遗课堂等）</p>
+        <a href="./exhibition_pop.html" class="a_underline" id="contact_us">联系我们</a>
+        <hr class="hr_dashed">
     </div>
 </section>
 <!--#include file="./ins/footer.shtml"-->
@@ -105,7 +99,6 @@
                         if (exId == item.exhibit_id) {
                             $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span>' + item.title_cn + '</a>');
                         } else {
-//                            $('#select_all').append('<a class="" href="exhibition.html?id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span>' + item.title_cn + '</a>');
                             $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span>' + item.title_cn + '</a>');
                         }
                     });

@@ -9,6 +9,7 @@ header {
 
 header .header_con {
     height: 1rem;
+    min-width: 1209px;
     background: #ffffff;
     text-align: center;
     border-bottom: 1px solid #efefef;
@@ -54,6 +55,10 @@ header .header_con .iShop a img {
     color: #555;
     margin-left: .6rem;
     display: block;
+}
+
+.menu_lit li .active {
+    color: #ff0000;
 }
 
 .reveal_bg {
@@ -223,14 +228,18 @@ section {
     margin-bottom: .3rem;
 }
 
+.banner_font p {
+    color: #d9d9d9;
+}
+
 .con_style {
     padding: 0 .45rem;
     position: relative;
 }
 
-.con_style .t_marinHeader {
-    margin-top: 1.86rem;
-}
+/*.con_style .t_marinHeader {*/
+/*margin-top: 1.86rem;*/
+/*}*/
 
 .part_box h3 {
     font-size: .5rem;
@@ -295,7 +304,8 @@ section {
 }
 
 footer {
-    border-top: 1px solid #d2d2d2;
+    /*border-top: 1px solid #d2d2d2;*/
+    background: #fafafa;
     text-align: center;
     padding-bottom: 1rem;
     position: relative;
@@ -360,6 +370,25 @@ footer .footer_about a {
     filter: none;
     /*opacity: 1;*/
 }
+
+/*.weChart:focus {*/
+/*-webkit-filter: grayscale(0);*/
+/*-moz-filter: grayscale(0);*/
+/*!*-ms-filter: grayscale(0);*!*/
+/*-o-filter: grayscale(0);*/
+/*filter: grayscale(0);*/
+/*filter: none;*/
+/*!*opacity: 1;*!*/
+/*}*/
+/*.weChart:active {*/
+/*-webkit-filter: grayscale(0);*/
+/*-moz-filter: grayscale(0);*/
+/*!*-ms-filter: grayscale(0);*!*/
+/*-o-filter: grayscale(0);*/
+/*filter: grayscale(0);*/
+/*filter: none;*/
+/*!*opacity: 1;*!*/
+/*}*/
 
 .weChart:focus {
     -webkit-filter: grayscale(100%);
@@ -430,7 +459,7 @@ footer .footer_about a {
 
 .meets_con video {
     width: 100%;
-    height: 4.2rem;
+    height: 100%;
     margin-bottom: 0.86rem;
     background: #efefef;
 }
@@ -555,6 +584,7 @@ footer .footer_about a {
     margin-right: .45rem;
     width: .24rem;
     height: .15rem;
+    opacity: .8;
 }
 
 .select_up {
@@ -578,9 +608,13 @@ footer .footer_about a {
 .meets_con h3 {
     font-size: .44rem;
     color: #333;
-    margin: .86rem 0;
+    margin: 1.72rem 0 .86rem;
     padding-left: .9rem;
     position: relative;
+}
+
+.meets_con h4 {
+    margin: .47rem 0;
 }
 
 .meets_con h3:before {
@@ -700,24 +734,27 @@ footer .footer_about a {
     text-decoration: underline;
 }
 
-.privacy_con {
-    margin-top: 1rem;
-    font-size: .2rem;
+.privacy_con h5 {
+    font-weight: 600;
+    margin:.86rem 0 .47rem;
+    /*margin-top: 1rem;*/
+    /*font-size: .28rem;*/
 }
 
-.privacy_con h3 {
-    font-size: .51rem;
-    padding: .86rem 0;
-}
+/*.privacy_con h3 {*/
+/*font-size: .51rem;*/
+/*padding: .86rem 0;*/
+/*}*/
 
-.privacy_con h4 {
-    font-size: .24rem;
-}
+/*.privacy_con h4 {*/
+/*font-size: .24rem;*/
+/*}*/
 
-.privacy_con p {
-    line-height: .3rem;
-    margin-bottom: .4rem;
-}
+/*.privacy_con p {*/
+/*font-size: .28rem;*/
+/*line-height: .6rem;*/
+/*margin-bottom: .4rem;*/
+/*}*/
 
 .about_contact h4 {
     font-size: .3rem;
@@ -739,4 +776,82 @@ footer .footer_about a {
 
 .newsContent_size img {
     margin-bottom: 0;
+}
+
+.a_underline {
+    color: #333;
+    border-bottom: 1px solid #777;
+}
+
+.quote_p {
+    color: #777;
+}
+
+.contact_us {
+    font-size: .28rem;
+    line-height: .6rem;
+    color: #555;
+    margin-bottom: .47rem;
+    text-align: justify;
+}
+
+.m_margin {
+    margin-bottom: .86rem;
+}
+
+/*.new_style img{*/
+/*margin-bottom:.86rem;;*/
+/*}*/
+.hr_dashed {
+    width: 100%;
+    border: none;
+    border-top: 1px dashed #dcdcdc;
+    margin: .47rem 0;
+}
+
+.exhibition h3 span, .exhibition h2 span {
+    font-size: .51rem !important;
+    line-height: .8rem !important;
+    color: #333;
+}
+
+.exhibition h3 {
+    padding-left: 0rem !important;
+}
+
+.exhibition h3:before {
+    width: 0px !important;
+    height: 0px !important;
+}
+
+.exhibition video {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0.86rem;
+    background: #efefef;
+}
+
+.exhibition p video {
+    margin-bottom: 0px !important;
+}
+
+.exhibition p {
+
+    line-height: .6rem !important;
+    color: #555;
+    margin-bottom: .47rem !important;
+    text-align: justify-content;
+    margin-left: 0px !important;
+    white-space: normal;
+    text-indent: 0 !important;
+}
+
+.exhibition p span {
+    font-size: .28rem !important;
+}
+
+.exhibition img {
+    width: 100% !important;
+    margin: 0rem;
+    background: #efefef;
 }

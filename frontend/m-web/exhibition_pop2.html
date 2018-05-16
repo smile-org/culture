@@ -40,7 +40,7 @@
 <header>
     <ul class="header_con">
         <li class="iHome text_l">
-            <a href="./exhibition.html">
+            <a href="#"  onClick="javascript:window.history.back();return false;">
                 <img src="./img/back.png" alt="">
             </a>
         </li>
@@ -92,10 +92,10 @@
         var content = $('#txtContent1').val();
         $.ajax({
             type: "POST",
-            url: baseUrl() + "api/exhibit/addCCR",
+            url: baseUrl() + "api/exhibit/addXCBM",
             data: JSON.stringify({name: name, phone: tel, desc: content}),
             dataType: "json",
-            contentType:"application/json",
+            contentType: "application/json",
             success: function (data){
                 if (data.status == 1){
                     $('#success_text').hide();

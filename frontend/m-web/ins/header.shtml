@@ -5,8 +5,8 @@
                 <img src="./img/home.png" id="home_icon" alt="">
             </a>
         </li>
-        <li>
-            i 非遗
+        <li id="menuTitle">
+
         </li>
         <li class="iShop text_r">
             <a href="https://shop.iculturechina.com/">
@@ -15,7 +15,7 @@
         </li>
     </ul>
     <ul class="menu_lit" id="menu_box">
-        <li><a href="./index.html">主页</a></li>
+        <li index="0"><a href="./index.html">主页</a></li>
         <li><a href="./exhibition.html">文化展览</a></li>
         <li><a href="./travel.html">文化之旅</a></li>
         <li><a href="./memory.html">文化记忆</a></li>
@@ -32,7 +32,101 @@
         $('#header_bg').slideToggle("fast");
         $('#home_icon').toggleClass("home_rotate");
     });
-//    $("#m_close").click(function () {
-//        $("#tab_main_nav_mobile_container").removeClass("mobile-menu-open");
+//    $("#menu_box li").click(function () {
+//
+//        $("#menu_box li a").addClass("active");
 //    });
+
+//    $('#menu_box li').find('a').on('click',function () {
+//
+//        var menuTitle = $(this).text();
+//
+//
+//        $('#menuTitle').text(menuTitle);
+//
+//    })
+    $(function () {
+        var pathname = window.location.pathname;
+
+        pathname = pathname.replace('/','');
+
+        pathname = pathname.replace('.html','');
+
+        var pathArr = ['index','exhibition','travel','memory','education','map','about','privacy','news','travel01','travel02','travel03','travel04','travel05','travel06','travel_china',];
+
+        var index = pathArr.indexOf(pathname);
+
+        var menuName ;
+
+        if (index == 0) {
+            menuName = 'i非遗';
+            $("li a:contains(主页)").addClass("active");
+            console.log($("li a:contains(主页)"))
+        }
+        else if (index == 1) {
+            menuName = '文化展览';
+            $("li a:contains(文化展览)").addClass("active");
+        }
+        else if (index == 2) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 3) {
+            menuName = '文化记忆';
+            $("li a:contains(文化记忆)").addClass("active");
+        }
+        else if (index == 4) {
+            menuName = '文化教育';
+            $("li a:contains(文化教育)").addClass("active");
+        }
+        else if (index == 5) {
+            menuName = '非遗地图';
+            $("li a:contains(非遗地图)").addClass("active");
+//            console.log($("li:contains(非遗地图)"))
+        }
+        else if (index == 6) {
+            menuName = '关于我们';
+            $("li a:contains(关于我们)").addClass("active");
+        }
+        else if (index == 7) {
+            menuName = '隐私说明';
+            $("li a:contains(隐私说明)").addClass("active");
+        }
+        else if (index == 8) {
+            menuName = '新闻动态';
+            $("li a:contains(新闻动态)").addClass("active");
+        }
+        else if (index == 9) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 10) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 11) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 12) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 13) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 14) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        else if (index == 15) {
+            menuName = '文化之旅';
+            $("li a:contains(文化之旅)").addClass("active");
+        }
+        $('#menuTitle').text(menuName);
+//        $("#menu_box li a").addClass("active");
+    })
+
+
 </script>

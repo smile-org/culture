@@ -41,7 +41,7 @@
 <header>
     <ul class="header_con">
         <li class="iHome text_l">
-            <a href="./exhibition.html">
+            <a href="#"  onClick="javascript:window.history.back();return false;">
                 <img src="./img/back.png" alt="">
             </a>
         </li>
@@ -58,20 +58,20 @@
 <section class="con_style">
     <div id="popup_no1">
         <div class="from_submit" id="consult_text">
-            <h3>展览咨询</h3>
-            <p>同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
+            <h3>联系我们</h3>
+            <p>用文化的力量连接世界，建立一个跨越国界、业态融通、空间互联的全球文化空间，我们一路同行！</p>
             <form action="">
                 <input type="text" placeholder="姓名" id="txtName">
                 <input type="tel" placeholder="电话" id="txtTel">
                 <input type="text" placeholder="邮箱" id="txtEmail">
-                <textarea name="" id="txtContent" placeholder="相关介绍"></textarea>
+                <textarea name="" id="txtContent" placeholder="想咨询的内容"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
         <div class="from_submit submit_popSure" style="display: none;" id="consult_sure">
-            <h3>您已提交入驻申请</h3>
-            <p>感谢您的来信，我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注非遗官方微信公众号。</p>
-            <img class="weChart_code" src="img/weChart.jpg" alt="">
+            <h3>您已提交咨询信息</h3>
+            <p>我们将有专门的项目团队与您对接。您也可以提前关注文化寻力公众号了解更多。</p>
+            <img class="weChart_code" src="img/weChart.jpg">
             <div class="p_con">
                 <p>指定邮箱：ifeiyi@tbiedu.com</p>
                 <p>联系人：魏洋洋、刘清涛</p>
@@ -90,21 +90,16 @@
         $('#consult_text').hide();
 
     });
-//    $('#sure').click(function () {
-//        $('#consult_text').hide();
-//        $("#consult_sure").hide();
-//        $('#success_text').show();
-//    });
     $('#submit_enter').click(function () {
         var name = $('#txtName1').val();
         var tel = $('#txtTel1').val();
         var content = $('#txtContent1').val();
         $.ajax({
             type: "POST",
-            url: baseUrl() + "api/exhibit/addCCR",
-            data: JSON.stringify({name: name, phone: tel, desc: content}),
+            url: baseUrl() + "api/exhibit/addLXWM",
+            data: JSON.stringify({name: name, phone: tel, email: email, desc: content}),
             dataType: "json",
-            contentType:"application/json",
+            contentType: "application/json",
             success: function (data){
                 if (data.status == 1){
                     $('#success_text').hide();
@@ -114,6 +109,7 @@
         });
 
     });
+
 </script>
 </body>
 </html>
