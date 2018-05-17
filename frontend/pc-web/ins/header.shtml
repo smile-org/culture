@@ -1,10 +1,10 @@
-<header class="clear">
+<header class="clear" id="a1">
     <div class="logo">
         <img src="./img/logo.png" alt="logo">
     </div>
     <div class="sec_tab">
         <ul class="tab_list clear">
-            <li class=""><a href="./../index.html" class="active">主页    </a></li>
+            <li class=""><a href="./../index.html" class="active">主页 </a></li>
             <li><a href="./../exhibition.html">文化展览</a></li>
             <li><a href=",/../travel.html">文化之旅</a></li>
             <li><a href="./../memory.html">文化记忆</a></li>
@@ -12,7 +12,7 @@
             <li><a href="./../city.html">寻力城市</a></li>
             <li>
                 <a href="https://shop.iculturechina.com/" target="_blank">
-                    <img src="./img/cart.png" class="cart_img" alt="cart" ><span class="vm">ESHOP</span>
+                    <img src="./img/cart.png" class="cart_img" alt="cart"><span class="vm">ESHOP</span>
                 </a>
             </li>
         </ul>
@@ -21,7 +21,29 @@
         <img src="./img/slogan.png" alt="slogan">
         <!--<p class="language_key">中文</p>-->
         <!--<div class="language_e">-->
-            <!--English-->
+        <!--English-->
         <!--</div>-->
     </div>
 </header>
+
+
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--$("#a2").show();-->
+<!--$("#a1").hide();-->
+<!--var navOffset=$("#new_h").offset().top;-->
+<!--$(window).scroll(function(){-->
+<!--var scrollPos=$(window).scrollTop();-->
+<!--if(scrollPos >navOffset){-->
+<!--$("#a2").hide();-->
+<!--$("#a1").show();-->
+<!--}else{-->
+<!--$("#a2").show();-->
+<!--$("#a1").hide();-->
+
+
+<!--}-->
+<!--});-->
+
+<!--});-->
+<!--</script>-->

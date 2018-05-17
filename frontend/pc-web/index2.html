@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <title>文化寻力</title>
+    <link rel="Shortcut Icon" href="./img/favicon.ico">
+    <link href="./css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/swiper.min.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/base.css" type="text/css" rel="stylesheet"/>
+    <!-- 引入组件库 -->
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+<!--#include file="./ins/header.shtml"-->
+<section>
+    <div class="banner_box">
+        <div class="carousel-content">
+            <ul class="carousel" id="ulBanner">
+
+            </ul>
+            <ul class="img-index"></ul>
+            <div class="carousel-prev"><img src="./img/left1.png"></div>
+            <div class="carousel-next"><img src="./img/right1.png"></div>
+        </div>
+    </div>
+    <div class="content_box minContent_box">
+        <div class="index_part">
+            <h1 class="">文化 + 赋能生态圈</h1>
+            <ul class="row culture_box clear" id="ulCulturePlus">
+            </ul>
+        </div>
+        <div class="index_part">
+            <div class="index_part">
+                <h1 class="">热点聚焦</h1>
+                <div class="swiper-container hot-swiper-container">
+                    <div class="swiper-wrapper" id="divFocusList">
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination hot-swiper-pagination hot-swiper-position">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="index_part">
+            <h1 class="">新闻动态</h1>
+            <ul class="row clear" id="ulNews">
+
+            </ul>
+        </div>
+        <div class="index_part pb30">
+            <h1 class="">合作伙伴</h1>
+            <div class="cooperation_partner clear">
+                <div class="partner_first">
+                    <img src="./img/partner1.jpg" alt="" class="">
+                </div>
+                <ul class="clear">
+                    <li>
+                        <img src="./img/partner2.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner3.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner6.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner5.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner5.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/partner2.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner6.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partner2.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--#include file="./ins/footer.shtml"-->
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getBannerList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<li style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
+                            '<a href="' + item.link_cn + '" class="banner_a">\n' +
+                            '<div class="banner_text">\n' +
+                            '<h5 class="font24">' + item.title_cn + '</h5>\n' +
+                            '<p class="b_con">\n' + item.desc_cn + '</p>\n' +
+                            '</div>\n' +
+                            '</a>\n' +
+                            '</li>';
+                    });
+                    $('#ulBanner').html(htmlObj);
+                    window.setTimeout(function () {
+                        initBanner()
+                    }, 1)
+                }
+            }
+        });
+        var initBanner = function () {
+            $(".carousel-content").carousel({
+                carousel: ".carousel",//轮播图容器
+                indexContainer: ".img-index",//下标容器
+                prev: ".carousel-prev",//左按钮
+                next: ".carousel-next",//右按钮
+                timing: 3000,//自动播放间隔
+                animateTime: 700,//动画时间
+                autoPlay: true,//是否自动播放 true/false
+                direction: "left",//滚动方向 right/left
+            });
+
+            $(".carousel-content").hover(function () {
+                $(".carousel-prev,.carousel-next").fadeIn(300);
+            }, function () {
+                $(".carousel-prev,.carousel-next").fadeOut(300);
+            });
+            // $(".carousel li").click(function () {
+            //   window.location.href = "./inland.html";
+            // });
+            $(".carousel-prev").hover(function () {
+                $(this).find("img").attr("src", "./img/left2.png");
+            }, function () {
+                $(this).find("img").attr("src", "./img/left1.png");
+            });
+            $(".carousel-next").hover(function () {
+                $(this).find("img").attr("src", "./img/right2.png");
+            }, function () {
+                $(this).find("img").attr("src", "./img/right1.png");
+            });
+        }
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getModuleList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<li class="col-sm-4 hight_third ellipsis">\n' +
+                            '<a href="' + item.link_cn + '" class="part1_img">\n' +
+                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
+                            '</a>\n' +
+                            '<a href="' + item.link_cn + '" class="part1_font">\n' +
+                            '<span class="rectangle c_span' + i + '"></span>\n' +
+                            '<h4>' + item.title_cn + '</h4>\n' +
+                            '<span class="">' + item.desc_cn + '</span>\n' +
+                            '</a>\n' +
+                            '</li>';
+                    });
+                    $('#ulCulturePlus').html(htmlObj)
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getFocusList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<div class="swiper-slide">\n' +
+                            '<a href="' + item.link_cn + '" class=" hot_topic">\n' +
+                            '<div class="topic_hot">\n' +
+                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
+                            '</div>\n' +
+                            '<div class="topic_hot">\n' +
+                            '<div>\n' +
+                            '<p>' + item.title_cn + '</p>\n' +
+                            '<p>' + item.desc_cn + '</p>\n' +
+                            '</div>\n' +
+                            '</div>\n' +
+                            '</a>\n' +
+                            '</div>';
+                    });
+                    $('#divFocusList').html(htmlObj);
+                    window.setTimeout(function () {
+                        initSwiper()
+                    }, 1)
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/news/getNewsList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                var htmlObj = '';
+                $.each(data.result, function (i, item) {
+                    htmlObj += ' <li class="col-sm-4">\n' +
+                        '<div class="">\n';
+                    if (item.link_cn == null || item.link_cn == '') {
+                        htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="part1_img">\n';
+                    } else {
+                        htmlObj += '<a href="' + item.link_cn + '" class="part1_img">\n';
+                    }
+                    htmlObj += '<img src="' + imageUrl() + item.image_cn + '" alt="" class="">\n' +
+                        '</a>\n';
+                    if (item.link_cn == null  || item.link_cn == '') {
+                        htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="part3_font">\n';
+                    } else {
+                        htmlObj += '<a href="' + item.link_cn + '" class="part3_font">\n';
+                    }
+                    htmlObj += '<h4 class="ellipsis">' + item.title_cn + '</h4>\n' +
+                        '<p class="ellipsis">' + item.desc_cn + '</p>\n' +
+                        '</a>\n' +
+                        '</div>\n' +
+                        '</li>';
+                })
+                $('#ulNews').html(htmlObj)
+            }
+        })
+    });
+    var initSwiper = function () {
+        var hotSwiper = new Swiper('.hot-swiper-container', {
+            speed: 1000,
+//        autoplay: {
+//            delay: 3000
+//        },
+//        loop: true,
+            // 如果需要分页器
+            pagination: {
+                el: '.hot-swiper-pagination',
+                clickable: true,
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.hot-swiper-button-next',
+                prevEl: '.hot-swiper-button-prev',
+            },
+        })
+        $(".hot-swiper-container").mouseenter(function () {//滑过悬停
+            hotSwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
+        }).mouseleave(function () {//离开开启
+            hotSwiper.autoplay.start();
+        });
+    }
+
+
+</script>
+<script type="text/javascript" src="./js/carousel.js"></script>
+</body>
+</html>

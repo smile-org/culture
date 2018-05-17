@@ -4,7 +4,7 @@
             <h4 class="p_icon  font22"><img src="./img/icon1.png" class="mr20" alt="">行程报名咨询</h4>
             <span class="close" id="closed_bm">x</span>
             <div class="p_con">
-                <p class="p_font">2018年夏季文化寻力未来学者项目北卡24天。</p>
+                <p class="p_font" id="travel_p"></p>
                 <form class="" action="">
                     <input type="text" placeholder="姓名" id="txtName1">
                     <input type="tel" placeholder="电话" id="txtTel1">
@@ -20,7 +20,7 @@
                 <div class="text_c p_font">
                     <p class="text_l">我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注文化寻力官方微信公众号。</p>
                     <img class="img_code" src="img/QRcode.png" alt="">
-                    <button class="submit_btn show " >确 定</button>
+                    <button class="submit_btn show ">确 定</button>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <input type="text" placeholder="姓名" id="txtName">
                     <input type="tel" placeholder="电话" id="txtTel">
                     <input type="text" placeholder="邮箱" id="txtEmail">
-                    <textarea name="" id="txtContent" placeholder="想资讯的内容"></textarea>
+                    <textarea name="" id="txtContent" placeholder="想咨询的内容"></textarea>
                 </form>
                 <button class="submit_btn show" id="submit">提 交</button>
             </div>
@@ -63,6 +63,12 @@
     <div class="reveal_bg" style="display: none;"></div>
 </div>
 <script>
+
+    $(function () {
+//        console.log(window.location)
+//        var name = getUrlParam('name')
+        $('#travel_p').text(name)
+    });
     $('#join_us').click(function () {
         $('#part1').show();
         $(".reveal_bg").show();
@@ -74,13 +80,14 @@
     });
     $('#submit_enter').click(function () {
         $(".reveal_bg").show();
+        var title = $('#travel_p').text();
         var name = $('#txtName1').val();
         var tel = $('#txtTel1').val();
         var content = $('#txtContent1').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addXCBM",
-            data: JSON.stringify({name: name, phone: tel, desc: content}),
+            data: JSON.stringify({name: name, phone: tel, desc: content, march: title}),
             dataType: "json",
             contentType: "application/json",
             success: function (data) {

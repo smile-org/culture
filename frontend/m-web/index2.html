@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name=”MobileOptimized” content=”375″>-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name = "format-detection" content="telephone = no" />
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/config.js"></script>
+    <title>文化寻力</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+
+</head>
+<body>
+<!--#include file="./ins/header.shtml"-->
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="ulBanner">
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination banner_circle" style="height: 46px;"></div>
+    <img class="banner_logo" src="./img/logo.jpg" alt="">
+</div>
+<section class="con_style">
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>走向世界的中国非遗</span></h3>
+        <ul class="box_style" id="ulCulturePlus">
+
+        </ul>
+    </div>
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>热点聚焦</span></h3>
+        <div class="swiper-container hotSwiper-container">
+            <div class="swiper-wrapper" id="divFocusList">
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination hotSwiper-pagination"></div>
+        </div>
+    </div>
+    <div class="part_box">
+        <h3><img src="./img/icon1.png"><span>新闻动态</span></h3>
+        <ul class="box_style" id="ulNews">
+
+        </ul>
+    </div>
+    <div class="part_box part_partner">
+        <h3><img src="./img/icon1.png"><span>合作伙伴</span></h3>
+        <img class="" style="width: 100%;" src="./img/img11.jpg" alt="">
+    </div>
+</section>
+<!--#include file="./ins/footer.shtml"-->
+<script src="./js/swiper.min.js"></script>
+<script>
+    $(function () {
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getBannerList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<div class="swiper-slide" style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
+                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+                            '<div class="banner_font">\n' +
+                            '<h4 class="font24">' + item.title_cn + '</h4>\n' +
+                            '<p class="twoLine_ellipsis">\n' + item.desc_cn + '</p>\n' +
+                            '</div>\n' +
+                            '</a>\n' +
+                            '</div>';
+                    });
+                    $('#ulBanner').html(htmlObj);
+                    window.setTimeout(function () {
+                        initBanner()
+                    }, 1)
+                }
+            }
+        });
+        var initSwiper = function () {
+            var swiper = new Swiper('.swiper-container', {
+                spaceBetween: 0,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+        };
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getModuleList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<li class="">\n' +
+                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
+                            '</a>\n' +
+                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+                            '<h4>' + item.title_cn + '</h4>\n' +
+                            '<p class="">' + item.desc_cn + '</p>\n' +
+                            '</a>\n' +
+                            '</li>';
+                    });
+                    $('#ulCulturePlus').html(htmlObj)
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "api/firstPage/getFocusList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    var htmlObj = '';
+                    $.each(data.result, function (i, item) {
+                        htmlObj += '<a class="swiper-slide" href="' + item.link_cn + '" style="display: block;">\n' +
+                            '<div class="hotSwiper-slide" style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
+                            '</div>\n' +
+                            '<div class="hotSwiper-foot">\n' +
+                            '<p>' + item.title_cn + '</p>\n' +
+                            '<p>' + item.desc_cn + '</p>\n' +
+                            '</div>\n' +
+                            '</a>';
+                    });
+                    $('#divFocusList').html(htmlObj);
+                    window.setTimeout(function () {
+                        initSwiper()
+                    }, 1)
+                }
+            }
+        });
+        var inithotswiper = function () {
+            var hotswiper = new Swiper('.hotSwiper-container', {
+                spaceBetween: 10,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.hotSwiper-pagination',
+                    clickable: true,
+                },
+            });
+        };
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/news/getNewsList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                var htmlObj = '';
+                $.each(data.result, function (i, item) {
+                    htmlObj += ' <li class="">\n' +
+                        '<div class="">\n';
+                    if (item.link_cn == null || item.link_cn == '') {
+                        htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="block_a">\n';
+                    } else {
+                        htmlObj += '<a href="' + item.link_cn + '" class="block_a">\n';
+                    }
+                    htmlObj += '<img src="' + imageUrl() + item.image_cn + '" alt="" class="">\n' +
+                        '</a>\n';
+                    if (item.link_cn == null || item.link_cn == '') {
+                        htmlObj += '<a href="./news.html?newsid=' + item.news_id + '" class="block_a">\n';
+                    } else {
+                        htmlObj += '<a href="' + item.link_cn + '" class="block_a">\n';
+                    }
+                    htmlObj += '<h4 class="ellipsis">' + item.title_cn + '</h4>\n' +
+                        '<p class="ellipsis">' + item.desc_cn + '</p>\n' +
+                        '</a>\n' +
+                        '</div>\n' +
+                        '</li>';
+                })
+                $('#ulNews').html(htmlObj)
+            }
+        })
+//        $.ajax({
+//            type: "GET",
+//            url: baseUrl() + "api/firstPage/getModuleList",
+//            data: {lan: "cn"},
+//            dataType: "json",
+//            success: function (data) {
+//                if (data.status == 1) {
+//                    var htmlObj = '';
+//                    $.each(data.result, function (i, item) {
+//                        htmlObj += '<li class="">\n' +
+//                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+//                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
+//                            '</a>\n' +
+//                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+//                            '<h4>' + item.title_cn + '</h4>\n' +
+//                            '<p class="">' + item.desc_cn + '</p>\n' +
+//                            '</a>\n' +
+//                            '</li>';
+//                    });
+//                    $('#ulCulturePlus').html(htmlObj)
+//                }
+//            }
+//        });
+    })
+
+
+
+
+</script>
+
+</body>
+</html>

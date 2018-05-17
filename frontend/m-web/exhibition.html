@@ -65,7 +65,7 @@
 </div>
 
 <section class="con_style">
-    <div class="meets_con exhibition" id="con">
+    <div class=" exhibition" id="con">
     </div>
     <div class="p_font2 contact_us">
         <h4 class="pre_icon new_margin">了解更多</h4>
@@ -97,19 +97,18 @@
                             type = 1;
                         }
                         if (exId == item.exhibit_id) {
-                            $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span>' + item.title_cn + '</a>');
+                            $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span><span class="active">' + item.title_cn + '</span></a>');
                         } else {
-                            $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span>' + item.title_cn + '</a>');
+                            $('#liNav1').append('<a class="" href="exhibition.html?type=1&id=' + item.exhibit_id + '">' + ' <span>国内</span><span>|</span><span>' + item.title_cn + '</span></a>');
                         }
                     });
                     $.each(data.result.internationalList, function (i, item) {
                         if (exId == item.exhibit_id) {
-                            $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>' + item.title_cn + '</a>');
+                            $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span><span class="active">' + item.title_cn + '</span></a>');
                         } else {
-                            $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span>' + item.title_cn + '</a>');
+                            $('#liNav2').append('<a class="" href="exhibition.html?type=2&id=' + item.exhibit_id + '">' + ' <span>国际</span><span>|</span><span>' + item.title_cn + '</span></a>');
                         }
                     });
-
                     $.ajax({
                         type: "GET",
                         url: baseUrl() + "/api/exhibit/getExhibitByID",
@@ -118,6 +117,7 @@
                         success: function (data) {
                             if (data.status == 1) {
                                 $('#con').html(data.result.content_cn);
+
                                 $('#select_title').text(data.result.title_cn);
                                 $('#select_type').text(parseInt(type) === 1 ? '国内' : '国际');
                                 if (data.result.form_id == 1) {
