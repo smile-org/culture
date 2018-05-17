@@ -41,15 +41,15 @@
         <img src="img/banner2.png" alt="" class="ad_img">
         <div class="banner_text">
             <h5 class="font24">
-                民族血液里的中国红
+                多国多地塑造城市品牌
             </h5>
             <p class="b_con">
-                红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+                以城市文化为核心内容，在国内和国外“一带一路”上的国家、地区举办专题展会、推介会和交流坊。以文会友，推进贸易畅通、资金融通，塑造国际化的城市品牌
             </p>
         </div>
     </div>
     <div class="content_box clear detail_con">
-        <aside>
+        <aside id="asside">
             <ul class="aside_list">
                 <li id="liNav1">
                     <h4>
@@ -71,7 +71,7 @@
                     <img src="./img/icon2.png" alt="">
                     了解更多</h4>
                 <hr class="hr_dashed">
-                <p>如果你想加入“让家乡与世界相连—寻力城市全球计划”</p>
+                <p>如果你想加入“让家乡与世界相连 • 寻力城市全球计划”</p>
                 <p>如果你想共享中国传统文化的国际营销和品牌传播资源</p>
                 <p>如果你想参与中国传统文化国内外交流活动（如京交会非遗专题、国际文化巡展、非遗传承人驻场计划、中国非遗课堂等）</p>
                 <a href="javaScript:;" class="a_underline" id="contact_us">联系我们</a>
@@ -81,6 +81,23 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+        var navOffset=$("#asside").offset().top;
+        $(window).scroll(function(){
+            var scrollPos=$(window).scrollTop();
+//            console.log(scrollPos)
+            if(scrollPos >"380"){
+                $("#asside").addClass('aside_style');
+            }else{
+                $("#asside").removeClass('aside_style');
+
+
+            }
+        });
+
+    });
+</script>
 <!--#include file="./ins/footer.shtml"-->
 <script>
 //    $('#popup_no1').hide();

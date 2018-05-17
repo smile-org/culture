@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <title>文化寻力</title>
+    <link rel="Shortcut Icon" href="./img/favicon.ico">
+    <link href="./css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="./css/base.css" type="text/css" rel="stylesheet"/>
+    <!-- 引入组件库 -->
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+<header class="clear">
+    <div class="logo">
+        <img src="./img/logo.png" alt="logo">
+    </div>
+    <div class="sec_tab">
+        <ul class="tab_list clear">
+            <li class=""><a href="./../index.html">主页 </a></li>
+            <li><a href="./../exhibition.html" class="active">文化展览</a></li>
+            <li><a href=",/../travel.html">文化之旅</a></li>
+            <li><a href="./../memory.html">文化记忆</a></li>
+            <li><a href="./../education.html">文化教育</a></li>
+            <li><a href="./../map.html">非遗地图</a></li>
+            <li>
+                <a href="https://shop.iculturechina.com/" target="_blank">
+                    <img src="./img/cart.png" alt="cart" class="vm mr10"><span class="vm">ESHOP</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="slogan">
+        <img src="./img/slogan.png" alt="slogan">
+    </div>
+</header>
+<section>
+    <div class="banner_box">
+        <img src="img/banner.jpg" alt="" class="ad_img">
+        <div class="banner_text">
+            <h5 class="font24">
+                民族血液里的中国红
+            </h5>
+            <p class="b_con">
+                红色是中华民族最喜爱的颜色，甚至成为中国人的文化图腾和精神皈依，代表着喜庆、热闹与祥和
+            </p>
+        </div>
+    </div>
+    <div class="content_box clear detail_con">
+        <aside>
+            <ul class="aside_list">
+                <li id="liNav1">
+                    <h4>
+                        <span class="vm">|</span> <span class="vm ml5"> 国内</span>
+                    </h4>
+                </li>
+                <li id="liNav2">
+                    <h4>
+                        <span class="vm">|</span> <span class="vm ml5"> 国际</span>
+                    </h4>
+                </li>
+            </ul>
+        </aside>
+        <div class="news_con">
+            <ul class="exhibition_style" id="con">
+            </ul>
+            <div class="pop_div">
+                <div class="popup_font font20" id="popup_no1">
+                    <div>
+                        <img class="vm" src="img/icon2.png" alt="">
+                        <span class="vm ml20"> ：</span>
+                        <a href="javaScript:;" class="vm" id="plane">欢迎咨询文化寻力项目组</a>
+                    </div>
+
+                    <div class="submit_pop" id="consult_part1" style="display: none;">
+                        <h4 class="p_icon  font22"><img src="./img/icon1.png" class="mr20" alt="">展览咨询</h4>
+                        <span class="close" id="closed">x</span>
+                        <div class="p_con">
+                            <p class="p_font">同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
+                            <form class="">
+                                <input type="text" placeholder="姓名" id="txtName">
+                                <input type="tel" placeholder="电话" id="txtTel">
+                                <input type="text" placeholder="邮箱" id="txtEmail">
+                                <textarea name="" id="txtContent" placeholder="想资讯的内容"></textarea>
+                            </form>
+                            <button class="submit_btn show" id="submit">提 交</button>
+                        </div>
+                    </div>
+                    <div class="submit_pop" style="display: none;" id="consult_sure">
+                        <h4 class="text_c">您已提交入驻申请</h4>
+                        <span class="close" id="closed">x</span>
+                        <div class="p_con">
+                            <div class="p_contact">
+                                <p>感谢您的来信，我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注i非遗官方微信公众号。</p>
+                                <img src="img/QRcode.png" alt="">
+                            </div>
+                            <ul class="contact_list">
+                                <li>指定邮箱：ifeiyi@tbiedu.com</li>
+                                <li>联系人：魏洋洋、刘清涛</li>
+                                <li>手机：183 1033 8281 / 185 1155 1979</li>
+                                <li>有参展意向的机构请通过扫描二维码或电话联系我们</li>
+                            </ul>
+                            <button class="submit_btn show " >确 定</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup_font font20" id="popup_no2">
+                    <div>
+                        <img src="img/icon2.png" alt="" class="vm">
+                        <a href="javaScript:;" id="plane_enter" class="vm ml20">非遗传承人驻场计划</a>
+                    </div>
+                    <div class="mt20">
+                        <img src="img/icon2.png" alt="" class="vm">
+                        <a href="https://shop.iculturechina.com/" class="vm ml20">去ESHOP选购您感兴趣的工艺品</a>
+                    </div>
+                    <div class="submit_pop" id="part1" style="display: none;">
+                        <h4 class="p_icon  font22"><img src="./img/icon1.png" class="mr20" alt="">展览咨询</h4>
+                        <span class="close" id="closed">x</span>
+                        <div class="p_con">
+                            <p class="p_font">同一个世界，同一个梦想。我们用文化连接世界。如果您想了解更多非遗项目进展，请留下您的联系方式，我们稍后将与您取得联系。</p>
+                            <form class="" action="">
+                                <input type="text" placeholder="姓名" id="txtName1">
+                                <input type="tel" placeholder="电话" id="txtTel1">
+                                <textarea name="" id="txtContent1" placeholder="相关介绍"></textarea>
+                            </form>
+                            <button class="submit_btn show" id="submit_enter">提 交</button>
+                        </div>
+                    </div>
+                    <div class="submit_pop" id="part2" style="display: none;">
+                        <h4 class="text_c">您已提交入驻申请</h4>
+                        <span class="close" id="closed">x</span>
+                        <div class="p_con">
+                            <div class="p_contact">
+                                <p>感谢您的来信，我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注非遗官方微信公众号。</p>
+                                <img src="img/QRcode.png" alt="">
+                            </div>
+                            <ul class="contact_list">
+                                <li>指定邮箱：ifeiyi@tbiedu.com</li>
+                                <li>联系人：魏洋洋、刘清涛</li>
+                                <li>手机：183 1033 8281 / 185 1155 1979</li>
+                                <li>有参展意向的机构清通过扫描二维码或电话联系我们</li>
+                            </ul>
+                            <button class="submit_btn show " id="sure">确 定</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal_bg"></div>
+            </div>
+            <div class="p_font2 contact_us">
+                <h4 class="pre_icon mb40">了解更多</h4>
+                <hr class="hr_dashed">
+                <p>如果你想打造城市国际品牌，提升文化旅游的格调和价值</p>
+                <p>如果你想提升地区教育质量，探寻优秀国际化人才的培养模式</p>
+                <p>如果你想加入“让家乡与世界相连—寻力城市全球计划”</p>
+                <a href="javaScript:;" class="a_underline" id="contact_us">联系我们</a>
+                <hr class="hr_dashed">
+            </div>
+            <!--#include file="./ins/contact.shtml"-->
+        </div>
+    </div>
+</section>
+<!--#include file="./ins/footer.shtml"-->
+<script>
+    $('#popup_no1').hide();
+    $('#popup_no2').hide();
+
+    $(function () {
+
+        var exId = getQueryStringByName('id');
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl() + "/api/exhibit/getExhibitFrontNavList",
+            data: {lan: "cn"},
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    $.each(data.result.internalList, function (i, item) {
+                        if(exId == ""){
+                            exId = item.exhibit_id;
+                        }
+                        if(exId == item.exhibit_id){
+                            $('#liNav1').append('<a class="culture_dom active" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        } else {
+                            $('#liNav1').append('<a class="culture_dom" href="exhibition.html?id=' + item.exhibit_id + '">'+item.title_cn+'</a>');
+                        }
+                    });
+                    $.each(data.result.internationalList, function (i, item) {
+                        if(exId == item.exhibit_id) {
+                            $('#liNav2').append('<a class="culture_dom active" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        } else {
+                            $('#liNav2').append('<a class="culture_dom" href="exhibition.html?id=' + item.exhibit_id + '">' + item.title_cn + '</a>');
+                        }
+                    });
+
+                    $.ajax({
+                        type: "GET",
+                        url: baseUrl() + "/api/exhibit/getExhibitByID",
+                        data: {lan: "cn", exhibit_id: exId},
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.status == 1) {
+                                $('#con').html(data.result.content_cn);
+                                if(data.result.form_id == 1){
+                                    $('#popup_no1').show();
+                                }
+                                if(data.result.form_id == 2){
+                                    $('#popup_no2').show();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+
+
+
+
+    });
+
+    $('.culture_dom').click(function (e) {
+        e.preventDefault();
+        var i = $(this).index('.aside_list .culture_dom');//下标第一种写法
+        console.log($(this).parent().find('.culture_dom'));
+        $(".aside_list .culture_dom").removeClass('active');
+        $(this).addClass('active'); //.siblings().removeClass('active');
+        $('.news_detail').eq(i).show().siblings().hide();
+        if($(this)[0].id == 'inland'){
+            $('#popup_no1').show();
+            $('#popup_no2').hide();
+        }else if($(this)[0].id == 'inter_enter'){
+            $('#popup_no2').show();
+            $('#popup_no1').hide();
+        }else{
+            $('.popup_font').hide();
+        }
+    });
+
+    $('#plane').click(function () {
+        $('#consult_part1').show();
+        $(".reveal_bg").show();
+    });
+    $('#closed,.submit_btn').click(function () {
+        $('#consult_part1').hide();
+        $(".reveal_bg").hide();
+        $('#consult_sure').hide();
+    });
+    $('#submit').click(function () {
+        $(".reveal_bg").show();
+        var name = $('#txtName').val();
+        var tel = $('#txtTel').val();
+        var email = $('#txtEmail').val();
+        var content = $('#txtContent').val();
+        $.ajax({
+            type: "POST",
+            url: baseUrl() + "api/exhibit/addJJH",
+            data: JSON.stringify({name: name, phone: tel, email: email,desc: content}),
+            dataType: "json",
+            contentType:"application/json",
+            success: function (data){
+                if (data.status == 1){
+                    $('#consult_sure').show();
+                    $('#consult_part1').hide();
+                    $(".reveal_bg").show();
+                }
+            }
+        });
+
+    });
+
+    $('#plane_enter').click(function () {
+        $('#part1').show();
+        $(".reveal_bg").show();
+    });
+    $('#closed,#sure').click(function () {
+        $('#part1').hide();
+        $(".reveal_bg").hide();
+        $('#part2').hide();
+    });
+    $('#submit_enter').click(function () {
+        $(".reveal_bg").show();
+        var name = $('#txtName1').val();
+        var tel = $('#txtTel1').val();
+        var content = $('#txtContent1').val();
+        $.ajax({
+            type: "POST",
+            url: baseUrl() + "api/exhibit/addCCR",
+            data: JSON.stringify({name: name, phone: tel, desc: content}),
+            dataType: "json",
+            contentType:"application/json",
+            success: function (data){
+                if (data.status == 1){
+                    $('#part2').show();
+                    $('#part1').hide();
+                    $(".reveal_bg").show();
+                }
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>
