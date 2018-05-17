@@ -218,9 +218,10 @@ public class ExhibitController {
 
         ccr.setName ((String) body.get("name"));
         ccr.setPhone ((String) body.get("phone"));
-
-
         ccr.setDesc ((String) body.get("desc"));
+
+        ccr.setJourney_type ((String) body.get("journey_type"));
+        ccr.setMarch ((String) body.get("march"));
 
         result = exhibitService.addCCR(ccr);
         logger.debug("Response: " + result);

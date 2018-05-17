@@ -196,12 +196,17 @@ public class ExhibitServiceImpl implements ExhibitService {
             email.setTo( form.getTo());
 
             String message ="";
+            message += "项目:" + ccr.getJourney_type();
+            message += "\n\r";
+            message += "行程:" + ccr.getMarch();
+            message += "\n\r";
             message +="姓名:" + ccr.getName();
             message += "\n\r";
-            message +="电话:"+ ccr.getPhone();
+
+            message +="联系电话:"+ ccr.getPhone();
             message += "\n\r";
 
-            message += "介绍:"+ ccr.getDesc();
+            message += "备注说明:"+ ccr.getDesc();
 
             email.setMessage(message);
             email.setTitle(form.getEmail_title());
