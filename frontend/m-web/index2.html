@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--<meta name=”MobileOptimized” content=”375″>-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="format-detection" content="telephone = no"/>
+    <meta name = "format-detection" content="telephone = no" />
     <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -32,26 +32,30 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
+
 </head>
 <body>
 <!--#include file="./ins/header.shtml"-->
 <div class="swiper-container">
     <div class="swiper-wrapper" id="ulBanner">
+
     </div>
     <!-- Add Pagination -->
-    <div class="swiper-pagination banner_circle" style="height: .84rem;"></div>
+    <div class="swiper-pagination banner_circle" style="height: 46px;"></div>
     <img class="banner_logo" src="./img/logo.jpg" alt="">
 </div>
 <section class="con_style">
     <div class="part_box">
-        <h3><img src="./img/icon1.png"><span>文化寻力 · 赋能 赋值 赋路</span></h3>
+        <h3><img src="./img/icon1.png"><span>走向世界的中国非遗</span></h3>
         <ul class="box_style" id="ulCulturePlus">
+
         </ul>
     </div>
     <div class="part_box">
         <h3><img src="./img/icon1.png"><span>热点聚焦</span></h3>
         <div class="swiper-container hotSwiper-container">
             <div class="swiper-wrapper" id="divFocusList">
+
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination hotSwiper-pagination"></div>
@@ -60,6 +64,7 @@
     <div class="part_box">
         <h3><img src="./img/icon1.png"><span>新闻动态</span></h3>
         <ul class="box_style" id="ulNews">
+
         </ul>
     </div>
     <div class="part_box part_partner">
@@ -71,6 +76,7 @@
 <script src="./js/swiper.min.js"></script>
 <script>
     $(function () {
+
         $.ajax({
             type: "GET",
             url: baseUrl() + "api/firstPage/getBannerList",
@@ -81,7 +87,7 @@
                     var htmlObj = '';
                     $.each(data.result, function (i, item) {
                         htmlObj += '<div class="swiper-slide" style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
-                            '<a href="' + item.link_cn + '" class="block_a bg_blockA">\n' +
+                            '<a href="' + item.link_cn + '" class="block_a">\n' +
                             '<div class="banner_font">\n' +
                             '<h4 class="font24">' + item.title_cn + '</h4>\n' +
                             '<p class="twoLine_ellipsis">\n' + item.desc_cn + '</p>\n' +
@@ -91,7 +97,7 @@
                     });
                     $('#ulBanner').html(htmlObj);
                     window.setTimeout(function () {
-                        initSwiper()
+                        initBanner()
                     }, 1)
                 }
             }
@@ -99,8 +105,6 @@
         var initSwiper = function () {
             var swiper = new Swiper('.swiper-container', {
                 spaceBetween: 0,
-//                autoplay:true,
-                loop: true,
                 centeredSlides: true,
                 autoplay: {
                     delay: 3000,
@@ -156,22 +160,23 @@
                     });
                     $('#divFocusList').html(htmlObj);
                     window.setTimeout(function () {
-                        inithotswiper()
+                        initSwiper()
                     }, 1)
                 }
             }
         });
         var inithotswiper = function () {
             var hotswiper = new Swiper('.hotSwiper-container', {
-                spaceBetween: 0,
+                spaceBetween: 10,
                 centeredSlides: true,
-                loop: true,
-                autoplay: true,
-                slidesPerView: auto,
-//                pagination: {
-//                    el: '.hotSwiper-pagination',
-//                    clickable: true,
-//                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.hotSwiper-pagination',
+                    clickable: true,
+                },
             });
         };
         $.ajax({
@@ -205,7 +210,32 @@
                 $('#ulNews').html(htmlObj)
             }
         })
+//        $.ajax({
+//            type: "GET",
+//            url: baseUrl() + "api/firstPage/getModuleList",
+//            data: {lan: "cn"},
+//            dataType: "json",
+//            success: function (data) {
+//                if (data.status == 1) {
+//                    var htmlObj = '';
+//                    $.each(data.result, function (i, item) {
+//                        htmlObj += '<li class="">\n' +
+//                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+//                            '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
+//                            '</a>\n' +
+//                            '<a href="' + item.link_cn + '" class="block_a">\n' +
+//                            '<h4>' + item.title_cn + '</h4>\n' +
+//                            '<p class="">' + item.desc_cn + '</p>\n' +
+//                            '</a>\n' +
+//                            '</li>';
+//                    });
+//                    $('#ulCulturePlus').html(htmlObj)
+//                }
+//            }
+//        });
     })
+
+
 
 
 </script>

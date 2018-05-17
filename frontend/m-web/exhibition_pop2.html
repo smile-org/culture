@@ -6,10 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--<meta name=”MobileOptimized” content=”375″>-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name = "format-detection" content="telephone = no" />
+    <meta name="format-detection" content="telephone = no"/>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/config.js"></script>
     <title>文化寻力</title>
     <script>
         (function (doc, win) {
@@ -40,7 +41,7 @@
 <header>
     <ul class="header_con">
         <li class="iHome text_l">
-            <a href="#"  onClick="javascript:window.history.back();return false;">
+            <a href="#" onClick="javascript:window.history.back();return false;">
                 <img src="./img/back.png" alt="">
             </a>
         </li>
@@ -58,8 +59,8 @@
     <div id="popup_no2">
         <div class="from_submit" style="display: block;" id="consult_text">
             <h3>行程报名咨询</h3>
-            <p style="text-align: center">2018年夏季文化寻力未来学者项目北卡24天</p>
-                <form action="">
+            <p id="travel_p" style="text-align: center"></p>
+            <form action="">
                 <input type="text" placeholder="姓名" id="txtName1">
                 <input type="tel" placeholder="电话" id="txtTel1">
                 <textarea name="" id="txtContent1" placeholder="备注说明"></textarea>
@@ -70,34 +71,38 @@
             <h3>您已提交报名咨询</h3>
             <p>我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注i非遗官方微信公众号。</p>
             <img class="weChart_code" src="img/weChart.jpg" alt="">
-            <button class="submit_btn show mt_btn" id="sure">确 定</button>
+            <button class="submit_btn show mt_btn" id="sure" onClick="javascript:window.history.back();return false;">确 定</button>
         </div>
     </div>
     <!--<div id="success_text">success</div>-->
 </section>
 
 <script>
+    var name = getQueryStringByName('name');
+    //    console.log(decodeURI(name));
+    $('#travel_p').text(decodeURI(name));
     $('#submit_enter').click(function () {
         $('#consult_sure').show();
         $('#consult_text').hide();
     });
-//        $('#sure').click(function () {
-//            $('#consult_text').hide();
-//            $(".consult_sure").hide();
-//            $('#success_text').show();
-//        });
+    //        $('#sure').click(function () {
+    //            $('#consult_text').hide();
+    //            $(".consult_sure").hide();
+    //            $('#success_text').show();
+    //        });
     $('#submit_enter').click(function () {
+        var title = $('#travel_p').text();
         var name = $('#txtName1').val();
         var tel = $('#txtTel1').val();
         var content = $('#txtContent1').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addXCBM",
-            data: JSON.stringify({name: name, phone: tel, desc: content}),
+            data: JSON.stringify({name: name, phone: tel, desc: content, march: title}),
             dataType: "json",
             contentType: "application/json",
-            success: function (data){
-                if (data.status == 1){
+            success: function (data) {
+                if (data.status == 1) {
                     $('#success_text').hide();
                     $('#consult_sure').show();
 

@@ -77,14 +77,16 @@
                 <p>联系人：魏洋洋、刘清涛</p>
                 <p>手机：183 1033 8281 / 185 1155 1979</p>
             </div>
-            <button class="submit_btn show " id="sure">确 定</button>
+            <button class="submit_btn show " onClick="javascript:window.history.back();return false;" id="sure">确 定</button>
         </div>
     </div>
     <!--<div id="success_text" style="display: none;">success</div>-->
 </section>
 
 <script>
-
+//    var name = getQueryStringByName('name');
+//    console.log(decodeURI(name));
+//    $()
     $('#submit_enter').click(function () {
         $('#consult_sure').show();
         $('#consult_text').hide();
