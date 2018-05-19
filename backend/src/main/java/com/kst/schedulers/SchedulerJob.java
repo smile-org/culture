@@ -20,11 +20,16 @@ public class SchedulerJob {
     @Autowired
     private ExhibitService exhibitService;
 
+    private   static   boolean isRunning=false;
+
 
 
     //第一次延迟1秒执行，当执行完后1分钟再执行
     @Scheduled(initialDelay = 1000, fixedDelay = 6000*10 )
     public void testSchedulerJob() {
+        if(isRunning)  return;
+        isRunning=true;
+
         try {
             exhibitService.sendEmail();
         }
@@ -32,7 +37,7 @@ public class SchedulerJob {
         {
             logger.error(ex.getMessage());
         }
-
+         isRunning=false;
     }
 
 }

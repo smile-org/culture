@@ -297,7 +297,11 @@ public class ExhibitServiceImpl implements ExhibitService {
              try {
                  SimpleMailMessage message = new SimpleMailMessage();//消息构造器
                  message.setFrom(emailfrom);//发件人
-                 message.setTo( email.getTo() );//收件人
+
+                  String[] to =  email.getTo().split(";");
+
+
+                 message.setTo( to );//收件人
                  message.setSubject(   email.getTitle());//主题
                  message.setText( email.getMessage());//正文
                  senderImpl.send(message);
