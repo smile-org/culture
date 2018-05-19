@@ -189,6 +189,12 @@
         font-size: 15px !important;
         font-weight: 600;
     }
+
+    .ul_disc li h5 {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 30px
+    }
     .exhibition_style h4{
         margin:40px 0 20px!important;
         font-size: 16px !important;
@@ -370,6 +376,9 @@
         left: 0px;
         width: 33px;
         height: 15px;
+    }
+    .city_height a:first-child {
+        height: 250px;
     }
 }
 

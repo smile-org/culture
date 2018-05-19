@@ -22,7 +22,7 @@
         </div>
         <div class="sec_tab">
             <ul class="tab_list clear">
-                <li class=""><a href="./../index.html" class="active">主页    </a></li>
+                <li class=""><a href="./../index.html" class="active">主页 </a></li>
                 <li><a href="./../exhibition.html">文化展览</a></li>
                 <li><a href=",/../travel.html">文化之旅</a></li>
                 <li><a href="./../memory.html">文化记忆</a></li>
@@ -30,7 +30,7 @@
                 <li><a href="./../city.html">寻力城市</a></li>
                 <li>
                     <a href="https://shop.iculturechina.com/" target="_blank">
-                        <img src="./img/cart.png" class="cart_img" alt="cart" ><span class="vm">ESHOP</span>
+                        <img src="./img/cart.png" class="cart_img" alt="cart"><span class="vm">ESHOP</span>
                     </a>
                 </li>
             </ul>
@@ -46,7 +46,7 @@
     <div class="new_header" id="a2">
         <div class="sec_tab">
             <ul class="tab_list clear">
-                <li class=""><a href="./../index.html" class="active">主页    </a></li>
+                <li class=""><a href="./../index.html" class="active">主页 </a></li>
                 <li><a href="./../exhibition.html">文化展览</a></li>
                 <li><a href=",/../travel.html">文化之旅</a></li>
                 <li><a href="./../memory.html">文化记忆</a></li>
@@ -54,7 +54,7 @@
                 <li><a href="./../city.html">寻力城市</a></li>
                 <li>
                     <a href="https://shop.iculturechina.com/" target="_blank">
-                        <img src="./img/cart.png" class="cart_img" alt="cart" ><span class="vm">ESHOP</span>
+                        <img src="./img/cart.png" class="cart_img" alt="cart"><span class="vm">ESHOP</span>
                     </a>
                 </li>
             </ul>
@@ -62,16 +62,6 @@
     </div>
 </div>
 <section style="padding-top: 0">
-    <!--<div class="banner_box">-->
-        <!--<div class="carousel-content">-->
-            <!--<ul class="carousel" id="ulBanner">-->
-
-            <!--</ul>-->
-            <!--<ul class="img-index"></ul>-->
-            <!--<div class="carousel-prev"><img src="./img/left1.png"></div>-->
-            <!--<div class="carousel-next"><img src="./img/right1.png"></div>-->
-        <!--</div>-->
-    <!--</div>-->
     <div class="swiper-container banner-swiper-container">
         <div class="swiper-wrapper" id="ulBanner2">
             <!--<div class="swiper-slide"><img src="./img/img4.jpg"></div>-->
@@ -87,7 +77,7 @@
     </div>
     <div class="content_box minContent_box">
         <div class="index_part">
-            <h1 class="">文化寻力 · 赋能  赋值  赋路</h1>
+            <h1 class="">文化寻力 · 赋能 赋值 赋路</h1>
             <ul class="row culture_box clear" id="ulCulturePlus">
             </ul>
         </div>
@@ -112,55 +102,23 @@
         </div>
         <div class="index_part pb30">
             <h1 class="">合作伙伴</h1>
-            <div class="cooperation_partner clear">
-                <div class="partner_first">
-                    <img src="./img/partner1.jpg" alt="" class="">
-                </div>
-                <ul class="clear">
-                    <li>
-                        <img src="./img/partner2.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner3.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner6.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner5.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner5.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="img/partner2.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner6.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="./img/partner2.jpg" alt="">
-                    </li>
-                </ul>
-            </div>
+            <img src="./img/logo_all.png" class="width100" alt="logo">
         </div>
     </div>
 </section>
 <!--#include file="./ins/footer.shtml"-->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#a2").show();
         $("#a1").hide();
-        var navOffset=$("#new_h").offset().top;
-        $(window).scroll(function(){
-            var scrollPos=$(window).scrollTop();
-            if(scrollPos >navOffset){
+        var navOffset = $("#new_h").offset().top;
+        $(window).scroll(function () {
+            var scrollPos = $(window).scrollTop();
+            if (scrollPos > navOffset) {
                 $("#a2").hide();
                 $("#a1").show();
-//                $("#a1").addClass('o_css');
-            }else{
+            } else {
                 $("#a2").show();
-//                $("#a1").addClass('o_css');
                 $("#a1").hide();
 
 
@@ -177,53 +135,36 @@
             dataType: "json",
             success: function (data) {
                 if (data.status == 1) {
-
                     var htmlObj = '';
-//                    $.each(data.result, function (i, item) {
-//                        if(data.result[i].desc_cn == null && data.result[i].title_cn == null){
-//                            htmlObj += '<div class="swiper-slide newLi " style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
-//                                '<a href="' + item.link_cn + '" class="banner_a">\n' +
-//                                '</a>\n' +
-//                                '</div>';
-//                        }else {
-//                            console.log(item)
-//                            htmlObj += '<div class="swiper-slide newLi " style="background-image:url(' + imageUrl() + item.image_cn + ')">\n' +
-//                                '<a href="' + item.link_cn + '" class="banner_a">\n' +
-//                                '<div class="banner_text">\n' +
-//                                '<h5 class="">' + item.title_cn + '</h5>\n' +
-//                                '<p class="b_con">\n' + item.desc_cn + '</p>\n' +
-//                                '</div>\n' +
-//                                '</a>\n' +
-//                                '</div>';
-//                        }
-//
-//                    });
-
-
-                    for(var i = 0; i < data.result.length; i++){
+                    for (var i = 0; i < data.result.length; i++) {
 
                         if(data.result[i].desc_cn == '' && data.result[i].title_cn == '') {
 
-                            htmlObj += '<div class="swiper-slide newLi " style="background-image:url(' + imageUrl() + data.result[i].image_cn + ')">\n' +
+                            htmlObj += '<div class="swiper-slide newLi ">\n' +
+                                '<div class="swiper-slide-on newLidhy" style="background-image:url(' + imageUrl() + data.result[i].image_cn + ')">\n' +
                                 '<a href="' + data.result[i].link_cn + '" class="banner_a">\n' +
                                 '</a>\n' +
+                                '</div>\n' +
                                 '</div>';
 
                         } else {
 
-                            htmlObj += '<div class="swiper-slide newLi " style="background-image:url(' + imageUrl() + data.result[i].image_cn + ')">\n' +
+                            htmlObj += '<div class="swiper-slide newLi ">\n' +
+                                '<div class="swiper-slide-on newLidhy" style="background-image:url(' + imageUrl() + data.result[i].image_cn + ')">\n' +
                                 '<a href="' + data.result[i].link_cn + '" class="banner_a">\n' +
+                                '</a>\n' +
+                                '</div>\n' +
                                 '<div class="banner_text">\n' +
                                 '<h5 class="">' + data.result[i].title_cn + '</h5>\n' +
                                 '<p class="b_con">\n' + data.result[i].desc_cn + '</p>\n' +
                                 '</div>\n' +
-                                '</a>\n' +
+
+
+
                                 '</div>';
 
                         }
-
                     }
-
 
                     $('#ulBanner2').html(htmlObj);
                     window.setTimeout(function () {
@@ -233,41 +174,12 @@
             }
         });
         var initBanner = function () {
-//            $(".carousel-content").carousel({
-//                carousel: ".carousel",//轮播图容器
-//                indexContainer: ".img-index",//下标容器
-//                prev: ".carousel-prev",//左按钮
-//                next: ".carousel-next",//右按钮
-//                timing: 3000,//自动播放间隔
-//                animateTime: 700,//动画时间
-//                autoPlay: true,//是否自动播放 true/false
-//                direction: "left",//滚动方向 right/left
-//            });
-//
-//            $(".carousel-content").hover(function () {
-//                $(".carousel-prev,.carousel-next").fadeIn(300);
-//            }, function () {
-//                $(".carousel-prev,.carousel-next").fadeOut(300);
-//            });
-//            // $(".carousel li").click(function () {
-//            //   window.location.href = "./inland.html";
-//            // });
-//            $(".carousel-prev").hover(function () {
-//                $(this).find("img").attr("src", "./img/left2.png");
-//            }, function () {
-//                $(this).find("img").attr("src", "./img/left1.png");
-//            });
-//            $(".carousel-next").hover(function () {
-//                $(this).find("img").attr("src", "./img/right2.png");
-//            }, function () {
-//                $(this).find("img").attr("src", "./img/right1.png");
-//            });
             var mySwiper = new Swiper('.banner-swiper-container', {
                 spaceBetween: 30,
-                autoplay:true,
-                speed: 3000,
+                autoplay: true,
+                speed: 2000,
                 effect: 'fade',
-                loop : true,
+                loop: true,
                 // 如果需要分页器
                 pagination: {
                     el: '.banner-swiper-pagination',
@@ -278,8 +190,19 @@
                 navigation: {
                     nextEl: '.banner-swiper-button-next',
                     prevEl: '.banner-swiper-button-prev',
-                }
-            })
+                },
+                on: {
+                    slideChange: function() {
+                        var index = this.activeIndex;
+                        $('.swiper-slide').find("div").removeClass('swiper-slide-on');
+                        $('.swiper-slide').eq(index).find("div").addClass('swiper-slide-on');
+                        $('.banner_text').removeClass('swiper-slide-on');
+
+                    }
+
+
+                },
+            });
 
 //            $(".banner-swiper-container").mouseenter(function () {//滑过悬停
 //                mySwiper.autoplay.stop();//mySwiper 为上面你swiper实例化的名称
@@ -302,7 +225,7 @@
                             '<img src="' + imageUrl() + item.image_cn + '" alt="">\n' +
                             '</a>\n' +
                             '<a href="' + item.link_cn + '" class="part1_font">\n' +
-//                            '<span class="rectangle c_span' + i + '"></span>\n' +
+                            //                            '<span class="rectangle c_span' + i + '"></span>\n' +
                             '<h4>' + item.title_cn + '</h4>\n' +
                             '<p class="P_des">' + item.desc_cn + '</p>\n' +
                             '</a>\n' +
@@ -379,12 +302,12 @@
     var initSwiper = function () {
         var hotSwiper = new Swiper('.hot-swiper-container', {
             speed: 2000,
-            autoplay:true,
+            autoplay: true,
             effect: 'fade',
-            loop : true,
-        autoplay: {
-            delay: 3000
-        },
+            loop: true,
+            autoplay: {
+                delay: 3000
+            },
 //        loop: true,
             // 如果需要分页器
             pagination: {

@@ -15,7 +15,7 @@ header {
     font-size: 20px;
     color: #555;
     border-bottom: 1px solid #f9f9f9;
-    transition: 3s;
+    /*transition: 3s;*/
     /*display: none;*/
     /*box-shadow: 0px 0px 1px #efefef;*/
 
@@ -178,13 +178,14 @@ header .sec_tab {
     font-size: 20px;
     color: #fff;
     text-align: center;
-    transition: 3s;
+    /*transition: 3s;*/
 }
 
 section {
-    /*background: url('./../img/bg.png');*/
-    /*background-repeat: repeat-y;*/
+    background: url('./../img/body_bg.png');
+    background-repeat: repeat-y;
     width: 100%;
+    /*background-size: 100% 100%;*/
     /*height: 613px;*/
     padding-bottom: 10px;
     padding-top: 80px;
@@ -561,7 +562,10 @@ aside .aside_list .active {
     float: right;
     font-size: 18px;
     line-height: 42px;
-    width: -webkit-calc(100% - 270px)
+    width: 900px;
+    width: -webkit-calc(100% - 270px);
+    width: -moz-calc(100% - 270px);
+    width: calc(100% - 270px)
 }
 
 .aside_style {
@@ -598,7 +602,7 @@ aside .aside_list .active {
 }
 
 .exhibition_style p strong {
-    font-size: 18px !important;
+    font-size: 20px !important;
     line-height: 38px !important;
 }
 
@@ -1153,6 +1157,11 @@ footer .footer_about a:active {
 
 }
 
+#ulBanner2 .active {
+    -webkit-animation: scaleImg 3s linear forwards;
+    animation: scaleImg 3s linear forwards;
+}
+
 @-webkit-keyframes scaleImg {
     from {
         -webkit-transform: scale(1);
@@ -1395,12 +1404,15 @@ footer .footer_about a:active {
     text-align: center;
     margin-bottom: 30px;
 }
-.travel_detail h2{
+
+.travel_detail h2 {
     padding-left: 0px;
 }
-.p_font2 h2{
+
+.p_font2 h2 {
     padding-left: 0px;
 }
+
 .tit_page p {
     font-weight: 600;
 }
@@ -1518,6 +1530,75 @@ footer .footer_about a:active {
     position: relative;
 }
 
+.newLidhy {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    transform: scale(1.02);
+}
+
+.swiper-container .swiper-slide {
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.swiper-container .swiper-slide-on {
+    vertical-align: middle
+}
+
+.swiper-slide-on {
+
+    animation: mymove 6s;
+    -webkit-animation: mymove 6s; /*Safari and Chrome*/
+    -moz-animation: mymove 6s; /*Safari and Chrome*/
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.07);
+    }
+}
+
+@-webkit-keyframes mymove /*Safari and Chrome*/
+{
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.07);
+    }
+}
+@-moz-keyframes mymove /*Safari and Chrome*/
+{
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.07);
+    }
+}
+.newLidhy {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    transform: scale(1.07);
+}
+
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
     background-image: url('./../img/left2.png');
     left: 30px;
@@ -1568,19 +1649,38 @@ footer .footer_about a:active {
 
 .ul_disc li {
     list-style-type: disc;
+    margin-bottom: 15px;
 }
 
-.ul_disc li p:first-child {
+.ul_disc li h5 {
+    font-size: 20px;
     font-weight: 600;
+    line-height: 40px
 }
 
 .ul_disc {
-    padding-left: 30px;
+    padding-left: 15px;
+}
+
+.content_box .no_lineHeight p {
+    margin-bottom: 0px;
+}
+
+.pri_margin p {
+    margin-bottom: 0;
+}
+
+.city_height a:first-child {
+    height: 356px;
+}
+
+.city_height li img {
+    margin-top: 0px;
 }
 
 .city_aP {
     text-align: center;
-    margin: 20px 0 30px;
+    margin: 0px 0 30px;
 }
 
 .city_aP a {
