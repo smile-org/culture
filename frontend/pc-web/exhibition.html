@@ -97,29 +97,28 @@
         });
 
     });
-    $('video').attr('preload': 'auto');
-    (function(){
-        var video, output;
-        var scale = 0.8;
-        var initialize = function() {
-            output = document.getElementById("output");
-            video = document.getElementById("video");
-            video.addEventListener('loadeddata',captureImage);
-        };
+//    $(function(){
+//        var video, output;
+//        var scale = 0.8;
+//        var initialize = function() {
+//            output = document.getElementById("output");
+//            video = document.getElementById("video");
+//            video.addEventListener('loadeddata',captureImage);
+//        };
+//
+//        var captureImage = function() {
+//            var canvas = document.createElement("canvas");
+//            canvas.width = video.videoWidth * scale;
+//            canvas.height = video.videoHeight * scale;
+//            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+//
+//            var img = document.createElement("img");
+//            img.src = canvas.toDataURL("image/png");
+//            output.appendChild(img);
+//        };
 
-        var captureImage = function() {
-            var canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth * scale;
-            canvas.height = video.videoHeight * scale;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
-            var img = document.createElement("img");
-            img.src = canvas.toDataURL("image/png");
-            output.appendChild(img);
-        };
-
-        initialize();
-    })();
+//        initialize();
+//    })();
 </script>
 <!--#include file="./ins/footer.shtml"-->
 <script>
@@ -127,9 +126,8 @@
 //    $('#popup_no2').hide();
 
     $(function () {
-
+        $('video').attr('preload', 'auto');
         var exId = getQueryStringByName('id');
-        $('video').attr('preload':'auto');
         $.ajax({
             type: "GET",
             url: baseUrl() + "/api/exhibit/getExhibitFrontNavList",
