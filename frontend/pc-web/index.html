@@ -10,11 +10,15 @@
     <link href="./css/style.css" type="text/css" rel="stylesheet"/>
     <link href="./css/base.css" type="text/css" rel="stylesheet"/>
     <!-- 引入组件库 -->
+    <!--<script src="js/base-loading.js"></script>-->
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/swiper.min.js"></script>
     <script src="js/config.js"></script>
 </head>
 <body>
+<!--<div class="preloader animated fadeOut">-->
+    <!--<img src="./img/loader.gif" alt="Preloader image">-->
+<!--</div>-->
 <div id="new_h">
     <header class="clear" id="a1">
         <div class="logo">
@@ -43,6 +47,7 @@
             <!--</div>-->
         </div>
     </header>
+
     <div class="new_header" id="a2">
         <div class="sec_tab">
             <ul class="tab_list clear">
@@ -108,6 +113,16 @@
 </section>
 <!--#include file="./ins/footer.shtml"-->
 <script>
+//    $(window).load(function() {
+//        // Preloader
+//        $('.intro-tables, .parallax, header').css('opacity', '0');
+//        $('.preloader').addClass('animated fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+//            $('.preloader').hide();
+//            $('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+//                $('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+//            });
+//        });
+//    });
     $(document).ready(function () {
         $("#a2").show();
         $("#a1").hide();
@@ -120,11 +135,10 @@
             } else {
                 $("#a2").show();
                 $("#a1").hide();
-
-
             }
         });
     });
+
 </script>
 <script type="text/javascript">
     $(function () {
@@ -138,7 +152,7 @@
                     var htmlObj = '';
                     for (var i = 0; i < data.result.length; i++) {
 
-                        if(data.result[i].desc_cn == '' && data.result[i].title_cn == '') {
+                        if (data.result[i].desc_cn == '' && data.result[i].title_cn == '') {
 
                             htmlObj += '<div class="swiper-slide newLi ">\n' +
                                 '<div class="swiper-slide-on newLidhy" style="background-image:url(' + imageUrl() + data.result[i].image_cn + ')">\n' +
@@ -158,9 +172,6 @@
                                 '<h5 class="">' + data.result[i].title_cn + '</h5>\n' +
                                 '<p class="b_con">\n' + data.result[i].desc_cn + '</p>\n' +
                                 '</div>\n' +
-
-
-
                                 '</div>';
 
                         }
@@ -179,11 +190,12 @@
                 autoplay: true,
                 speed: 2000,
                 effect: 'fade',
+                autoplayDisableOnInteraction : false,
                 loop: true,
                 // 如果需要分页器
                 pagination: {
                     el: '.banner-swiper-pagination',
-                    clickable: true,
+                    clickable: true
                 },
 
                 // 如果需要前进后退按钮
@@ -192,7 +204,7 @@
                     prevEl: '.banner-swiper-button-prev',
                 },
                 on: {
-                    slideChange: function() {
+                    slideChange: function () {
                         var index = this.activeIndex;
                         $('.swiper-slide').find("div").removeClass('swiper-slide-on');
                         $('.swiper-slide').eq(index).find("div").addClass('swiper-slide-on');

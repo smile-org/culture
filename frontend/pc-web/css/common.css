@@ -13,7 +13,7 @@ body, div, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, 
 }
 
 body {
-    font-family: '等线','Microsoft YaHei', '微软雅黑', '宋体';
+    font-family: 'Microsoft YaHei', 'Helvetica', 'Songti SC';
     min-width: 1209px;
 }
 

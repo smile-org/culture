@@ -8,7 +8,7 @@
                 <form class="" action="">
                     <input type="text" placeholder="姓名" id="txtName1">
                     <input type="tel" placeholder="电话" id="txtTel1">
-                    <textarea name="" id="txtContent1" placeholder="备注说明"></textarea>
+                    <textarea name="intr" id="txtContent1" placeholder="备注说明"></textarea>
                 </form>
                 <button class="submit_btn show" id="submit_enter">提 交</button>
             </div>
@@ -18,8 +18,8 @@
             <span class="close" id="closed_bm">x</span>
             <div class="p_con">
                 <div class="text_c p_font">
-                    <p class="text_l">我们将有专门的服务老师与您联系。如需了解更多详情，欢迎关注文化寻力官方微信公众号。</p>
-                    <img class="img_code" src="img/QRcode.png" alt="">
+                    <p class="text_l">我们将有专门的服务老师与您联系。如需了解更多交流活动，欢迎关注文化寻力官方微信公众号。</p>
+                    <img class="img_code" src="./img/XRcode.png" alt="">
                     <button class="submit_btn show ">确 定</button>
                 </div>
             </div>
@@ -30,27 +30,27 @@
             <h4 class="p_icon  font22"><img src="./img/icon1.png" class="mr20" alt="">联系我们</h4>
             <span class="close" id="closed">x</span>
             <div class="p_con">
-                <p class="p_font">用文化的力量连接世界，建立一个跨越国界、业态融通、空间互联的全球文化空间，我们一路同行！</p>
+                <p class="p_font">让家乡与世界相连，打造全球空间！</p>
                 <form class="">
-                    <input type="text" placeholder="姓名" id="txtName">
-                    <input type="tel" placeholder="电话" id="txtTel">
-                    <input type="text" placeholder="邮箱" id="txtEmail">
-                    <textarea name="" id="txtContent" placeholder="想咨询的内容"></textarea>
+                    <input type="name1" placeholder="姓名" id="txtName">
+                    <input type="tel1" placeholder="电话" id="txtTel">
+                    <input type="email" placeholder="所在城市" id="txtEmail">
+                    <textarea name="content" id="txtContent" placeholder="想了解的内容"></textarea>
                 </form>
                 <button class="submit_btn show" id="submit">提 交</button>
             </div>
         </div>
         <div class="submit_pop" style="display: none;" id="contact_sure">
-            <h4 class="text_c">您已提交咨询信息</h4>
+            <h4 class="text_c">您已提交</h4>
             <span class="close" id="closed">x</span>
             <div class="p_con p_Travel">
                 <div class="text_c p_font">
-                    <p class="text_l">我们将有专门的项目团队与您对接。您也可以提前关注文化寻力公众号了解更多。</p>
-                    <img class="img_code2" src="img/QRcode.png" alt="">
+                    <p class="text_l">我们将有工作人员与您联系，扫描下方二维码关注“寻力城市”公众号了解更多。</p>
+                    <img class="img_code2" src="./../img/xcord.jpg" alt="">
                     <ul class="contact_list">
-                        <li>指定邮箱：ifeiyi@tbiedu.com</li>
-                        <li>联系人：魏洋洋、刘清涛</li>
-                        <li>手机：183 1033 8281 / 185 1155 1979</li>
+                        <li>文化寻力项目管理办公室</li>
+                        <li>city@wenhuaxunli.com</li>
+                        <!--<li>刘清涛 18511551979</li>-->
                     </ul>
                     <!--</div>-->
                     <button class="submit_btn show ">确 定</button>

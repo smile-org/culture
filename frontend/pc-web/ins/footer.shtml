@@ -3,19 +3,20 @@
         <a href="./../about.html" class="about">关于我们</a>
         <a href="./../privacy.html" class="about">隐私说明</a>
     </div>
-    <p>Office Phone Number:  (703) 429-4664, at  607 Herndon Pkwy #210, Herndon, VA 20170</p>
+    <p class="mb5">北京市朝阳区来广营紫月路朝来高科技产业园18号院6号楼西侧4层</p>
+    <p class="mb10">86 10 57285859 / city@wenhuaxunli.com</p>
     <div class="box_code " >
-        <img src="img/e-mail.png" alt="email" class="mr20 vm">
-        gazucena@newoasisedu.com
-        <span class="ml20 chat_h vm">
+        <!--<img src="img/e-mail.png" alt="email" class="mr20 vm">-->
+        <!--gazucena@newoasisedu.com-->
+        <span class=" chat_h vm">
             <img  src="./img/wecharted.png" alt="wechart" >
         </span>
         <div class="add_code">
-            <img src="./../img/QRcode.png" alt="">
+            <img src="./../img/xcord.jpg" alt="">
             <p>
-                关注i非遗公众号，了解更多非遗项目动态
+                寻力城市办公室
             </p>
         </div>
     </div>
-    <p>Copyrights © ifeiyi 2018</p>
+    <p class="jing_icp">[京 ICP 备 12050586 号]</p>
 </footer>
