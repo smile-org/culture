@@ -29,6 +29,10 @@ ol, ul {
     text-align: right;
 }
 
+.text_c {
+    text-align: center;
+}
+
 .fl {
     float: left;
 }
@@ -90,13 +94,15 @@ ol, ul {
     position: relative;
 }
 
-
 .dis_in_block {
     display: inline-block;
 }
 
 .cur {
     cursor: pointer;
+}
+.col777{
+    color: #777;
 }
 
 .row {
@@ -115,13 +121,16 @@ ol, ul {
     float: left;
     padding: 0 15px;
 }
-.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 .15rem;
 }
+
 .swiper-pagination-bullet {
     width: .12rem;
     height: .12rem;
 }
-.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
     bottom: .3rem;
 }

@@ -46,7 +46,7 @@
             </a>
         </li>
         <li>
-            i 非遗
+            联系我们
         </li>
         <li class="iShop text_r">
             <!--<a href="https://shop.iculturechina.com/">-->
@@ -58,24 +58,24 @@
 <section class="con_style">
     <div id="popup_no1">
         <div class="from_submit" id="consult_text">
-            <h3>联系我们</h3>
-            <p>用文化的力量连接世界，建立一个跨越国界、业态融通、空间互联的全球文化空间，我们一路同行！</p>
+            <!--<h3>联系我们</h3>-->
+            <p style="padding-top: .86rem;">让家乡与世界相连，打造全球空间！</p>
             <form action="">
-                <input type="text" placeholder="姓名" id="txtName">
+                <input type="name" placeholder="姓名" id="txtName">
                 <input type="tel" placeholder="电话" id="txtTel">
-                <input type="text" placeholder="邮箱" id="txtEmail">
-                <textarea name="" id="txtContent" placeholder="想咨询的内容"></textarea>
+                <input type="email" placeholder="所在城市" id="txtEmail">
+                <textarea name="con" id="txtContent" placeholder=" 想了解的内容"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
         <div class="from_submit submit_popSure" style="display: none;" id="consult_sure">
-            <h3>您已提交咨询信息</h3>
-            <p>我们将有专门的项目团队与您对接。您也可以提前关注文化寻力公众号了解更多。</p>
-            <img class="weChart_code" src="img/weChart.jpg">
+            <h3>您已提交</h3>
+            <p>我们将有工作人员与您联系，扫描下方二维码关注“寻力城市”公众号了解更多。</p>
+            <img class="weChart_code" src="img/xcord.jpg">
             <div class="p_con">
-                <p>指定邮箱：ifeiyi@tbiedu.com</p>
-                <p>联系人：魏洋洋、刘清涛</p>
-                <p>手机：183 1033 8281 / 185 1155 1979</p>
+                <p>文化寻力项目管理办公室</p>
+                <p>city@wenhuaxunli.com</p>
+                <!--<p>刘清涛 18511551979</p>-->
             </div>
             <button class="submit_btn show " onClick="javascript:window.history.back();return false;" id="sure">确 定</button>
         </div>
@@ -95,6 +95,7 @@
     $('#submit_enter').click(function () {
         var name = $('#txtName1').val();
         var tel = $('#txtTel1').val();
+        var email = $('#txtEmail').val();
         var content = $('#txtContent1').val();
         $.ajax({
             type: "POST",

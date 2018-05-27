@@ -6,7 +6,7 @@
             </a>
         </li>
         <li id="menuTitle">
-            i非遗
+            文化寻力
         </li>
         <li class="iShop text_r">
             <a href="https://shop.iculturechina.com/">
@@ -46,7 +46,7 @@
     //
     //    })
     window.onload = function () {
-        menuName = 'i非遗';
+        menuName = '文化寻力';
 //        $("li a:contains(主页)").addClass("active");
     }
 
@@ -64,7 +64,7 @@
         var menuName;
 
         if (index == 0) {
-            menuName = 'i非遗';
+            menuName = '文化寻力';
             $("li a:contains(主页)").addClass("active");
 //            console.log($("li a:contains(主页)"))
         }
