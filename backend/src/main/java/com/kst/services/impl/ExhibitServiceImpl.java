@@ -165,7 +165,7 @@ public class ExhibitServiceImpl implements ExhibitService {
             message += "\n\r";
              message +="电话:"+ jjh.getPhone();
             message += "\n\r";
-             message += "邮箱:" + jjh.getEmail();
+             message += "城市:" + jjh.getEmail();
             message += "\n\r";
              message += "咨询内容:"+ jjh.getDesc();
 
