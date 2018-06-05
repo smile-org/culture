@@ -1491,7 +1491,7 @@ footer .footer_about a:active {
     border: 1px solid #dcdcdc;
     display: inline-block;
     text-align: center;
-    line-height: 28px;
+    line-height: 24px;
     border-radius: 6px;
     color: #dcdcdc;
     position: absolute;
@@ -1542,7 +1542,7 @@ footer .footer_about a:active {
     width: 100%;
     cursor: pointer;
     position: relative;
-    transform: scale(1.02);
+    transform: scale(1.07);
 }
 
 .swiper-container .swiper-slide {

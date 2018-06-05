@@ -10,7 +10,7 @@
     <link href="./css/style.css" type="text/css" rel="stylesheet"/>
     <link href="./css/base.css" type="text/css" rel="stylesheet"/>
     <!-- 引入组件库 -->
-    <!--<script src="js/base-loading.js"></script>-->
+    <script src="js/base-loading.js"></script>
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/swiper.min.js"></script>
     <script src="js/config.js"></script>
@@ -190,7 +190,7 @@
                 autoplay: true,
                 speed: 2000,
                 effect: 'fade',
-                autoplayDisableOnInteraction : false,
+                autoplay:{disableOnInteraction:false},
                 loop: true,
                 // 如果需要分页器
                 pagination: {
@@ -317,9 +317,10 @@
             autoplay: true,
             effect: 'fade',
             loop: true,
-            autoplay: {
-                delay: 3000
-            },
+            autoplay:{disableOnInteraction:false},
+//            autoplay: {
+//                delay: 3000
+//            },
 //        loop: true,
             // 如果需要分页器
             pagination: {
