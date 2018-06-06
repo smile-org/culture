@@ -207,7 +207,9 @@
                     slideChange: function () {
                         var index = this.activeIndex;
                         $('.swiper-slide').find("div").removeClass('swiper-slide-on');
+                        $('.swiper-slide').eq(1).find("div").addClass('swiper-slide-on');
                         $('.swiper-slide').eq(index).find("div").addClass('swiper-slide-on');
+                        $('.swiper-slide').find("newLidhy").css('transform','scale(1.07)')
                         $('.banner_text').removeClass('swiper-slide-on');
 
                     }

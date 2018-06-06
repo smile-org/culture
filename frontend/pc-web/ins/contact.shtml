@@ -68,6 +68,7 @@
 //        console.log(window.location)
 //        var name = getUrlParam('name')
         $('#travel_p').text(name)
+//        console.log(journey_type)
     });
     $('#join_us').click(function () {
         $('#part1').show();
@@ -87,7 +88,7 @@
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addXCBM",
-            data: JSON.stringify({name: name, phone: tel, desc: content, march: title}),
+            data: JSON.stringify({name: name, phone: tel, desc: content, march: title,journey_type:journey_type}),
             dataType: "json",
             contentType: "application/json",
             success: function (data) {
