@@ -59,11 +59,11 @@
     <div id="popup_no2">
         <div class="from_submit" style="display: block;" id="consult_text">
             <!--<h3>行程报名咨询</h3>-->
-            <p id="travel_p" style="text-align: center; padding-top: .86rem;"></p>
+            <p id="travel_p" style="text-align: center; padding-top: .86rem;font-size: .51rem"></p>
             <form action="">
-                <input type="name" placeholder="姓名" id="txtName1">
-                <input type="tel" placeholder="电话" id="txtTel1">
-                <textarea name="content" id="txtContent1" placeholder="备注说明"></textarea>
+                <input type="name" placeholder="姓名" id="txtName">
+                <input type="tel" placeholder="电话" id="txtTel">
+                <textarea name="content" id="txtContent" placeholder="备注说明"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
@@ -79,6 +79,7 @@
 
 <script>
     var name = getQueryStringByName('name');
+    var journey_type = decodeURI(getQueryStringByName('type'));
     //    console.log(decodeURI(name));
     $('#travel_p').text(decodeURI(name));
     $('#submit_enter').click(function () {
@@ -92,13 +93,13 @@
     //        });
     $('#submit_enter').click(function () {
         var title = $('#travel_p').text();
-        var name = $('#txtName1').val();
-        var tel = $('#txtTel1').val();
-        var content = $('#txtContent1').val();
+        var name = $('#txtName').val();
+        var tel = $('#txtTel').val();
+        var content = $('#txtContent').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addXCBM",
-            data: JSON.stringify({name: name, phone: tel, desc: content, march: title}),
+            data: JSON.stringify({name: name, phone: tel, desc: content, march: title,journey_type:journey_type}),
             dataType: "json",
             contentType: "application/json",
             success: function (data) {

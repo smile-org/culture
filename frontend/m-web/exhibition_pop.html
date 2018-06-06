@@ -61,10 +61,10 @@
             <!--<h3>联系我们</h3>-->
             <p style="padding-top: .86rem;">让家乡与世界相连，打造全球空间！</p>
             <form action="">
-                <input type="name" placeholder="姓名" id="txtName">
-                <input type="tel" placeholder="电话" id="txtTel">
-                <input type="email" placeholder="所在城市" id="txtEmail">
-                <textarea name="con" id="txtContent" placeholder=" 想了解的内容"></textarea>
+                <input type="name" placeholder="姓名" id="cTxtName">
+                <input type="tel" placeholder="电话" id="cTxtTel">
+                <input type="email" placeholder="所在城市" id="cTxtEmail">
+                <textarea name="con" id="cTxtContent" placeholder=" 想了解的内容"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
@@ -93,10 +93,10 @@
 
     });
     $('#submit_enter').click(function () {
-        var name = $('#txtName1').val();
-        var tel = $('#txtTel1').val();
-        var email = $('#txtEmail').val();
-        var content = $('#txtContent1').val();
+        var name = $('#cTxtName').val();
+        var tel = $('#cTxtTel').val();
+        var email = $('#cTxtEmail').val();
+        var content = $('#cTxtContent').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addLXWM",

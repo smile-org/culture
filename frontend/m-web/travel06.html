@@ -103,7 +103,8 @@
 <script>
     $('#join_us').click(function () {
         var param = encodeURI('2018世界青少年领导力峰会形成（16天）')
-        window.location = '/exhibition_pop2.html?name=' + param
+        var journey_type = encodeURI('文化寻力 - 美国行')
+        window.location = '/exhibition_pop2.html?name=' + param + '&type=' + journey_type
     });
     $("#c_select").click(function () {
         $("#select_box").slideToggle("slow");
