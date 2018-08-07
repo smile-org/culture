@@ -200,6 +200,8 @@ public class ExhibitController {
         jjh.setEmail ((String) body.get("email"));
         jjh.setDesc ((String) body.get("desc"));
 
+        jjh.setCompany((String) body.get("company"));
+
         result = exhibitService.addJJH(jjh);
         logger.debug("Response: " + result);
         return result;

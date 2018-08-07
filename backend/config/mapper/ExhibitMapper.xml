@@ -59,7 +59,7 @@ update   exhibit
     </update>
 
     <insert id="addJJH"    parameterType="com.kst.entities.JJH" >
-        insert jjh values( 0,  #{name} ,#{phone} ,#{email}, #{desc}  ,  now() );
+        insert jjh values( 0,  #{name} ,#{phone} ,#{email}, #{desc}  ,  now() ,  #{company} );
     </insert>
 
 

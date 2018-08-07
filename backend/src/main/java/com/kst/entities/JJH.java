@@ -12,6 +12,16 @@ public class JJH {
     private   String desc;
     private Date create_at;
 
+    private  String   company;
+
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
     public int getJjh_id() {
         return jjh_id;
     }
