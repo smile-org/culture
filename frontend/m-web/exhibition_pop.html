@@ -63,8 +63,9 @@
             <form action="">
                 <input type="name" placeholder="姓名" id="cTxtName">
                 <input type="tel" placeholder="电话" id="cTxtTel">
+                <input type="company" placeholder="所在单位" id="cCompany">
                 <input type="email" placeholder="所在城市" id="cTxtEmail">
-                <textarea name="con" id="cTxtContent" placeholder=" 想了解的内容"></textarea>
+                <textarea name="con" id="cTxtContent" placeholder="想了解的内容"></textarea>
             </form>
             <button class="submit_btn show" id="submit_enter">提 交</button>
         </div>
@@ -95,12 +96,13 @@
     $('#submit_enter').click(function () {
         var name = $('#cTxtName').val();
         var tel = $('#cTxtTel').val();
+        var company = $('#cCompany').val();
         var email = $('#cTxtEmail').val();
         var content = $('#cTxtContent').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addLXWM",
-            data: JSON.stringify({name: name, phone: tel, email: email, desc: content}),
+            data: JSON.stringify({name: name,company:company, phone: tel, email: email, desc: content}),
             dataType: "json",
             contentType: "application/json",
             success: function (data){

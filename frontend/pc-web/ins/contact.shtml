@@ -34,6 +34,7 @@
                 <form class="">
                     <input type="name1" placeholder="姓名" id="txtName">
                     <input type="tel1" placeholder="电话" id="txtTel">
+                    <input type="company" placeholder="所在单位" id="txtCompany">
                     <input type="email" placeholder="所在城市" id="txtEmail">
                     <textarea name="content" id="txtContent" placeholder="想了解的内容"></textarea>
                 </form>
@@ -115,12 +116,13 @@
         $(".reveal_bg").show();
         var name = $('#txtName').val();
         var tel = $('#txtTel').val();
+        var company = $('#txtCompany').val();
         var email = $('#txtEmail').val();
         var content = $('#txtContent').val();
         $.ajax({
             type: "POST",
             url: baseUrl() + "api/exhibit/addLXWM",
-            data: JSON.stringify({name: name, phone: tel, email: email, desc: content}),
+            data: JSON.stringify({name: name, phone: tel, email: email,company:company, desc: content}),
             dataType: "json",
             contentType: "application/json",
             success: function (data) {
